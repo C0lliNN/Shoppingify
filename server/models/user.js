@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
 
 const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 100;
@@ -9,6 +10,8 @@ const MAX_EMAIL_LENGTH = 255;
 
 const MIN_PASSWORD_LENGTH = 6;
 const MAX_PASSWORD_LENGTH = 255;
+
+const TOKEN_EXPIRATION_TIME = 3600; // seconds
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -29,6 +32,16 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+userSchema.methods.generateToken = function () {
+  const key = process.env.JWT_KEY;
+  const token = jwt.sign(
+    { _id: this._id, name: this.name, email: this.email },
+    key,
+    { expiresIn: TOKEN_EXPIRATION_TIME }
+  );
+  return token;
+};
+
 const User = mongoose.model('users', userSchema);
 
 function validateUser(data) {
@@ -47,3 +60,4 @@ function validateUser(data) {
 exports.userSchema = userSchema;
 exports.User = User;
 exports.validateUser = validateUser;
+exports.TOKEN_EXPIRATION_TIME = TOKEN_EXPIRATION_TIME;
