@@ -1,20 +1,21 @@
-const { User } = require('../models/User');
+const jwt = require('jsonwebtoken');
 
-let auth = (req, res, next) => {
-  let token = req.cookies.w_auth;
+function auth(request, response, next) {
+  const token = request.header('X-Auth-Token');
+  if (!token) {
+    return response.status(400).send({ message: 'A token must be provided' });
+  }
+  const key = process.env.JWT_KEY;
+  try {
+    const validToken = jwt.verify(token, key);
+    if (!validToken) {
+      return response.status(403).send({ message: 'Invalid Token' });
+    }
+  } catch (error) {
+    return response.status(403).send({ message: 'Invalid Token' });
+  }
 
-  User.findByToken(token, (err, user) => {
-    if (err) throw err;
-    if (!user)
-      return res.json({
-        isAuth: false,
-        error: true
-      });
+  next();
+}
 
-    req.token = token;
-    req.user = user;
-    next();
-  });
-};
-
-module.exports = { auth };
+module.exports = auth;
