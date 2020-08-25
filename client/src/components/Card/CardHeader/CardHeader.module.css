@@ -1,0 +1,7 @@
+.CardHeader {
+  background-color: #e0e0e0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  color: #575757;
+  padding: 10px 15px;
+}
