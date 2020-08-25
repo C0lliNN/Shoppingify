@@ -4,17 +4,17 @@ const Joi = require('joi');
 const MIN_CATEGORY_LENGTH = 3;
 const MAX_CATEGORY_LENGTH = 120;
 
-const Category = mongoose.model(
-  'categories',
-  new mongoose.Schema({
-    name: {
-      type: String,
-      minlength: MIN_CATEGORY_LENGTH,
-      maxlength: MAX_CATEGORY_LENGTH,
-      required: true,
-    },
-  })
-);
+const categorySchema = new mongoose.Schema({
+  name: {
+    type: String,
+    minlength: MIN_CATEGORY_LENGTH,
+    maxlength: MAX_CATEGORY_LENGTH,
+    unique: true,
+    required: true,
+  },
+});
+
+const Category = mongoose.model('categories', categorySchema);
 
 function validateCategory(data) {
   const validator = Joi.object({
@@ -28,4 +28,7 @@ function validateCategory(data) {
 }
 
 exports.Category = Category;
+exports.categorySchema = categorySchema;
 exports.validateCategory = validateCategory;
+(exports.MIN_CATEGORY_LENGTH = MIN_CATEGORY_LENGTH),
+  (exports.MAX_CATEGORY_LENGTH = MAX_CATEGORY_LENGTH);
