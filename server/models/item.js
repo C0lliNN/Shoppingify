@@ -37,6 +37,10 @@ const Item = mongoose.model(
       min: MIN_IMAGE_LENGTH,
       max: MAX_IMAGE_LENGTH,
     },
+    user: {
+      type: mongoose.SchemaTypes.ObjectId,
+      required: true,
+    },
   })
 );
 
@@ -51,6 +55,7 @@ function validateItem(data) {
         .min(MIN_CATEGORY_LENGTH)
         .max(MAX_CATEGORY_LENGTH),
     }).required(),
+    user: Joi.objectId().required(),
   });
 
   return validator.validate(data);

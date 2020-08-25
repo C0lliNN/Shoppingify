@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
+Joi.objectId = require('joi-objectid')(Joi);
 
 const MIN_CATEGORY_LENGTH = 3;
 const MAX_CATEGORY_LENGTH = 120;
@@ -12,6 +13,10 @@ const categorySchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
+  user: {
+    type: mongoose.SchemaTypes.ObjectId,
+    required: true,
+  },
 });
 
 const Category = mongoose.model('categories', categorySchema);
@@ -22,6 +27,7 @@ function validateCategory(data) {
       .required()
       .min(MIN_CATEGORY_LENGTH)
       .max(MAX_CATEGORY_LENGTH),
+    user: Joi.objectId().required(),
   });
 
   return validator.validate(data);
