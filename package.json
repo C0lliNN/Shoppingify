@@ -1,7 +1,7 @@
 {
-  "name": "react-boiler-plate",
+  "name": "shoppingify",
   "version": "1.0.0",
-  "description": "react boiler plate",
+  "description": "App to manage shop lists",
   "main": "index.js",
   "engine": {
     "node": "10.16.0",
@@ -12,10 +12,10 @@
     "backend": "nodemon server/index.js",
     "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
-    "testServer": "jest server --watch --detectOpenHandles",
+    "testServer": "jest server --detectOpenHandles",
     "test": "concurrently \"npm run testServer\"  \"npm run test a --prefix client\""
   },
-  "author": "John ahn",
+  "author": "Raphael Collin",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",
