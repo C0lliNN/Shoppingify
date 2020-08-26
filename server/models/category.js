@@ -10,7 +10,6 @@ const categorySchema = new mongoose.Schema({
     type: String,
     minlength: MIN_CATEGORY_LENGTH,
     maxlength: MAX_CATEGORY_LENGTH,
-    unique: true,
     required: true,
   },
   user: {

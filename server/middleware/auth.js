@@ -12,7 +12,7 @@ function auth(request, response, next) {
       return response.status(403).send({ message: 'Invalid Token' });
     }
   } catch (error) {
-    return response.status(403).send({ message: 'Invalid Token' });
+    return response.status(400).send({ message: 'Invalid Token' });
   }
 
   next();

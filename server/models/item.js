@@ -2,11 +2,7 @@ const mongoose = require('mongoose');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 
-const {
-  categorySchema,
-  MIN_CATEGORY_LENGTH,
-  MAX_CATEGORY_LENGTH,
-} = require('./category');
+const { MIN_CATEGORY_LENGTH, MAX_CATEGORY_LENGTH } = require('./category');
 
 const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 40;
@@ -20,7 +16,6 @@ const Item = mongoose.model(
     name: {
       type: String,
       required: true,
-      unique: true,
       minlength: MIN_NAME_LENGTH,
       maxlength: MAX_NAME_LENGTH,
     },
@@ -29,7 +24,14 @@ const Item = mongoose.model(
       maxlength: MAX_NOTE_LENGTH,
     },
     category: {
-      type: categorySchema,
+      type: new mongoose.Schema({
+        name: {
+          type: String,
+          min: MIN_CATEGORY_LENGTH,
+          max: MAX_CATEGORY_LENGTH,
+          required: true,
+        },
+      }),
       required: true,
     },
     image: {
@@ -45,6 +47,16 @@ const Item = mongoose.model(
 );
 
 function validateItem(data) {
+  if (typeof data.category === 'string') {
+    try {
+      const category = JSON.parse(data.category);
+      data.category = category;
+    } catch (error) {
+      console.log(error.message);
+      return { error: 'Invalid Category Object' };
+    }
+  }
+
   const validator = Joi.object({
     name: Joi.string().required().min(MIN_NAME_LENGTH).max(MAX_NAME_LENGTH),
     note: Joi.string().max(MAX_NOTE_LENGTH),

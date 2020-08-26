@@ -12,7 +12,7 @@
     "backend": "nodemon server/index.js",
     "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
-    "testServer": "jest server --detectOpenHandles",
+    "testServer": "jest server --watch --detectOpenHandles",
     "test": "concurrently \"npm run testServer\"  \"npm run test a --prefix client\""
   },
   "author": "Raphael Collin",
@@ -24,6 +24,7 @@
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
     "joi": "^17.2.1",
     "joi-objectid": "^3.0.1",
     "jsonwebtoken": "^8.5.1",

@@ -27,7 +27,9 @@ describe('validateItem', () => {
   it('should generate an error if the name has less than 3 chars', () => {
     const { error } = validateItem({
       name: 'ra',
-      category: { name: 'Fruit' },
+      category: {
+        name: 'Fruit',
+      },
       user: VALID_OBJECT_ID,
     });
     expect(error).toBeTruthy();
@@ -37,13 +39,22 @@ describe('validateItem', () => {
     const { error } = validateItem({
       name:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, voluptate?',
-      category: { name: 'fruit' },
+      category: {
+        name: 'fruit',
+      },
       user: VALID_OBJECT_ID,
     });
 
     expect(error).toBeTruthy();
   });
-
+  it('should generate an error if category is a string that cannot be converted to json', () => {
+    const { error } = validateItem({
+      name: 'Banana',
+      category: 'name=12',
+      user: VALID_OBJECT_ID,
+    });
+    expect(error).toBeTruthy();
+  });
   it('should generate an error if category._id is not a valid ObjectId', () => {
     const { error } = validateItem({
       name: 'Banana',
@@ -103,6 +114,14 @@ describe('validateItem', () => {
       category: {
         name: 'Fruit',
       },
+      user: VALID_OBJECT_ID,
+    });
+    expect(error).toBeFalsy();
+  });
+  it('should not generate an error if the category is a string that can be converted to JSON', () => {
+    const { error } = validateItem({
+      name: 'Banana',
+      category: '{"name": "Fruit"}',
       user: VALID_OBJECT_ID,
     });
     expect(error).toBeFalsy();
