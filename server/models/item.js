@@ -52,7 +52,6 @@ function validateItem(data) {
       const category = JSON.parse(data.category);
       data.category = category;
     } catch (error) {
-      console.log(error.message);
       return { error: 'Invalid Category Object' };
     }
   }
