@@ -74,3 +74,5 @@ function validateItem(data) {
 
 exports.Item = Item;
 exports.validateItem = validateItem;
+exports.MIN_ITEM_NAME_LENGTH = MIN_NAME_LENGTH;
+exports.MAX_ITEM_NAME_LENGTH = MAX_NAME_LENGTH;
