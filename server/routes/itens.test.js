@@ -63,15 +63,6 @@ afterEach(async () => {
 });
 
 describe('GET /itens', () => {
-  it('should send 400 if no token is provided', async () => {
-    await request(app).get('/api/v1/itens').expect(400);
-  });
-  it('should send 400 if token is invalid', async () => {
-    await request(app)
-      .get('/api/v1/itens')
-      .set('X-Auth-Token', '123')
-      .expect(400);
-  });
   it('should send 200', async () => {
     await request(app)
       .get('/api/v1/itens')

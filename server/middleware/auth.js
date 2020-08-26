@@ -9,7 +9,7 @@ function auth(request, response, next) {
   try {
     const validToken = jwt.verify(token, key);
     if (!validToken) {
-      return response.status(403).send({ message: 'Invalid Token' });
+      throw new Error('Invalid Token');
     }
   } catch (error) {
     return response.status(400).send({ message: 'Invalid Token' });
