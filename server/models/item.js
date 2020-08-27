@@ -52,7 +52,11 @@ function validateItem(data) {
       const category = JSON.parse(data.category);
       data.category = category;
     } catch (error) {
-      return { error: 'Invalid Category Object' };
+      return {
+        error: {
+          message: 'Invalid Category Object',
+        },
+      };
     }
   }
 
@@ -66,7 +70,6 @@ function validateItem(data) {
         .min(MIN_CATEGORY_LENGTH)
         .max(MAX_CATEGORY_LENGTH),
     }).required(),
-    user: Joi.objectId().required(),
   });
 
   return validator.validate(data);

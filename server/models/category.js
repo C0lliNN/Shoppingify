@@ -26,7 +26,6 @@ function validateCategory(data) {
       .required()
       .min(MIN_CATEGORY_LENGTH)
       .max(MAX_CATEGORY_LENGTH),
-    user: Joi.objectId().required(),
   });
 
   return validator.validate(data);

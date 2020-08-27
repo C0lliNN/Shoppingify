@@ -1,24 +1,36 @@
 /* eslint-disable no-undef */
 const { validateList } = require('./list');
+const { FALSY_VALUES } = require('../utility');
+const { lorem } = require('faker');
 
 describe('validateList', () => {
   it('should generate an error if name is falsy', () => {
-    let error = validateList({ name: '' }).error;
-    expect(error).toBeTruthy();
-
-    error = validateList({ name: null }).error;
-    expect(error).toBeTruthy();
-
-    error = validateList({}).error;
-    expect(error).toBeTruthy();
+    FALSY_VALUES.forEach((value) => {
+      const { error } = validateList({ name: value });
+      expect(error).toBeTruthy();
+      expect(error.message).toMatch(/name/);
+    });
   });
-  it('should generate and error if itens is falsy', () => {
-    let error = validateList({ name: 'Monthly Shopping List', itens: null })
-      .error;
+  it('should generate an error if name has less than 3 chars', () => {
+    const { error } = validateList({
+      name: 'Ra',
+    });
     expect(error).toBeTruthy();
-
-    error = validateList({ name: 'Monthly Shopping List' }).error;
+    expect(error.message).toMatch(/name.*3.*/i);
+  });
+  it('should generate an error if name has more than 100 chars', () => {
+    const { error } = validateList({
+      name: lorem.sentence(60),
+    });
     expect(error).toBeTruthy();
+    expect(error.message).toMatch(/name.*100.*/i);
+  });
+  it('should generate an error if itens is falsy', () => {
+    FALSY_VALUES.forEach((value) => {
+      const { error } = validateList({ name: lorem.words(3), itens: value });
+      expect(error).toBeTruthy();
+      expect(error.message).toMatch(/itens/);
+    });
   });
   it('should generate an error if itens is not an array', () => {
     const { error } = validateList({
@@ -26,24 +38,30 @@ describe('validateList', () => {
       itens: 25,
     });
     expect(error).toBeTruthy();
+    expect(error.message).toMatch(/itens.*array.*/);
   });
   it('should generate an error if itens has no items', () => {
     const { error } = validateList({
       name: 'Monthly Shopping List',
       itens: [],
+      status: 'active',
     });
     expect(error).toBeTruthy();
+    expect(error.message).toMatch(/itens.*1.*/);
   });
   it('should generate an error it one item has falsy _id', () => {
-    const { error } = validateList({
-      name: 'Monthly Shopping List',
-      itens: [
-        {
-          _id: null,
-        },
-      ],
+    FALSY_VALUES.forEach((value) => {
+      const { error } = validateList({
+        name: 'Monthly Shopping List',
+        itens: [
+          {
+            _id: value,
+          },
+        ],
+      });
+      expect(error).toBeTruthy();
+      expect(error.message).toMatch(/itens.*_id.*/);
     });
-    expect(error).toBeTruthy();
   });
   it('should generate an error it one item has invalid _id', () => {
     const { error } = validateList({
@@ -55,18 +73,114 @@ describe('validateList', () => {
       ],
     });
     expect(error).toBeTruthy();
+    expect(error.message).toMatch(/itens.*_id.*/);
   });
   it('should generate an error it one item has falsy name', () => {
+    FALSY_VALUES.forEach((value) => {
+      const { error } = validateList({
+        name: 'Monthly Shopping List',
+        itens: [
+          {
+            _id: '5f455552f75a6016403b9971',
+            name: value,
+          },
+        ],
+      });
+      expect(error).toBeTruthy();
+      expect(error.message).toMatch(/itens.*name.*/);
+    });
+  });
+  it('should generate an error if one item has name.length < 3', () => {
     const { error } = validateList({
-      name: 'Monthly Shopping List',
+      name: 'Banana',
       itens: [
         {
           _id: '5f455552f75a6016403b9971',
-          name: '',
+          name: 'Ra',
         },
       ],
     });
     expect(error).toBeTruthy();
+    expect(error.message).toMatch(/itens.*name.*3.*/i);
+  });
+  it('should generate an error if one time has name.length > 40', () => {
+    const { error } = validateList({
+      name: 'Banana',
+      itens: [
+        {
+          _id: '5f455552f75a6016403b9971',
+          name: lorem.sentence(20),
+        },
+      ],
+    });
+    expect(error).toBeTruthy();
+    expect(error.message).toMatch(/itens.*name.*40.*/i);
+  });
+  it('should generate an error if one item has falsy category', () => {
+    FALSY_VALUES.forEach((value) => {
+      const { error } = validateList({
+        name: 'Banana',
+        itens: [
+          {
+            _id: '5f455552f75a6016403b9971',
+            name: 'Fruit',
+            category: value,
+          },
+        ],
+      });
+      expect(error).toBeTruthy();
+      expect(error.message).toMatch(/itens.*category/i);
+    });
+  });
+  it('should generate an error if one item has falsy category.name', () => {
+    FALSY_VALUES.forEach((value) => {
+      const { error } = validateList({
+        name: 'Banana',
+        itens: [
+          {
+            _id: '5f455552f75a6016403b9971',
+            name: 'Fruit',
+            category: {
+              name: value,
+            },
+          },
+        ],
+      });
+      expect(error).toBeTruthy();
+      expect(error.message).toMatch(/itens.*category/i);
+    });
+  });
+  it('should generate an error if one item has category.name.length < 3', () => {
+    const { error } = validateList({
+      name: 'Banana',
+      itens: [
+        {
+          _id: '5f455552f75a6016403b9971',
+          name: 'Fruit',
+          category: {
+            name: 'Ra',
+          },
+        },
+      ],
+    });
+    expect(error).toBeTruthy();
+    expect(error.message).toMatch(/itens.*category.*3/i);
+  });
+  it('should generate an error if one item has category.name.length < 3', () => {
+    const { error } = validateList({
+      name: 'Banana',
+      itens: [
+        {
+          _id: '5f455552f75a6016403b9971',
+          name: 'Fruit',
+          category: {
+            name: lorem.sentence(60),
+          },
+        },
+      ],
+    });
+    expect(error).toBeTruthy();
+    expect(error.message).toMatch(/itens.*category.*120/i);
   });
   it('should generate an error it one item has no quantity', () => {
     const { error } = validateList({
@@ -76,12 +190,16 @@ describe('validateList', () => {
           _id: '5f455552f75a6016403b9971',
           name: 'Banana',
           quantity: null,
+          category: {
+            name: 'Fruit',
+          },
         },
       ],
     });
     expect(error).toBeTruthy();
+    expect(error.message).toMatch(/itens.*quantity.*/);
   });
-  it('should generate an error it one item has a quantity < 1', () => {
+  it('should generate an error if one item has a quantity < 1', () => {
     const { error } = validateList({
       name: 'Monthly Shopping List',
       itens: [
@@ -89,24 +207,34 @@ describe('validateList', () => {
           _id: '5f455552f75a6016403b9971',
           name: 'Banana',
           quantity: 0,
+          category: {
+            name: 'Fruit',
+          },
         },
       ],
     });
     expect(error).toBeTruthy();
+    expect(error.message).toMatch(/itens.*quantity.*1.*/);
   });
   it('should generate an error if list status is falsy', () => {
-    const { error } = validateList({
-      name: 'Monthly Shopping List',
-      itens: [
-        {
-          _id: '5f455552f75a6016403b9971',
-          name: 'Banana',
-          quantity: 2,
-        },
-      ],
-      status: undefined,
+    FALSY_VALUES.forEach((value) => {
+      const { error } = validateList({
+        name: 'Monthly Shopping List',
+        itens: [
+          {
+            _id: '5f455552f75a6016403b9971',
+            name: 'Banana',
+            quantity: 2,
+            category: {
+              name: 'Fruit',
+            },
+          },
+        ],
+        status: value,
+      });
+      expect(error).toBeTruthy();
+      expect(error.message).toMatch(/status/);
     });
-    expect(error).toBeTruthy();
   });
   it('should generate an error if list status is not valid', () => {
     const { error } = validateList({
@@ -116,13 +244,17 @@ describe('validateList', () => {
           _id: '5f455552f75a6016403b9971',
           name: 'Banana',
           quantity: 2,
+          category: {
+            name: 'Fruit',
+          },
         },
       ],
       status: 'PAUSED',
     });
     expect(error).toBeTruthy();
+    expect(error.message).toMatch(/status/);
   });
-  it('should generate an error if user is falsy', () => {
+  it('should not generate an error if name, itens, and status are defined correctly', () => {
     const { error } = validateList({
       name: 'Monthly Shopping List',
       itens: [
@@ -130,40 +262,12 @@ describe('validateList', () => {
           _id: '5f455552f75a6016403b9971',
           name: 'Banana',
           quantity: 2,
-        },
-      ],
-      status: 'PAUSED',
-      user: null,
-    });
-    expect(error).toBeTruthy();
-  });
-  it('should generate an error if user is not a valid objectId', () => {
-    const { error } = validateList({
-      name: 'Monthly Shopping List',
-      itens: [
-        {
-          _id: '5f455552f75a6016403b9971',
-          name: 'Banana',
-          quantity: 2,
-        },
-      ],
-      status: 'PAUSED',
-      user: '323423',
-    });
-    expect(error).toBeTruthy();
-  });
-  it('should not generate an error if name, itens, status and user are defined correctly', () => {
-    const { error } = validateList({
-      name: 'Monthly Shopping List',
-      itens: [
-        {
-          _id: '5f455552f75a6016403b9971',
-          name: 'Banana',
-          quantity: 2,
+          category: {
+            name: 'Fruit',
+          },
         },
       ],
       status: 'active',
-      user: '5f455552f75a6016403b9971',
     });
     expect(error).toBeFalsy();
   });

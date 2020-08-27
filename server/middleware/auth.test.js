@@ -5,6 +5,7 @@ const { start, stop } = require('../config/server');
 const { initDatabase, dropDatabase } = require('../config/database');
 const { User } = require('../models/User');
 const jwt = require('jsonwebtoken');
+const faker = require('faker');
 
 let app = null;
 let token = null;
@@ -14,9 +15,9 @@ beforeEach(async () => {
   await initDatabase();
 
   const user = await User.create({
-    name: 'Raphael',
-    email: 'test@test.com',
-    password: '1111111',
+    name: faker.name.firstName('male'),
+    email: faker.internet.email(),
+    password: '2342342',
   });
 
   token = jwt.sign({ _id: user.id }, process.env.JWT_KEY);

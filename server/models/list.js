@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 const { MIN_ITEM_NAME_LENGTH, MAX_ITEM_NAME_LENGTH } = require('./item');
+const { MIN_CATEGORY_LENGTH, MAX_CATEGORY_LENGTH } = require('./category');
 
 const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 100;
@@ -36,6 +37,17 @@ const List = mongoose.model(
             set: (value) => Math.round(value),
             min: 1,
           },
+          category: {
+            type: new mongoose.Schema({
+              name: {
+                type: String,
+                required: true,
+                min: MIN_CATEGORY_LENGTH,
+                max: MAX_CATEGORY_LENGTH,
+              },
+            }),
+            required: true,
+          },
         },
       ],
       required: true,
@@ -63,16 +75,25 @@ const List = mongoose.model(
 function validateList(data) {
   const validator = Joi.object({
     name: Joi.string().required().min(MIN_NAME_LENGTH).max(MAX_NAME_LENGTH),
-    itens: Joi.array().items(
-      Joi.object({
-        _id: Joi.objectId().required(),
-        name: Joi.string()
-          .required()
-          .min(MIN_ITEM_NAME_LENGTH)
-          .max(MAX_ITEM_NAME_LENGTH),
-        quantity: Joi.number().integer().required().min(1),
-      })
-    ),
+    itens: Joi.array()
+      .items(
+        Joi.object({
+          _id: Joi.objectId().required(),
+          name: Joi.string()
+            .required()
+            .min(MIN_ITEM_NAME_LENGTH)
+            .max(MAX_ITEM_NAME_LENGTH),
+          category: Joi.object({
+            name: Joi.string()
+              .required()
+              .min(MIN_CATEGORY_LENGTH)
+              .max(MAX_CATEGORY_LENGTH),
+          }).required(),
+          quantity: Joi.number().integer().required().min(1),
+        })
+      )
+      .required()
+      .min(1),
     status: Joi.string()
       .required()
       .valid(
@@ -80,10 +101,11 @@ function validateList(data) {
         VALID_STATUS_VALUES[1],
         VALID_STATUS_VALUES[2]
       ),
-    user: Joi.objectId().required(),
-  });
+  }).required();
   return validator.validate(data);
 }
 
 exports.List = List;
+exports.MIN_LIST_NAME_LENGTH = MIN_NAME_LENGTH;
+exports.MAX_LIST_NAME_LENGTH = MAX_NAME_LENGTH;
 exports.validateList = validateList;

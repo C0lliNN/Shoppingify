@@ -1,77 +1,107 @@
 /* eslint-disable no-undef */
 
 const { validateUser } = require('./user');
+const { FALSY_VALUES } = require('../utility');
+const { lorem, name, internet } = require('faker');
 
 describe('validateUser', () => {
-  it('should generate a error if the name is falsy', () => {
-    const { error } = validateUser({
-      email: 'test@test.com',
-      password: '8846512123',
+  it('should generate an error if the name is falsy', () => {
+    FALSY_VALUES.forEach((value) => {
+      const { error } = validateUser({
+        name: value,
+      });
+      expect(error).toBeTruthy();
+      expect(error.message).toMatch(/name/);
     });
-    expect(error).toBeTruthy();
   });
-  it('should generate a error if the name has less than 3 chars', () => {
+  it('should generate an error if the name has less than 3 chars', () => {
     const { error } = validateUser({
       name: 'A',
-      email: 'teste@teste.com',
-      password: '999999999',
     });
     expect(error).toBeTruthy();
+    expect(error.message).toMatch(/name.*3.*/);
   });
 
-  it('should generate a error if name has more than 100 chars', () => {
+  it('should generate an error if name has more than 100 chars', () => {
     const { error } = validateUser({
-      name:
-        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas natus aspernatur laborum magni vero ex quis inventore nemo dolore eaque?',
-      email: 'test@test.com',
-      password: '999999999',
+      name: lorem.sentence(50),
     });
     expect(error).toBeTruthy();
+    expect(error.message).toMatch(/name.*100.*/);
   });
 
-  it('should generate a error if the email is falsy', () => {
-    const { error } = validateUser({
-      name: 'test',
-      password: '456756123',
+  it('should generate an error if the email is falsy', () => {
+    FALSY_VALUES.forEach((value) => {
+      const { error } = validateUser({
+        name: name.firstName(),
+        email: value,
+      });
+      expect(error).toBeTruthy();
+      expect(error.message).toMatch(/email/);
     });
-    expect(error).toBeTruthy();
   });
 
-  it('should generate a error if the email is invalid', () => {
+  it('should generate an error if the email is invalid', () => {
     const { error } = validateUser({
-      name: 'Test',
+      name: name.firstName(),
       email: '88888888888',
-      password: '999983523',
     });
 
     expect(error).toBeTruthy();
+    expect(error.message).toMatch(/email.*valid.*/);
   });
 
-  it('should generate a error if password is falsy', () => {
+  it('should generate an error if the email has less than 8 chars', () => {
     const { error } = validateUser({
-      name: 'Test',
-      email: 'test@test.com',
-      password: null,
+      name: name.firstName(),
+      email: 'a@a.com',
+    });
+    expect(error).toBeTruthy();
+    expect(error.message).toMatch(/email.*8.*/);
+  });
+  it('should generate an error if password is falsy', () => {
+    FALSY_VALUES.forEach((value) => {
+      const { error } = validateUser({
+        name: name.firstName(),
+        email: internet.email(),
+        password: value,
+      });
+
+      expect(error).toBeTruthy();
+      expect(error.message).toMatch(/password/);
+    });
+  });
+
+  it('should generate an error if password has less than 6 chars', () => {
+    const { error } = validateUser({
+      name: name.firstName(),
+      email: internet.email(),
+      password: '123',
     });
 
     expect(error).toBeTruthy();
+    expect(error.message).toMatch(/password.*6.*/);
   });
 
-  it('should generate a error if password has less than 6 chars', () => {
+  it('should generate an error if password has more than 255 chars', () => {
     const { error } = validateUser({
-      name: 'test',
-      email: 'test@test.com',
-      password: '99545',
+      name: name.firstName(),
+      email: internet.email(),
+      password: lorem.sentence(150),
     });
+
     expect(error).toBeTruthy();
+    expect(error.message).toMatch(/password.*255.*/);
   });
 
-  it('should not generate a error if the input is valid', () => {
-    const { error } = validateUser({
-      name: 'raphael',
-      email: 'raphael@test.com',
+  it('should not generate an error if the input is valid', () => {
+    const payload = {
+      name: name.firstName(),
+      email: internet.email(),
       password: '997885486',
-    });
+    };
+    const { error, value } = validateUser(payload);
     expect(error).toBeFalsy();
+    expect(value).toEqual(payload);
   });
 });

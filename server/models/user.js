@@ -55,7 +55,10 @@ function validateUser(data) {
       .required()
       .min(MIN_EMAIL_LENGTH)
       .max(MAX_EMAIL_LENGTH),
-    password: Joi.string().min(MIN_PASSWORD_LENGTH).max(MAX_PASSWORD_LENGTH),
+    password: Joi.string()
+      .required()
+      .min(MIN_PASSWORD_LENGTH)
+      .max(MAX_PASSWORD_LENGTH),
   });
   return validator.validate(data);
 }
