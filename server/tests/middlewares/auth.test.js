@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 
 const request = require('supertest');
-const { start, stop } = require('../../config/server');
-const { initDatabase, dropDatabase } = require('../../config/database');
+const { start, stop } = require('../../startup/server');
+const { initDatabase, dropDatabase } = require('../../startup/database');
 const { User } = require('../../models/User');
 const jwt = require('jsonwebtoken');
 const faker = require('faker');

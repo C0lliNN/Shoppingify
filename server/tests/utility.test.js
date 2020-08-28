@@ -2,7 +2,7 @@
 
 const { getUserId, getTokenFromHeader } = require('../utility');
 const jwt = require('jsonwebtoken');
-const { start, stop } = require('../config/server');
+const { start, stop } = require('../startup/server');
 
 describe('getUserId', () => {
   it('should throw an Error if the token is invalid', () => {

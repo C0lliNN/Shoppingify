@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 
-const { start, stop } = require('../../config/server');
-const { initDatabase, dropDatabase } = require('../../config/database');
+const { start, stop } = require('../../startup/server');
+const { initDatabase, dropDatabase } = require('../../startup/database');
 const { User } = require('../../models/User');
 const request = require('supertest');
 const bcrypt = require('bcrypt');
