@@ -12,12 +12,13 @@
     "backend": "nodemon server/index.js",
     "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
-    "testServer": "jest server --watch --detectOpenHandles",
+    "test-server": "jest server --watch --detectOpenHandles",
     "test": "concurrently \"npm run testServer\"  \"npm run test a --prefix client\""
   },
   "author": "Raphael Collin",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.20.0",
     "bcrypt": "^3.0.6",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.5",

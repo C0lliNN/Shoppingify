@@ -7,6 +7,9 @@ const bcrypt = require('bcrypt');
 const { User } = require('../../models/User');
 const { Item } = require('../../models/item');
 const jwt = require('jsonwebtoken');
+const Axios = require('axios');
+const Fs = require('fs');
+const Path = require('path');
 
 let app = null;
 let userId = null;
@@ -100,7 +103,7 @@ describe('POST /itens', () => {
     expect(typeof body).toBe('object');
     expect(body.message).toBeTruthy();
   });
-  it('should send 201 and the item if the payload is valid', async () => {
+  it('should send 201 and the item if the payload is valid - without image', async () => {
     const { body } = await request(app)
       .post('/api/v1/itens')
       .send({
@@ -117,5 +120,42 @@ describe('POST /itens', () => {
     expect(body._id).toBeTruthy();
     expect(body.name).toBeTruthy();
     expect(body.category).toBeTruthy();
+  });
+  it('should send 201 and the item if the payload is valid - with image', async () => {
+    const response = await Axios({
+      url: 'https://picsum.photos/200',
+      method: 'GET',
+      responseType: 'stream',
+    });
+
+    const path = Path.resolve(__dirname, '..', 'test.jpg');
+    const writer = Fs.createWriteStream(path);
+
+    response.data.pipe(writer);
+
+    await new Promise((resolve, reject) => {
+      writer.on('finish', resolve);
+      writer.on('error', reject);
+    });
+
+    const { body } = await request(app)
+      .post('/api/v1/itens')
+      .field('name', 'Apple')
+      .field('note', 'My First List')
+      .field('category', '{"name": "fruit"}')
+      .attach('image', path)
+      .set('Authorization', `Bearer ${token}`)
+      .expect(201);
+
+    expect(typeof body).toBe('object');
+    expect(body._id).toBeTruthy();
+    expect(body.name).toBeTruthy();
+    expect(body.category).toBeTruthy();
+    expect(body.image).toBeTruthy();
+
+    await Fs.promises.unlink(path);
+    await Fs.promises.unlink(
+      Path.resolve(__dirname, '../../../client', 'public', body.image)
+    );
   });
 });
