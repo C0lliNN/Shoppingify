@@ -2,9 +2,9 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const auth = require('../middleware/auth');
+const auth = require('../middlewares/auth');
 const fileUpload = require('express-fileupload');
-const error = require('../middleware/error');
+const error = require('../middlewares/error');
 
 module.exports = function (app) {
   app.use(cors());
