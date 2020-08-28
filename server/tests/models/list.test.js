@@ -132,6 +132,40 @@ describe('validateList', () => {
       expect(error.message).toMatch(/itens.*category/i);
     });
   });
+  it('should generate an error if one item has falsy category._id', () => {
+    FALSY_VALUES.forEach((value) => {
+      const { error } = validateList({
+        name: 'Banana',
+        itens: [
+          {
+            _id: '5f455552f75a6016403b9971',
+            name: 'Fruit',
+            category: {
+              _id: value,
+            },
+          },
+        ],
+      });
+      expect(error).toBeTruthy();
+      expect(error.message).toMatch(/itens.*category.*_id/i);
+    });
+  });
+  it('should generate an error if one item has invalid category._id', () => {
+    const { error } = validateList({
+      name: 'Banana',
+      itens: [
+        {
+          _id: '5f455552f75a6016403b9971',
+          name: 'Fruit',
+          category: {
+            _id: '11231',
+          },
+        },
+      ],
+    });
+    expect(error).toBeTruthy();
+    expect(error.message).toMatch(/itens.*category.*_id/i);
+  });
   it('should generate an error if one item has falsy category.name', () => {
     FALSY_VALUES.forEach((value) => {
       const { error } = validateList({
@@ -141,6 +175,7 @@ describe('validateList', () => {
             _id: '5f455552f75a6016403b9971',
             name: 'Fruit',
             category: {
+              _id: '5f455552f75a6016403b9971',
               name: value,
             },
           },
@@ -158,6 +193,7 @@ describe('validateList', () => {
           _id: '5f455552f75a6016403b9971',
           name: 'Fruit',
           category: {
+            _id: '5f455552f75a6016403b9971',
             name: 'Ra',
           },
         },
@@ -174,6 +210,7 @@ describe('validateList', () => {
           _id: '5f455552f75a6016403b9971',
           name: 'Fruit',
           category: {
+            _id: '5f455552f75a6016403b9971',
             name: lorem.sentence(60),
           },
         },
@@ -191,6 +228,7 @@ describe('validateList', () => {
           name: 'Banana',
           quantity: null,
           category: {
+            _id: '5f455552f75a6016403b9971',
             name: 'Fruit',
           },
         },
@@ -208,6 +246,7 @@ describe('validateList', () => {
           name: 'Banana',
           quantity: 0,
           category: {
+            _id: '5f455552f75a6016403b9971',
             name: 'Fruit',
           },
         },
@@ -226,6 +265,7 @@ describe('validateList', () => {
             name: 'Banana',
             quantity: 2,
             category: {
+              _id: '5f455552f75a6016403b9971',
               name: 'Fruit',
             },
           },
@@ -245,6 +285,7 @@ describe('validateList', () => {
           name: 'Banana',
           quantity: 2,
           category: {
+            _id: '5f455552f75a6016403b9971',
             name: 'Fruit',
           },
         },
@@ -263,6 +304,7 @@ describe('validateList', () => {
           name: 'Banana',
           quantity: 2,
           category: {
+            _id: '5f455552f75a6016403b9971',
             name: 'Fruit',
           },
         },

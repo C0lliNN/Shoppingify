@@ -84,6 +84,7 @@ function validateList(data) {
             .min(MIN_ITEM_NAME_LENGTH)
             .max(MAX_ITEM_NAME_LENGTH),
           category: Joi.object({
+            _id: Joi.objectId().required(),
             name: Joi.string()
               .required()
               .min(MIN_CATEGORY_LENGTH)
