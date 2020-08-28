@@ -15,7 +15,7 @@ beforeEach(async () => {
   await initDatabase();
 
   const user = await User.create({
-    name: faker.name.firstName('male'),
+    name: 'name test',
     email: faker.internet.email(),
     password: '2342342',
   });

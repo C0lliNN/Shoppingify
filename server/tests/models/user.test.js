@@ -33,7 +33,7 @@ describe('validateUser', () => {
   it('should generate an error if the email is falsy', () => {
     FALSY_VALUES.forEach((value) => {
       const { error } = validateUser({
-        name: name.firstName(),
+        name: 'Name Test',
         email: value,
       });
       expect(error).toBeTruthy();
@@ -43,7 +43,7 @@ describe('validateUser', () => {
 
   it('should generate an error if the email is invalid', () => {
     const { error } = validateUser({
-      name: name.firstName(),
+      name: 'Name Test',
       email: '88888888888',
     });
 
@@ -53,7 +53,7 @@ describe('validateUser', () => {
 
   it('should generate an error if the email has less than 8 chars', () => {
     const { error } = validateUser({
-      name: name.firstName(),
+      name: 'Name Test',
       email: 'a@a.com',
     });
     expect(error).toBeTruthy();
@@ -62,7 +62,7 @@ describe('validateUser', () => {
   it('should generate an error if password is falsy', () => {
     FALSY_VALUES.forEach((value) => {
       const { error } = validateUser({
-        name: name.firstName(),
+        name: 'Name Test',
         email: internet.email(),
         password: value,
       });
@@ -74,7 +74,7 @@ describe('validateUser', () => {
 
   it('should generate an error if password has less than 6 chars', () => {
     const { error } = validateUser({
-      name: name.firstName(),
+      name: 'Name Test',
       email: internet.email(),
       password: '123',
     });
@@ -85,7 +85,7 @@ describe('validateUser', () => {
 
   it('should generate an error if password has more than 255 chars', () => {
     const { error } = validateUser({
-      name: name.firstName(),
+      name: 'Name Test',
       email: internet.email(),
       password: lorem.sentence(150),
     });
@@ -96,7 +96,7 @@ describe('validateUser', () => {
 
   it('should not generate an error if the input is valid', () => {
     const payload = {
-      name: name.firstName(),
+      name: 'Name Test',
       email: internet.email(),
       password: '997885486',
     };

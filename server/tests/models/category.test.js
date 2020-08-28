@@ -28,7 +28,7 @@ describe('validateCategory', () => {
 
   it('should not generate an error if name has between 3 and 120 chars', () => {
     const payload = {
-      name: name.firstName(),
+      name: 'Name Test',
     };
     const { error, value } = validateCategory(payload);
     expect(error).toBeFalsy();

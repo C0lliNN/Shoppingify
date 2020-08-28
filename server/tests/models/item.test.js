@@ -33,7 +33,7 @@ describe('validateItem', () => {
   });
   it('should generate an error if category is a string that cannot be converted to json', () => {
     const { error } = validateItem({
-      name: name.firstName(),
+      name: 'Name Test',
       category: 'name=12',
     });
     expect(error).toBeTruthy();
@@ -41,10 +41,10 @@ describe('validateItem', () => {
   });
   it('should generate an error if category._id is not a valid ObjectId', () => {
     const { error } = validateItem({
-      name: name.firstName(),
+      name: 'Name Test',
       category: {
         id: '5555',
-        name: name.firstName(),
+        name: 'Name Test',
       },
     });
     expect(error).toBeTruthy();
@@ -53,7 +53,7 @@ describe('validateItem', () => {
   it('should generate an error if category.name is falsy', () => {
     FALSY_VALUES.forEach((value) => {
       const { error } = validateItem({
-        name: name.firstName(),
+        name: 'Name Test',
         category: {
           name: value,
         },
@@ -64,7 +64,7 @@ describe('validateItem', () => {
   });
   it('should generate an error if category.name has less than 3 chars', () => {
     const { error } = validateItem({
-      name: name.firstName(),
+      name: 'Name Test',
       category: {
         name: 'Te',
       },
@@ -75,7 +75,7 @@ describe('validateItem', () => {
   });
   it('should generate an error if category.name has more than 120 chars', () => {
     const { error } = validateItem({
-      name: name.firstName(),
+      name: 'Name Test',
       category: {
         name: lorem.words(60),
       },
@@ -85,9 +85,9 @@ describe('validateItem', () => {
   });
   it('should not generate an error if name is truthy, category object is valid and user is valid', () => {
     const payload = {
-      name: name.firstName(),
+      name: 'Name Test',
       category: {
-        name: name.firstName(),
+        name: 'Name Test',
       },
     };
     const { error, value } = validateItem(payload);
@@ -96,7 +96,7 @@ describe('validateItem', () => {
   });
   it('should not generate an error if the category is a string that can be converted to JSON', () => {
     const payload = {
-      name: name.firstName(),
+      name: 'Name Test',
       category: '{"name": "Fruit"}',
     };
     const { error, value } = validateItem(payload);
