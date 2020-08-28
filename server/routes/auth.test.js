@@ -5,6 +5,8 @@ const { initDatabase, dropDatabase } = require('../config/database');
 const { User } = require('../models/User');
 const request = require('supertest');
 const bcrypt = require('bcrypt');
+const { FALSY_VALUES } = require('../utility');
+const { internet } = require('faker');
 let app = null;
 
 beforeEach(async () => {
@@ -25,27 +27,27 @@ afterEach(async () => {
 });
 
 describe('POST /auth', () => {
-  it('should send 400 and a message if either the email or the password is falsy', async () => {
-    let response = await request(app)
-      .post('/api/v1/auth')
-      .send({ email: 'test@test.com' })
-      .expect(400);
-
-    expect(typeof response.body).toBe('object');
-    expect(response.body.message).toBeTruthy();
-
-    response = await request(app)
-      .post('/api/v1/auth')
-      .send({ password: '11111111' })
-      .expect(400);
-
-    expect(typeof response.body).toBe('object');
-    expect(response.body.message).toBeTruthy();
-
-    response = await request(app).post('/api/v1/auth').send({}).expect(400);
-
-    expect(typeof response.body).toBe('object');
-    expect(response.body.message).toBeTruthy();
+  it('should send 400 and a message if the email is falsy', async () => {
+    FALSY_VALUES.forEach(async (value) => {
+      const { body } = await request(app)
+        .post('/api/v1/auth')
+        .send({ email: value })
+        .expect(400);
+      expect(body).toBeTruthy();
+      expect(body.message).toBeTruthy();
+      expect(body.message).toMatch(/email/);
+    });
+  });
+  it('should send 400 and a message if the password is falsy', async () => {
+    FALSY_VALUES.forEach(async (value) => {
+      const { body } = await request(app)
+        .post('/api/v1/auth')
+        .send({ email: internet.email(), password: value })
+        .expect(400);
+      expect(body).toBeTruthy();
+      expect(body.message).toBeTruthy();
+      expect(body.message).toMatch(/password/);
+    });
   });
   it('should send 400 and a message if the email was not founded', async () => {
     const { body } = await request(app)

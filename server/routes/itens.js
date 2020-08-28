@@ -1,11 +1,10 @@
 const express = require('express');
 const { Item, validateItem } = require('../models/item');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
+const { getUserId, getTokenFromHeader } = require('../utility');
 
 router.get('/', async (request, response) => {
-  const JWT_KEY = process.env.JWT_KEY;
-  const userId = jwt.verify(request.header('X-Auth-Token'), JWT_KEY)._id;
+  const userId = getUserId(getTokenFromHeader(request.header('Authorization')));
   const itens = await Item.find({ user: userId }).sort('category.name name');
   response.send(itens);
 });
@@ -18,6 +17,9 @@ router.post('/', async (request, response) => {
   }
 
   const item = new Item(value);
+
+  const userId = getUserId(getTokenFromHeader(request.header('Authorization')));
+  item.user = userId;
 
   const image = request.files ? request.files.image : null;
 

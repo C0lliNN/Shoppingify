@@ -66,13 +66,13 @@ describe('GET /itens', () => {
   it('should send 200', async () => {
     await request(app)
       .get('/api/v1/itens')
-      .set('X-Auth-Token', token)
+      .set('Authorization', `Bearer ${token}`)
       .expect(200);
   });
   it('should send an array with all itens register by the user', async () => {
     const { body } = await request(app)
       .get('/api/v1/itens')
-      .set('X-Auth-Token', token)
+      .set('Authorization', `Bearer ${token}`)
       .expect(200);
 
     expect(Array.isArray(body)).toBeTruthy();
@@ -81,7 +81,7 @@ describe('GET /itens', () => {
   it('should send an array of Item', async () => {
     const { body } = await request(app)
       .get('/api/v1/itens')
-      .set('X-Auth-Token', token)
+      .set('Authorization', `Bearer ${token}`)
       .expect(200);
 
     expect(body[0]._id).toBeTruthy();
@@ -91,20 +91,11 @@ describe('GET /itens', () => {
 });
 
 describe('POST /itens', () => {
-  it('should send 400 if no token is provided', async () => {
-    await request(app).post('/api/v1/itens').expect(400);
-  });
-  it('should send 400 if token is invalid', async () => {
-    await request(app)
-      .post('/api/v1/itens')
-      .set('X-Auth-Token', '123')
-      .expect(400);
-  });
   it('should send 400 and a message if the payload is invalid', async () => {
     const { body } = await request(app)
       .post('/api/v1/itens')
       .send({ name: 'Banana' })
-      .set('X-Auth-Token', token)
+      .set('Authorization', `Bearer ${token}`)
       .expect(400);
     expect(typeof body).toBe('object');
     expect(body.message).toBeTruthy();
@@ -114,13 +105,13 @@ describe('POST /itens', () => {
       .post('/api/v1/itens')
       .send({
         name: 'Apple',
+        note: 'My First List',
         category: {
           _id: '5f455552f75a6016403b9971',
           name: 'fruit',
         },
-        user: userId,
       })
-      .set('X-Auth-Token', token)
+      .set('Authorization', `Bearer ${token}`)
       .expect(201);
     expect(typeof body).toBe('object');
     expect(body._id).toBeTruthy();
