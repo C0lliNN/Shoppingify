@@ -1,5 +1,5 @@
 const express = require('express');
-const { validateUser, User } = require('../models/User');
+const { validateUser, User, TOKEN_EXPIRATION_TIME } = require('../models/User');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 
@@ -16,9 +16,13 @@ router.post('/', async (request, response) => {
     password: hashedPassword,
   });
 
-  response
-    .status(201)
-    .send({ _id: user._id, name: user.name, email: user.email });
+  response.status(201).send({
+    _id: user._id,
+    name: user.name,
+    email: user.email,
+    token: user.generateToken(),
+    expiresIn: TOKEN_EXPIRATION_TIME,
+  });
 });
 
 module.exports = router;

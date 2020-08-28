@@ -55,5 +55,7 @@ describe('POST /users', () => {
     expect(body.name).toBeTruthy();
     expect(body.password).toBeFalsy();
     expect(body.email).toBeTruthy();
+    expect(body.token).toBeTruthy();
+    expect(body.expiresIn).toBeTruthy();
   });
 });
