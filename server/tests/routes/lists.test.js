@@ -5,7 +5,6 @@ const { start, stop } = require('../../startup/server');
 const { initDatabase, dropDatabase } = require('../../startup/database');
 const bcrypt = require('bcrypt');
 const { User } = require('../../models/User');
-const { Item } = require('../../models/item');
 const jwt = require('jsonwebtoken');
 const { List } = require('../../models/list');
 
@@ -106,6 +105,117 @@ afterEach(async () => {
   await dropDatabase();
 });
 
-it('should fuck', () => {
-  expect(true).toBe(true);
+describe('GET /lists', () => {
+  it('should send 200 and an array on list registered by the user', async () => {
+    const { body } = await request(app)
+      .get('/api/v1/lists')
+      .set('Authorization', `Bearer ${token}`)
+      .expect(200);
+    expect(Array.isArray(body));
+    expect(body.length).toBe(2);
+    expect(body[0]._id).toBeTruthy();
+    expect(body[0].name).toBeTruthy();
+    expect(body[0].status).toBeTruthy();
+    expect(body[0].itens).toBeTruthy();
+  });
+});
+
+describe('POST /lists', () => {
+  it('should send 400 if the payload is invalid', async () => {
+    await request(app)
+      .post('/api/v1/lists')
+      .set('Authorization', `Bearer ${token}`)
+      .send({})
+      .expect(400);
+  });
+  it('should send 201 and an list object if the payload is valid', async () => {
+    const payload = {
+      name: 'July Shopping List',
+      itens: [
+        {
+          _id: '5f3ae6bc45c56326083561c5',
+          name: 'Apple',
+          category: {
+            _id: '5f3ae6bc45c56326083561c5',
+            name: 'Fruit',
+          },
+          quantity: 2,
+        },
+      ],
+      status: 'active',
+    };
+    const { body } = await request(app)
+      .post('/api/v1/lists')
+      .set('Authorization', `Bearer ${token}`)
+      .send(payload)
+      .expect(201);
+
+    expect(body).toMatchObject(payload);
+
+    const list = await List.findOne({ name: payload.name });
+    expect(list).not.toBeNull();
+  });
+
+  describe('PATCH /lists/:id/complete', () => {
+    it('should send 404 if the id is not a valid objectId', async () => {
+      await request(app)
+        .patch('/api/v1/lists/123/complete')
+        .set('Authorization', `Bearer ${token}`)
+        .expect(404);
+    });
+    it('should send 404 if the id does not have any match', async () => {
+      await request(app)
+        .patch('/api/v1/lists/5f3ae6bc45c56326083561c5/complete')
+        .set('Authorization', `Bearer ${token}`)
+        .expect(404);
+    });
+    it('should send 400 if the list has a status different of "active"', async () => {
+      const list = await List.findOne({ name: 'September 2020 List' });
+      await request(app)
+        .patch(`/api/v1/lists/${list.id}/complete`)
+        .set('Authorization', `Bearer ${token}`)
+        .expect(400);
+    });
+    it('should send 200 and the list should be updated in the db if id is valid', async () => {
+      const list = await List.findOne({ name: 'October 2020 List' });
+      await request(app)
+        .patch(`/api/v1/lists/${list.id}/complete`)
+        .set('Authorization', `Bearer ${token}`)
+        .expect(200);
+
+      const updatedList = await List.findOne({ name: 'October 2020 List' });
+      expect(updatedList.status).toBe('completed');
+    });
+  });
+  describe('PATCH /lists/:id/cancel', () => {
+    it('should send 404 if the id is not a valid objectId', async () => {
+      await request(app)
+        .patch('/api/v1/lists/123/cancel')
+        .set('Authorization', `Bearer ${token}`)
+        .expect(404);
+    });
+    it('should send 404 if the id does not have any match', async () => {
+      await request(app)
+        .patch('/api/v1/lists/5f3ae6bc45c56326083561c5/cancel')
+        .set('Authorization', `Bearer ${token}`)
+        .expect(404);
+    });
+    it('should send 400 if the list has a status different of "active"', async () => {
+      const list = await List.findOne({ name: 'September 2020 List' });
+      await request(app)
+        .patch(`/api/v1/lists/${list.id}/cancel`)
+        .set('Authorization', `Bearer ${token}`)
+        .expect(400);
+    });
+    it('should send 200 and the list should be updated in the db if id is valid', async () => {
+      const list = await List.findOne({ name: 'October 2020 List' });
+      await request(app)
+        .patch(`/api/v1/lists/${list.id}/cancel`)
+        .set('Authorization', `Bearer ${token}`)
+        .expect(200);
+
+      const updatedList = await List.findOne({ name: 'October 2020 List' });
+      expect(updatedList.status).toBe('canceled');
+    });
+  });
 });

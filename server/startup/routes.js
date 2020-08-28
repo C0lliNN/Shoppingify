@@ -15,6 +15,7 @@ module.exports = function (app) {
   app.use('/api/v1/users', require('../routes/users'));
   app.use('/api/v1/auth', require('../routes/auth'));
   app.use('/api/v1/itens', auth, require('../routes/itens'));
+  app.use('/api/v1/lists', auth, require('../routes/lists'));
 
   app.use('/uploads', express.static('uploads'));
 
