@@ -1,11 +1,11 @@
 const express = require('express');
 const { Item, validateItem } = require('../models/item');
 const router = express.Router();
-const { getUserId, getTokenFromHeader } = require('../utility');
 
 router.get('/', async (request, response) => {
-  const userId = getUserId(getTokenFromHeader(request.header('Authorization')));
-  const itens = await Item.find({ user: userId }).sort('category.name name');
+  const itens = await Item.find({ user: request.user._id }).sort(
+    'category.name name'
+  );
   response.send(itens);
 });
 
@@ -18,7 +18,7 @@ router.post('/', async (request, response) => {
 
   const item = new Item(value);
 
-  const userId = getUserId(getTokenFromHeader(request.header('Authorization')));
+  const userId = request.user._id;
   item.user = userId;
 
   const image = request.files ? request.files.image : null;

@@ -48,7 +48,6 @@ describe('Details Button should show Modal', () => {
     expect(screen.getByText('Clean my Bedroom')).toBeTruthy();
   });
   test('The close button should be visible', () => {
-    console.log();
     expect(screen.getAllByText('Close')[3].tagName).toBe('BUTTON');
   });
 });

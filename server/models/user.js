@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.methods.generateToken = function () {
-  const key = process.env.JWT_KEY;
+  const key = process.env.JWT_KEY || 'TEST';
   const token = jwt.sign(
     { _id: this._id, name: this.name, email: this.email },
     key,

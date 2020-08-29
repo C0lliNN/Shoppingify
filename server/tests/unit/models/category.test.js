@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-const { validateCategory } = require('../../models/category');
-const { FALSY_VALUES } = require('../../utility');
-const { lorem, name } = require('faker');
+const { validateCategory } = require('../../../models/category');
+const { FALSY_VALUES } = require('../../../utility');
+const { lorem } = require('faker');
 
 describe('validateCategory', () => {
   it('should generate an error if the name is falsy', () => {

@@ -1,15 +1,14 @@
 /* eslint-disable no-undef */
-const { start, stop } = require('../../startup/server');
-const { initDatabase, dropDatabase } = require('../../startup/database');
+const { start, stop } = require('../../../startup/server');
+const { dropDatabase } = require('../../../startup/database');
 const request = require('supertest');
-const { User } = require('../../models/User');
-const { List } = require('../../models/list');
+const { User } = require('../../../models/User');
+const { List } = require('../../../models/list');
 
 let app;
 
 beforeEach(async () => {
   app = await start();
-  await initDatabase();
 });
 
 afterEach(async () => {

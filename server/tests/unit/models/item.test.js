@@ -1,105 +1,116 @@
 /* eslint-disable no-undef */
 
-const { validateItem } = require('../../models/item');
-const { FALSY_VALUES } = require('../../utility');
-const { lorem, name } = require('faker');
+const { validateItem } = require('../../../models/item');
+const { FALSY_VALUES } = require('../../../utility');
+const { lorem } = require('faker');
+
+let payload;
+
+beforeEach(() => {
+  payload = {
+    name: 'Name Test',
+    note: 'This is a Test List',
+    category: {
+      _id: '507f1f77bcf86cd799439011',
+      name: 'Name Test',
+    },
+  };
+});
+
+function exec() {
+  return validateItem(payload);
+}
 
 describe('validateItem', () => {
   it('should generate an error if the name is falsy', () => {
     FALSY_VALUES.forEach((value) => {
-      const { error } = validateItem({
-        name: value,
-      });
+      payload.name = value;
+
+      const { error } = exec();
+
       expect(error).toBeTruthy();
       expect(error.message).toMatch(/name/i);
     });
   });
 
   it('should generate an error if the name has less than 3 chars', () => {
-    const { error } = validateItem({
-      name: 'ra',
-    });
+    payload.name = 'ra';
+
+    const { error } = exec();
+
     expect(error).toBeTruthy();
     expect(error.message).toMatch(/name.*3.*/i);
   });
-
   it('should generate an error if the name has more than 40 chars', () => {
-    const { error } = validateItem({
-      name: lorem.sentence(20),
-    });
+    payload.name = lorem.sentence(20);
+
+    const { error } = exec();
 
     expect(error).toBeTruthy();
     expect(error.message).toMatch(/name.*40.*/i);
   });
+  it('should generate an error if note has more than 255 chars', () => {
+    payload.note = lorem.sentence(150);
+
+    const { error } = exec();
+
+    expect(error).toBeTruthy();
+    expect(error.message).toMatch(/note.*255.*/i);
+  });
   it('should generate an error if category is a string that cannot be converted to json', () => {
-    const { error } = validateItem({
-      name: 'Name Test',
-      category: 'name=12',
-    });
+    payload.category = 'name=Test';
+
+    const { error } = exec();
+
     expect(error).toBeTruthy();
     expect(error.message).toMatch(/category/i);
   });
   it('should generate an error if category._id is not a valid ObjectId', () => {
-    const { error } = validateItem({
-      name: 'Name Test',
-      category: {
-        id: '5555',
-        name: 'Name Test',
-      },
-    });
+    payload.category._id = '555';
+
+    const { error } = exec();
+
     expect(error).toBeTruthy();
-    expect(error.message).toMatch(/category\.id/);
+    expect(error.message).toMatch(/category\._id/);
   });
   it('should generate an error if category.name is falsy', () => {
     FALSY_VALUES.forEach((value) => {
-      const { error } = validateItem({
-        name: 'Name Test',
-        category: {
-          name: value,
-        },
-      });
+      payload.category.name = value;
+
+      const { error } = exec();
+
       expect(error).toBeTruthy();
       expect(error.message).toMatch(/category\.name/);
     });
   });
   it('should generate an error if category.name has less than 3 chars', () => {
-    const { error } = validateItem({
-      name: 'Name Test',
-      category: {
-        name: 'Te',
-      },
-    });
+    payload.category.name = 'Te';
+
+    const { error } = exec();
 
     expect(error).toBeTruthy();
     expect(error.message).toMatch(/category\.name.*3.*/);
   });
   it('should generate an error if category.name has more than 120 chars', () => {
-    const { error } = validateItem({
-      name: 'Name Test',
-      category: {
-        name: lorem.words(60),
-      },
-    });
+    payload.category.name = lorem.words(60);
+
+    const { error } = exec();
+
     expect(error).toBeTruthy();
     expect(error.message).toMatch(/category\.name.*120/);
   });
-  it('should not generate an error if name is truthy, category object is valid and user is valid', () => {
-    const payload = {
-      name: 'Name Test',
-      category: {
-        name: 'Name Test',
-      },
-    };
-    const { error, value } = validateItem(payload);
+
+  it('should not generate an error if the category is a string that can be converted to JSON', () => {
+    payload.category = '{"name": "Fruit"}';
+
+    const { error, value } = exec();
+
     expect(error).toBeFalsy();
     expect(value).toEqual(payload);
   });
-  it('should not generate an error if the category is a string that can be converted to JSON', () => {
-    const payload = {
-      name: 'Name Test',
-      category: '{"name": "Fruit"}',
-    };
-    const { error, value } = validateItem(payload);
+  it('should not generate an error if name is truthy, category object is valid and user is valid', () => {
+    const { error, value } = exec();
+
     expect(error).toBeFalsy();
     expect(value).toEqual(payload);
   });

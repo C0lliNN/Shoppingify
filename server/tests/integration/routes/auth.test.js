@@ -1,17 +1,21 @@
 /* eslint-disable no-undef */
 
-const { start, stop } = require('../../startup/server');
-const { initDatabase, dropDatabase } = require('../../startup/database');
-const { User } = require('../../models/User');
+const { start, stop } = require('../../../startup/server');
+const { dropDatabase } = require('../../../startup/database');
+const { User } = require('../../../models/User');
 const request = require('supertest');
 const bcrypt = require('bcrypt');
-const { FALSY_VALUES } = require('../../utility');
-const { internet } = require('faker');
+const { FALSY_VALUES } = require('../../../utility');
+
 let app = null;
+let payload = null;
+
+function exec(code) {
+  return request(app).post('/api/v1/auth').send(payload).expect(code);
+}
 
 beforeEach(async () => {
   app = await start();
-  await initDatabase();
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash('11111111', salt);
   await User.create({
@@ -19,6 +23,8 @@ beforeEach(async () => {
     email: 'test@test.com',
     password: hashedPassword,
   });
+
+  payload = { email: 'test@test.com', password: '11111111' };
 });
 
 afterEach(async () => {
@@ -29,10 +35,10 @@ afterEach(async () => {
 describe('POST /auth', () => {
   it('should send 400 and a message if the email is falsy', async () => {
     FALSY_VALUES.forEach(async (value) => {
-      const { body } = await request(app)
-        .post('/api/v1/auth')
-        .send({ email: value })
-        .expect(400);
+      payload.email = value;
+
+      const { body } = await exec(400);
+
       expect(body).toBeTruthy();
       expect(body.message).toBeTruthy();
       expect(body.message).toMatch(/email/);
@@ -40,38 +46,33 @@ describe('POST /auth', () => {
   });
   it('should send 400 and a message if the password is falsy', async () => {
     FALSY_VALUES.forEach(async (value) => {
-      const { body } = await request(app)
-        .post('/api/v1/auth')
-        .send({ email: internet.email(), password: value })
-        .expect(400);
+      payload.password = value;
+
+      const { body } = await exec(400);
+
       expect(body).toBeTruthy();
       expect(body.message).toBeTruthy();
       expect(body.message).toMatch(/password/);
     });
   });
   it('should send 400 and a message if the email was not founded', async () => {
-    const { body } = await request(app)
-      .post('/api/v1/auth')
-      .send({ email: 'test2@test.com', password: '11111111' })
-      .expect(400);
+    payload.email = 'test2@test.com';
+
+    const { body } = await exec(400);
 
     expect(typeof body).toBe('object');
     expect(body.message).toBeTruthy();
   });
   it('should send 400 and a message if the password is not correct', async () => {
-    const { body } = await request(app)
-      .post('/api/v1/auth')
-      .send({ email: 'test@test.com', password: '22222222' })
-      .expect(400);
+    payload.password = '22222222';
+
+    const { body } = await exec(400);
 
     expect(typeof body).toBe('object');
     expect(body.message).toBeTruthy();
   });
   it('should send 200, the token and the expiration time it both the email and password match a record', async () => {
-    const { body } = await request(app)
-      .post('/api/v1/auth')
-      .send({ email: 'test@test.com', password: '11111111' })
-      .expect(200);
+    const { body } = await exec(200);
 
     expect(typeof body).toBe('object');
     expect(body.token).toBeTruthy();

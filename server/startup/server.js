@@ -26,7 +26,9 @@ async function start() {
 
 function stop() {
   debug('Stopping...');
-  server.close();
+  if (server) {
+    server.close();
+  }
 }
 
 exports.start = start;
