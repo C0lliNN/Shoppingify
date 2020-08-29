@@ -10,6 +10,15 @@ router.get('/', async (request, response) => {
   response.send(lists);
 });
 
+router.get(
+  '/:id',
+  validateObjectId,
+  validateListMiddleware,
+  async (request, response) => {
+    response.send(request.list);
+  }
+);
+
 router.post('/', async (request, response) => {
   const { value, error } = validateList(request.body);
 

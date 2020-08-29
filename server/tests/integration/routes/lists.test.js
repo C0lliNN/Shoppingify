@@ -13,6 +13,13 @@ let userId = null;
 let token = null;
 let payload = null;
 
+function execGetListRequest(code, id) {
+  return request(app)
+    .get(`/api/v1/lists/${id}`)
+    .expect(code)
+    .set('Authorization', `Bearer ${token}`);
+}
+
 function execPostRequest(code) {
   return request(app)
     .post('/api/v1/lists')
@@ -70,6 +77,19 @@ describe('GET /lists', () => {
     expect(body[0].name).toBeTruthy();
     expect(body[0].status).toBeTruthy();
     expect(body[0].itens).toBeTruthy();
+  });
+});
+
+describe('GET /lists/:id', () => {
+  it('should send 404 if the id does not have any match', async () => {
+    await execGetListRequest(404, '5f455552f75a6016403b9971');
+  });
+  it('should send 200 and a list object if the id is valid', async () => {
+    const list = await List.findOne({ name: 'October 2020 List' });
+
+    const { body } = await execGetListRequest(200, list.id);
+    expect(body._id).toBe(list.id);
+    expect(body.name).toBe(list.name);
   });
 });
 
