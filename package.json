@@ -12,7 +12,7 @@
     "backend": "nodemon server/index.js",
     "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
-    "test-server": "jest server --watch --detectOpenHandles",
+    "test-server": "jest server --watch --detectOpenHandles --coverage",
     "test": "concurrently \"npm run testServer\"  \"npm run test a --prefix client\""
   },
   "author": "Raphael Collin",
