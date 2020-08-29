@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const { validateCategory } = require('../../../models/category');
 const { FALSY_VALUES } = require('../../../utility');
 const { lorem } = require('faker');

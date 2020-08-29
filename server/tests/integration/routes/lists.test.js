@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 const request = require('supertest');
 const { start, stop } = require('../../../startup/server');
 const { dropDatabase } = require('../../../startup/database');
@@ -71,8 +69,8 @@ describe('GET /lists', () => {
       .get('/api/v1/lists')
       .set('Authorization', `Bearer ${token}`)
       .expect(200);
-    expect(Array.isArray(body));
-    expect(body.length).toBe(2);
+    expect(Array.isArray(body)).toBeTruthy();
+    expect(body).toHaveLength(2);
     expect(body[0]._id).toBeTruthy();
     expect(body[0].name).toBeTruthy();
     expect(body[0].status).toBeTruthy();

@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const { start, stop } = require('../../../startup/server');
 const { dropDatabase } = require('../../../startup/database');
 const request = require('supertest');

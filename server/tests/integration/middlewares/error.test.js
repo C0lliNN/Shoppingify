@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const request = require('supertest');
 const { start, stop } = require('../../../startup/server');
 const Joi = require('joi');

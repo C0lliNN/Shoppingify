@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 const request = require('supertest');
 const { start, stop } = require('../../../startup/server');
 const { dropDatabase } = require('../../../startup/database');
@@ -59,7 +57,7 @@ describe('GET /itens', () => {
     const { body } = await execGetRequest();
 
     expect(Array.isArray(body)).toBeTruthy();
-    expect(body.length).toBe(2);
+    expect(body).toHaveLength(2);
   });
   it('should send an array of Item', async () => {
     const { body } = await execGetRequest();

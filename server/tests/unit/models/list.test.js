@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const { validateList } = require('../../../models/list');
 const { FALSY_VALUES } = require('../../../utility');
 const { lorem } = require('faker');

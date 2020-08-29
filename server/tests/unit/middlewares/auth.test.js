@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const authMiddleware = require('../../../middlewares/auth');
 const { User } = require('../../../models/user');
 

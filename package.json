@@ -12,6 +12,7 @@
     "backend": "nodemon server/index.js",
     "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
+    "lint": "eslint server",
     "test-server": "jest server --watch --detectOpenHandles --coverage",
     "test": "concurrently \"npm run testServer\"  \"npm run test a --prefix client\""
   },
@@ -40,6 +41,7 @@
   "devDependencies": {
     "concurrently": "^4.1.0",
     "eslint": "^6.6.0",
+    "eslint-plugin-jest": "^23.20.0",
     "jest": "^24.9.0",
     "nodemon": "^1.19.1",
     "prettier": "^2.0.5",
