@@ -1,21 +1,33 @@
 import React from 'react';
 import './App.css';
-import './assets/css/tingle.min.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Todos from './containers/Todos/Todos';
-import Form from './containers/Form/Form';
-import Header from './components/Header/Header';
+import Button from './components/UI/Button/Button';
+import FormGroup from './components/UI/FormGroup/FormGroup';
 
 function App() {
   return (
     <main className="App">
-      <BrowserRouter>
-        <Header />
-        <Switch>
-          <Route path="/create" component={Form} />
-          <Route path="/" component={Todos} />
-        </Switch>
-      </BrowserRouter>
+      <Button
+        btnType="raised"
+        variant="primary"
+        onClick={() => console.log('Works')}
+      >
+        Save
+      </Button>
+      <div>
+        <FormGroup>
+          <FormGroup.Label htmlFor="name">Name</FormGroup.Label>
+          <FormGroup.Input placeholder="Enter your name" id="name" />
+        </FormGroup>
+        <FormGroup>
+          <FormGroup.Textarea placeholder="Note" rows="5" />
+        </FormGroup>
+        <FormGroup>
+          <FormGroup.Select>
+            <option value="1">Test</option>
+            <option value="2">Test2</option>
+          </FormGroup.Select>
+        </FormGroup>
+      </div>
     </main>
   );
 }

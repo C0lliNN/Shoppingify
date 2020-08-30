@@ -6,6 +6,7 @@
 .env
 
 /todo.txt
+*.code-workspace
 .DS_Store
 
 npm-debug.log*

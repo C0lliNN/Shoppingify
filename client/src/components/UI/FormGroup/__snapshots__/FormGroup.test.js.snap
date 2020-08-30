@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormGroup/> should render a input correctly if a label is provided 1`] = `
+<div>
+  <div
+    class="sc-AxjAm domUDA"
+  >
+    <input
+      class="sc-AxirZ kUQiIU"
+      placeholder="test"
+    />
+    <label
+      class="sc-AxhUy XuytY"
+    >
+      Test
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<FormGroup/> should render a input correctly if no label is provided 1`] = `
+<div>
+  <div
+    class="sc-AxjAm domUDA"
+  >
+    <input
+      class="sc-AxirZ kUQiIU"
+      placeholder="test"
+    />
+  </div>
+</div>
+`;
+
+exports[`<FormGroup/> should render a select correctly if a label is provided 1`] = `
+<div>
+  <div
+    class="sc-AxjAm domUDA"
+  >
+    <select
+      class="sc-AxhCb hwPKSo"
+    >
+      <option
+        value="1"
+      >
+        Test
+      </option>
+    </select>
+    <label
+      class="sc-AxhUy XuytY"
+    >
+      Test
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<FormGroup/> should render a select correctly if no label is provided 1`] = `
+<div>
+  <div
+    class="sc-AxjAm domUDA"
+  >
+    <select
+      class="sc-AxhCb hwPKSo"
+    >
+      <option
+        value="1"
+      >
+        Test
+      </option>
+    </select>
+  </div>
+</div>
+`;
+
+exports[`<FormGroup/> should render a textarea correctly if a label is provided 1`] = `
+<div>
+  <div
+    class="sc-AxjAm domUDA"
+  >
+    <textarea
+      class="sc-AxiKw cfspAQ"
+      placeholder="test"
+    />
+    <label
+      class="sc-AxhUy XuytY"
+    >
+      Test
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<FormGroup/> should render a textarea correctly if no label is provided 1`] = `
+<div>
+  <div
+    class="sc-AxjAm domUDA"
+  >
+    <textarea
+      class="sc-AxiKw cfspAQ"
+      placeholder="test"
+    />
+  </div>
+</div>
+`;

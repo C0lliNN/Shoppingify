@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button/> should render correctly when the type is flat and the variant is valid 1`] = `
+<div>
+  <button
+    class="sc-AxjAm eiMtgj"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is flat and the variant is valid 2`] = `
+<div>
+  <button
+    class="sc-AxjAm chrtVv"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is flat and the variant is valid 3`] = `
+<div>
+  <button
+    class="sc-AxjAm gtaVJf"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is flat and the variant is valid 4`] = `
+<div>
+  <button
+    class="sc-AxjAm jHTAVf"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is flat and the variant is valid 5`] = `
+<div>
+  <button
+    class="sc-AxjAm gweJrT"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is flat and the variant is valid 6`] = `
+<div>
+  <button
+    class="sc-AxjAm bTIiCb"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is flat and the variant is valid 7`] = `
+<div>
+  <button
+    class="sc-AxjAm iXrvvD"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is flat and the variant is valid 8`] = `
+<div>
+  <button
+    class="sc-AxjAm fryfbn"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is raised and the variant is valid 1`] = `
+<div>
+  <button
+    class="sc-AxjAm kuHxfq"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is raised and the variant is valid 2`] = `
+<div>
+  <button
+    class="sc-AxjAm cUlyAC"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is raised and the variant is valid 3`] = `
+<div>
+  <button
+    class="sc-AxjAm cVRSwS"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is raised and the variant is valid 4`] = `
+<div>
+  <button
+    class="sc-AxjAm khEjba"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is raised and the variant is valid 5`] = `
+<div>
+  <button
+    class="sc-AxjAm jkaGbW"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is raised and the variant is valid 6`] = `
+<div>
+  <button
+    class="sc-AxjAm dhFHVO"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is raised and the variant is valid 7`] = `
+<div>
+  <button
+    class="sc-AxjAm hpRvhi"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is raised and the variant is valid 8`] = `
+<div>
+  <button
+    class="sc-AxjAm gWCfza"
+  >
+    Button
+  </button>
+</div>
+`;
