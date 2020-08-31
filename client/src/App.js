@@ -3,6 +3,7 @@ import './App.css';
 import Button from './components/UI/Button/Button';
 import FormGroup from './components/UI/FormGroup/FormGroup';
 import Badge from './components/UI/Badge/Badge';
+import Spinner from './components/UI/Spinner/Spinner';
 
 function App() {
   return (
@@ -33,6 +34,12 @@ function App() {
         <Badge variant="secondary">completed</Badge>
         <Badge variant="danger">canceled</Badge>
       </div>
+      <div>
+        <Spinner />
+      </div>
+      <br />
+      <br />
+      <br />
     </main>
   );
 }
