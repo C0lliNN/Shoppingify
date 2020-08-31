@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CategoryFormGroup/> should render correctly 1`] = `
+<div>
+  <div
+    class="sc-AxjAm fsPBHC"
+  >
+    <input
+      class="sc-AxirZ kKTTBK"
+      id="category"
+      placeholder="Enter a Category"
+      value=""
+    />
+    <label
+      class="sc-AxhUy XuytY"
+      for="category"
+    >
+      Category
+    </label>
+  </div>
+  <ul
+    class="sc-AxgMl duRBxp"
+    style="visibility: hidden;"
+  >
+    <li
+      class="sc-AxheI kIpRpv"
+    >
+      Category 1
+    </li>
+    <li
+      class="sc-AxheI kIpRpv"
+    >
+      Category 2
+    </li>
+    <li
+      class="sc-AxheI kIpRpv"
+    >
+      Category 3
+    </li>
+    <li
+      class="sc-AxheI kIpRpv"
+    >
+      Category 4
+    </li>
+  </ul>
+</div>
+`;

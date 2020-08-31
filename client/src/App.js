@@ -4,6 +4,7 @@ import Button from './components/UI/Button/Button';
 import FormGroup from './components/UI/FormGroup/FormGroup';
 import Badge from './components/UI/Badge/Badge';
 import Spinner from './components/UI/Spinner/Spinner';
+import CategoryFormGroup from './components/UI/CategoryFormGroup/CategoryFormGroup';
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
       <br />
       <br />
       <br />
+      <div>
+        <CategoryFormGroup />
+      </div>
     </main>
   );
 }

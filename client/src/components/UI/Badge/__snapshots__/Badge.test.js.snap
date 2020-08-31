@@ -63,7 +63,7 @@ exports[`<Badge/> should render correctly if the variant is valid 6`] = `
 exports[`<Badge/> should render correctly if the variant is valid 7`] = `
 <div>
   <span
-    class="sc-AxjAm gqusP"
+    class="sc-AxjAm jwNwyr"
   >
     badge
   </span>
@@ -71,6 +71,16 @@ exports[`<Badge/> should render correctly if the variant is valid 7`] = `
 `;
 
 exports[`<Badge/> should render correctly if the variant is valid 8`] = `
+<div>
+  <span
+    class="sc-AxjAm gqusP"
+  >
+    badge
+  </span>
+</div>
+`;
+
+exports[`<Badge/> should render correctly if the variant is valid 9`] = `
 <div>
   <span
     class="sc-AxjAm hFSLzT"

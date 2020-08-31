@@ -5,6 +5,7 @@ export const COLORS = {
   white: '#FFFFFF',
   gray_1: '#E0E0E0',
   gray_2: '#BDBDBD',
+  gray_3: '#828282',
   black_1: '#000000',
   black_2: '#34333A',
 };
@@ -12,6 +13,7 @@ export const COLORS = {
 export const FONT_FAMILY = 'Quicksand';
 export const FONT_SIZE_1 = '12px';
 export const FONT_SIZE_2 = '14px';
+export const FONT_SIZE_3 = '18px';
 
 export const BORDER_RADIUS_1 = '12px;';
 export const BORDER_RADIUS_2 = '24px;';
