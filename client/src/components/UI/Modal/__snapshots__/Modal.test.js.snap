@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal/> should render correctly 1`] = `
+<div>
+  <div
+    class="sc-AxirZ ecrPko"
+  >
+    <div
+      class="sc-AxiKw kvsrkm"
+    />
+    <div
+      class="sc-AxhCb kOccQW"
+    >
+      <div
+        class="sc-AxheI fvKmNr"
+      >
+        <h3
+          class="sc-AxhUy iGgMAt"
+        >
+          Title
+        </h3>
+        <button
+          class="sc-AxjAm enabNO"
+          title="close"
+        >
+          <i
+            class="sc-AxgMl gVNKUG material-icons"
+          >
+            clear
+          </i>
+        </button>
+      </div>
+      <div
+        class="sc-Axmtr hANpFF"
+      >
+        <button>
+          Cancel
+        </button>
+        <button
+          class="sc-AxjAm hsvQTh"
+          type="raised"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

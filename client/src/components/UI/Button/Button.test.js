@@ -16,7 +16,7 @@ describe('<Button/>', () => {
     expect(console.error).toHaveBeenCalled();
     expect(errorMessage).toMatch(/btnType.*required.*/i);
   });
-  it('should console.error if btnType is undefined', () => {
+  it('should console.error if btnType is invalid', () => {
     render(
       <Button btnType="invalid-btnType" variant="primary">
         Button
@@ -26,13 +26,7 @@ describe('<Button/>', () => {
     expect(console.error).toHaveBeenCalled();
     expect(errorMessage).toMatch(/invalid.*btnType.*/i);
   });
-  it('should console.error if the variant is undefined', () => {
-    render(<Button btnType="flat">Button</Button>);
-
-    expect(console.error).toHaveBeenCalled();
-    expect(errorMessage).toMatch(/variant.*required.*/i);
-  });
-  it('should console.error if variant is undefined', () => {
+  it('should console.error if variant is invalid', () => {
     render(
       <Button btnType="raised" variant="invalid-variant">
         Button
@@ -53,16 +47,21 @@ describe('<Button/>', () => {
       cleanup();
     });
   });
-  it('should render correctly when the type is flat and the variant is valid', () => {
+  it('should render correctly when the type is outlined and the variant is valid', () => {
     Object.keys(COLORS).forEach((color) => {
       const { container } = render(
-        <Button btnType="flat" variant={color}>
+        <Button btnType="outlined" variant={color}>
           Button
         </Button>
       );
       expect(container).toMatchSnapshot();
       cleanup();
     });
+  });
+  it('should render correctly when the type is flat', () => {
+    const { container } = render(<Button btnType="flat">Button</Button>);
+
+    expect(container).toMatchSnapshot();
   });
   it('should execute the function passed through onClick when the button is clicked', () => {
     const handler = jest.fn();

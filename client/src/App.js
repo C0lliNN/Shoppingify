@@ -1,49 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import Modal from './components/UI/Modal/Modal';
 import Button from './components/UI/Button/Button';
-import FormGroup from './components/UI/FormGroup/FormGroup';
-import Badge from './components/UI/Badge/Badge';
-import Spinner from './components/UI/Spinner/Spinner';
-import CategoryFormGroup from './components/UI/CategoryFormGroup/CategoryFormGroup';
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <main className="App">
       <Button
         btnType="raised"
-        variant="primary"
-        onClick={() => console.log('Works')}
+        variant="secondary"
+        onClick={() => setShowModal(true)}
       >
-        Save
+        Show
       </Button>
-      <div>
-        <FormGroup>
-          <FormGroup.Label htmlFor="name">Name</FormGroup.Label>
-          <FormGroup.Input placeholder="Enter your name" id="name" />
-        </FormGroup>
-        <FormGroup>
-          <FormGroup.Textarea placeholder="Note" rows="5" />
-        </FormGroup>
-        <FormGroup>
-          <FormGroup.Select>
-            <option value="1">Test</option>
-            <option value="2">Test2</option>
-          </FormGroup.Select>
-        </FormGroup>
-      </div>
-      <div>
-        <Badge variant="secondary">completed</Badge>
-        <Badge variant="danger">canceled</Badge>
-      </div>
-      <div>
-        <Spinner />
-      </div>
-      <br />
-      <br />
-      <br />
-      <div>
-        <CategoryFormGroup />
-      </div>
+
+      {showModal && (
+        <Modal
+          title="Are you sure you want to delete this?"
+          onClose={() => setShowModal(false)}
+          cancelButton={
+            <Button btnType="flat" onClick={() => setShowModal(false)}>
+              cancel
+            </Button>
+          }
+          okButton={
+            <Button
+              btnType="raised"
+              variant="danger"
+              style={{ marginLeft: '15px' }}
+            >
+              Yes
+            </Button>
+          }
+        />
+      )}
     </main>
   );
 }

@@ -10,10 +10,13 @@ export const COLORS = {
   black_2: '#34333A',
 };
 
+export const BUTTON_TYPES = ['raised', 'outlined', 'flat'];
+
 export const FONT_FAMILY = 'Quicksand';
 export const FONT_SIZE_1 = '12px';
 export const FONT_SIZE_2 = '14px';
 export const FONT_SIZE_3 = '18px';
+export const FONT_SIZE_4 = '24px';
 
 export const BORDER_RADIUS_1 = '12px;';
 export const BORDER_RADIUS_2 = '24px;';
