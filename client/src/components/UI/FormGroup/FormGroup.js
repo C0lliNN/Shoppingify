@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {
   BORDER_RADIUS_1,
   COLORS,
-  FONT_SIZE_1,
+  FONT_SIZE_2,
   FONT_FAMILY,
 } from '../../../Variables';
 import PropTypes from 'prop-types';
@@ -13,6 +13,7 @@ const FormGroup = styled.div`
   align-items: center;
   justify-content: start;
   flex-direction: column;
+  margin-bottom: 10px;
 `;
 
 const formControlStyles = `
@@ -20,11 +21,11 @@ const formControlStyles = `
   order: 2;
   width: 100%;
   box-sizing: border-box;
-  padding: 15px 12px;
+  padding: 20px 12px;
   border: 2px solid ${COLORS.gray_2};
   border-radius: ${BORDER_RADIUS_1};
   outline: none;
-  font-size: ${FONT_SIZE_1};
+  font-size: ${FONT_SIZE_2};
   font-family: ${FONT_FAMILY};
   font-weight: 500;
   color: ${COLORS.black_2};
@@ -57,7 +58,7 @@ const Label = styled.label`
   color: ${COLORS.black_2};
   font-weight: 600;
   margin-bottom: 5px;
-  font-size: ${FONT_SIZE_1};
+  font-size: ${FONT_SIZE_2};
 `;
 
 function Wrapper(props) {

@@ -3,10 +3,10 @@
 exports[`<FormGroup/> should render a input correctly if a label is provided 1`] = `
 <div>
   <div
-    class="sc-AxjAm domUDA"
+    class="sc-AxjAm fsPBHC"
   >
     <input
-      class="sc-AxirZ kUQiIU"
+      class="sc-AxirZ kKTTBK"
       placeholder="test"
     />
     <label
@@ -21,10 +21,10 @@ exports[`<FormGroup/> should render a input correctly if a label is provided 1`]
 exports[`<FormGroup/> should render a input correctly if no label is provided 1`] = `
 <div>
   <div
-    class="sc-AxjAm domUDA"
+    class="sc-AxjAm fsPBHC"
   >
     <input
-      class="sc-AxirZ kUQiIU"
+      class="sc-AxirZ kKTTBK"
       placeholder="test"
     />
   </div>
@@ -34,10 +34,10 @@ exports[`<FormGroup/> should render a input correctly if no label is provided 1`
 exports[`<FormGroup/> should render a select correctly if a label is provided 1`] = `
 <div>
   <div
-    class="sc-AxjAm domUDA"
+    class="sc-AxjAm fsPBHC"
   >
     <select
-      class="sc-AxhCb hwPKSo"
+      class="sc-AxhCb SaXZS"
     >
       <option
         value="1"
@@ -57,10 +57,10 @@ exports[`<FormGroup/> should render a select correctly if a label is provided 1`
 exports[`<FormGroup/> should render a select correctly if no label is provided 1`] = `
 <div>
   <div
-    class="sc-AxjAm domUDA"
+    class="sc-AxjAm fsPBHC"
   >
     <select
-      class="sc-AxhCb hwPKSo"
+      class="sc-AxhCb SaXZS"
     >
       <option
         value="1"
@@ -75,10 +75,10 @@ exports[`<FormGroup/> should render a select correctly if no label is provided 1
 exports[`<FormGroup/> should render a textarea correctly if a label is provided 1`] = `
 <div>
   <div
-    class="sc-AxjAm domUDA"
+    class="sc-AxjAm fsPBHC"
   >
     <textarea
-      class="sc-AxiKw cfspAQ"
+      class="sc-AxiKw jdYDTq"
       placeholder="test"
     />
     <label
@@ -93,10 +93,10 @@ exports[`<FormGroup/> should render a textarea correctly if a label is provided 
 exports[`<FormGroup/> should render a textarea correctly if no label is provided 1`] = `
 <div>
   <div
-    class="sc-AxjAm domUDA"
+    class="sc-AxjAm fsPBHC"
   >
     <textarea
-      class="sc-AxiKw cfspAQ"
+      class="sc-AxiKw jdYDTq"
       placeholder="test"
     />
   </div>

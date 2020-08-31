@@ -10,7 +10,8 @@ export const COLORS = {
 };
 
 export const FONT_FAMILY = 'Quicksand';
-export const FONT_SIZE_1 = '14px';
+export const FONT_SIZE_1 = '12px';
+export const FONT_SIZE_2 = '14px';
 
 export const BORDER_RADIUS_1 = '12px;';
 export const BORDER_RADIUS_2 = '24px;';

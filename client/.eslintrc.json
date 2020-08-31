@@ -21,7 +21,7 @@
     "ecmaVersion": 2019,
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "jest"],
   "rules": {
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",

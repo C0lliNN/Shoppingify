@@ -4,6 +4,7 @@ import {
   BORDER_RADIUS_1,
   BORDER_RADIUS_2,
   FONT_FAMILY,
+  FONT_SIZE_2,
 } from '../../../Variables';
 import PropTypes from 'prop-types';
 
@@ -15,12 +16,20 @@ const Button = styled.button`
   color: ${(props) =>
     props.btnType === 'raised' ? COLORS.white : COLORS[props.variant]};
   border: 2px solid ${(props) => COLORS[props.variant]};
+  font-size: ${FONT_SIZE_2};
   font-family: ${FONT_FAMILY};
   font-weight: bold;
   outline: none;
-  padding: ${(props) =>
-    props.btnType === 'raised' ? '12px 15px' : '6px 15px'};
+  padding: ${(props) => (props.btnType === 'raised' ? '20px' : '6px 15px')};
   cursor: pointer;
+  &:disabled {
+    background-color: ${(props) =>
+      props.btnType === 'raised' ? COLORS.gray_2 : 'transparent'};
+    border-color: ${COLORS.gray_2};
+    color: ${(props) =>
+      props.btnType === 'raised' ? COLORS.white : COLORS.gray_2};
+    cursor: default;
+  }
 `;
 
 Button.propTypes = {

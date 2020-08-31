@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Button from './components/UI/Button/Button';
 import FormGroup from './components/UI/FormGroup/FormGroup';
+import Badge from './components/UI/Badge/Badge';
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
             <option value="2">Test2</option>
           </FormGroup.Select>
         </FormGroup>
+      </div>
+      <div>
+        <Badge variant="secondary">completed</Badge>
+        <Badge variant="danger">canceled</Badge>
       </div>
     </main>
   );

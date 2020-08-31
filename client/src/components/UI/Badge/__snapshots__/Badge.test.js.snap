@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Badge/> should render correctly if the variant is valid 1`] = `
+<div>
+  <span
+    class="sc-AxjAm hMrHqb"
+  >
+    badge
+  </span>
+</div>
+`;
+
+exports[`<Badge/> should render correctly if the variant is valid 2`] = `
+<div>
+  <span
+    class="sc-AxjAm JZaKb"
+  >
+    badge
+  </span>
+</div>
+`;
+
+exports[`<Badge/> should render correctly if the variant is valid 3`] = `
+<div>
+  <span
+    class="sc-AxjAm cZgasP"
+  >
+    badge
+  </span>
+</div>
+`;
+
+exports[`<Badge/> should render correctly if the variant is valid 4`] = `
+<div>
+  <span
+    class="sc-AxjAm gflKxL"
+  >
+    badge
+  </span>
+</div>
+`;
+
+exports[`<Badge/> should render correctly if the variant is valid 5`] = `
+<div>
+  <span
+    class="sc-AxjAm jCemvn"
+  >
+    badge
+  </span>
+</div>
+`;
+
+exports[`<Badge/> should render correctly if the variant is valid 6`] = `
+<div>
+  <span
+    class="sc-AxjAm sfIKH"
+  >
+    badge
+  </span>
+</div>
+`;
+
+exports[`<Badge/> should render correctly if the variant is valid 7`] = `
+<div>
+  <span
+    class="sc-AxjAm gqusP"
+  >
+    badge
+  </span>
+</div>
+`;
+
+exports[`<Badge/> should render correctly if the variant is valid 8`] = `
+<div>
+  <span
+    class="sc-AxjAm hFSLzT"
+  >
+    badge
+  </span>
+</div>
+`;

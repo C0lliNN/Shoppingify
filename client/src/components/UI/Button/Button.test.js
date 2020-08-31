@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, queryByText, screen } from '@testing-library/react';
+import { render, cleanup, screen } from '@testing-library/react';
 import Button from './Button';
 import { COLORS } from '../../../Variables';
 
@@ -32,7 +32,7 @@ describe('<Button/>', () => {
     expect(console.error).toHaveBeenCalled();
     expect(errorMessage).toMatch(/variant.*required.*/i);
   });
-  it('should console.error if btnType is undefined', () => {
+  it('should console.error if variant is undefined', () => {
     render(
       <Button btnType="raised" variant="invalid-variant">
         Button
