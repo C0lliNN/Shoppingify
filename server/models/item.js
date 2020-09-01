@@ -47,19 +47,6 @@ const Item = mongoose.model(
 );
 
 function validateItem(data) {
-  if (typeof data.category === 'string') {
-    try {
-      const category = JSON.parse(data.category);
-      data.category = category;
-    } catch (error) {
-      return {
-        error: {
-          message: 'Invalid Category Object',
-        },
-      };
-    }
-  }
-
   const validator = Joi.object({
     name: Joi.string().required().min(MIN_NAME_LENGTH).max(MAX_NAME_LENGTH),
     note: Joi.string().max(MAX_NOTE_LENGTH),

@@ -77,7 +77,7 @@ describe('POST /itens', () => {
     expect(typeof body).toBe('object');
     expect(body.message).toBeTruthy();
   });
-  it('should send 201 and the item if the payload is valid - without image', async () => {
+  it('should send 201 and the item if the payload is valid', async () => {
     const { body } = await execPostRequest(201);
 
     expect(typeof body).toBe('object');
@@ -88,47 +88,6 @@ describe('POST /itens', () => {
     const item = Item.findOne({ name: payload.name });
     expect(item).not.toBeNull();
   });
-  it('should send 201 and the item if the payload is valid - with image', async () => {
-    const response = await Axios({
-      url: 'https://picsum.photos/200',
-      method: 'GET',
-      responseType: 'stream',
-    });
-
-    const path = Path.resolve(__dirname, '..', 'test.jpg');
-    const writer = Fs.createWriteStream(path);
-
-    response.data.pipe(writer);
-
-    await new Promise((resolve, reject) => {
-      writer.on('finish', resolve);
-      writer.on('error', reject);
-    });
-
-    const { body } = await request(app)
-      .post('/api/v1/itens')
-      .field('name', 'Apple')
-      .field('note', 'My First List')
-      .field('category', '{"name": "fruit"}')
-      .attach('image', path)
-      .set('Authorization', `Bearer ${token}`)
-      .expect(201);
-
-    expect(typeof body).toBe('object');
-    expect(body._id).toBeTruthy();
-    expect(body.name).toBeTruthy();
-    expect(body.category).toBeTruthy();
-    expect(body.image).toBeTruthy();
-
-    const item = await Item.findOne({ name: payload.name });
-    expect(item).toBeTruthy();
-    expect(item.image).toBeTruthy();
-
-    await Fs.promises.unlink(path);
-    await Fs.promises.unlink(
-      Path.resolve(__dirname, '../../../../client', 'public', body.image)
-    );
-  }, 15000);
 });
 
 async function seedDatabase() {

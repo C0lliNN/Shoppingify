@@ -21,35 +21,7 @@ router.post('/', async (request, response) => {
   const userId = request.user._id;
   item.user = userId;
 
-  const image = request.files ? request.files.image : null;
-
-  if (image) {
-    if (image.mimetype.includes('image') && image.size <= 5242880 /* 5MB */) {
-      let imageName = null;
-
-      if (process.env.NODE_ENV === 'production') {
-        imageName = `${image.md5}.${image.name.split('.').pop()}`;
-      } else {
-        imageName = `img/${image.md5}.${image.name.split('.').pop()}`;
-      }
-
-      let destination = null;
-
-      if (process.env.NODE_ENV === 'production') {
-        destination = `client/build/${imageName}`;
-      } else {
-        destination = `client/public/${imageName}`;
-      }
-
-      await image.mv(destination);
-      item.image = imageName;
-    } else {
-      return response.status('400').send({ message: 'Invalid Image' });
-    }
-  }
-
   await item.save();
-
   response.status(201).send(item);
 });
 

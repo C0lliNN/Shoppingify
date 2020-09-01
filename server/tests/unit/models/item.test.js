@@ -55,14 +55,6 @@ describe('validateItem', () => {
     expect(error).toBeTruthy();
     expect(error.message).toMatch(/note.*255.*/i);
   });
-  it('should generate an error if category is a string that cannot be converted to json', () => {
-    payload.category = 'name=Test';
-
-    const { error } = exec();
-
-    expect(error).toBeTruthy();
-    expect(error.message).toMatch(/category/i);
-  });
   it('should generate an error if category._id is not a valid ObjectId', () => {
     payload.category._id = '555';
 
@@ -96,15 +88,6 @@ describe('validateItem', () => {
 
     expect(error).toBeTruthy();
     expect(error.message).toMatch(/category\.name.*120/);
-  });
-
-  it('should not generate an error if the category is a string that can be converted to JSON', () => {
-    payload.category = '{"name": "Fruit"}';
-
-    const { error, value } = exec();
-
-    expect(error).toBeFalsy();
-    expect(value).toEqual(payload);
   });
   it('should not generate an error if name is truthy, category object is valid and user is valid', () => {
     const { error, value } = exec();
