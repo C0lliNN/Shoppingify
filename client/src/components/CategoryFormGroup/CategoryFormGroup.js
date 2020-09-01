@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import FromGroup from '../FormGroup/FormGroup';
+import FromGroup from '../UI/FormGroup/FormGroup';
 import styled from 'styled-components';
 import {
   COLORS,
   BORDER_RADIUS_1,
   FONT_SIZE_3,
   FONT_FAMILY,
-} from '../../../Variables';
+} from '../../Variables';
 
 const ListView = styled.ul`
   border: 1px solid ${COLORS.gray_1};

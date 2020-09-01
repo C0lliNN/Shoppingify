@@ -20,3 +20,12 @@ export const FONT_SIZE_4 = '24px';
 
 export const BORDER_RADIUS_1 = '12px;';
 export const BORDER_RADIUS_2 = '24px;';
+
+export const MD_BREAK_POINT = 768;
+export const LG_BREAK_POINT = 1200;
+
+export const NAVBAR_XS_SIZE = 60;
+export const NAVBAR_MD_SIZE = 90;
+
+export const INFO_BAR_MD_SIZE = 250;
+export const INFO_BAR_LG_SIZE = 370;
