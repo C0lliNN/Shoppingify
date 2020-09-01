@@ -39,6 +39,14 @@ const Button = styled.button`
           padding: 5px;
         `;
       }
+      default:
+        return `
+          background-color: ${COLORS[props.variant]}; 
+          border-color: ${COLORS[props.variant]};
+          border-radius: ${BORDER_RADIUS_1}; 
+          color: ${COLORS.white}; 
+          padding: 20px;
+        `;
     }
   }}
   border-width: 2px;
@@ -66,6 +74,10 @@ const Button = styled.button`
             color: ${COLORS.gray_2}
           `;
         }
+        default:
+          return `
+        background-color: ${COLORS.gray_2};
+        `;
       }
     }}
   

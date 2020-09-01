@@ -1,0 +1,15 @@
+export const SHOW_LIST_BUILDER = 'SHOW_LIST_BUILDER';
+export const SHOW_CREATE_ITEM = 'SHOW_CREATE_ITEM';
+export const SHOW_ITEM_DETAILS = 'SHOW_ITEM_DETAILS';
+
+export const LOGIN_START = 'LOGIN_START';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
+
+export const SIGNUP_START = 'SIGNUP_START';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const SIGNUP_FAILED = 'SIGNUP_FAILED';
+
+export const LOGOUT = 'LOGOUT';
+
+export const CHECK_LOGIN = 'CHECK_LOGIN';
