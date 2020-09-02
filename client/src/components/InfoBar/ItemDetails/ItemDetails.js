@@ -74,7 +74,7 @@ function ItemDetails({ item, showListBuilder }) {
   return (
     <Container>
       <BackButton onClick={showListBuilder} />
-      <ImageContainer style={imgHolder} />
+      <ImageContainer style={imgHolder} title={item.name} />
       <Title>name</Title>
       <Value style={{ fontSize: variables.FONT_SIZE_4 }}>{item.name}</Value>
       <Title>category</Title>

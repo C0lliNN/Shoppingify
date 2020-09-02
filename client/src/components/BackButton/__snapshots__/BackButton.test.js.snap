@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BackButton/> should render correctly 1`] = `
+<div>
+  <button
+    class="sc-AxjAm feAvEu"
+  >
+    <i
+      class="sc-AxirZ geITFa material-icons-round"
+    >
+      keyboard_backspace
+    </i>
+    <span>
+       back
+    </span>
+  </button>
+</div>
+`;

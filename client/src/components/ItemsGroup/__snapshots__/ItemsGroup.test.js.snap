@@ -6,45 +6,51 @@ exports[`<ItemsGroup/> should render correctly 1`] = `
     style="margin-top: 50px;"
   >
     <h3
-      class="sc-AxjAm drHYgj"
+      class="sc-AxjAm iPmHoR"
     >
       Fruit
     </h3>
     <div
-      class="sc-AxirZ gymQos"
+      class="sc-AxirZ kZXQEr"
     >
       <div
-        class="sc-AxiKw eBVBFr"
+        class="sc-AxiKw jiIYom"
       >
-        <span>
+        <span
+          class="sc-AxhCb dnXiiO"
+        >
           Apple
         </span>
         <i
-          class="sc-AxhCb iPaXDK material-icons-round"
+          class="sc-AxhUy iXJonX material-icons-round"
         >
           add
         </i>
       </div>
       <div
-        class="sc-AxiKw eBVBFr"
+        class="sc-AxiKw jiIYom"
       >
-        <span>
+        <span
+          class="sc-AxhCb dnXiiO"
+        >
           Banana
         </span>
         <i
-          class="sc-AxhCb iPaXDK material-icons-round"
+          class="sc-AxhUy iXJonX material-icons-round"
         >
           add
         </i>
       </div>
       <div
-        class="sc-AxiKw eBVBFr"
+        class="sc-AxiKw jiIYom"
       >
-        <span>
+        <span
+          class="sc-AxhCb dnXiiO"
+        >
           Orange
         </span>
         <i
-          class="sc-AxhCb iPaXDK material-icons-round"
+          class="sc-AxhUy iXJonX material-icons-round"
         >
           add
         </i>

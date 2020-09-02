@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchBar/> should render correctly 1`] = `
+<div>
+  <div
+    class="sc-AxhCb cATiUb"
+  >
+    <div
+      class="sc-AxjAm iBAYIb"
+    >
+      <div
+        class="sc-AxirZ jQSkBK material-icons-round"
+      >
+        search
+      </div>
+    </div>
+    <input
+      class="sc-AxiKw hGySNu"
+      placeholder="Search item"
+    />
+  </div>
+</div>
+`;
