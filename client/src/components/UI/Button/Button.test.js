@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
 import Button from './Button';
-import { COLORS } from '../../../Variables';
+import { COLORS } from '../../../helpers/style-constants';
 
 describe('<Button/>', () => {
   let errorMessage = null;

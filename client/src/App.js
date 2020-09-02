@@ -3,7 +3,7 @@ import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import InfoBar from './components/InfoBar/InfoBar';
 import styled from 'styled-components';
-import * as variables from './Variables';
+import * as variables from './helpers/style-constants';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Items from './containers/Items/Items';
 

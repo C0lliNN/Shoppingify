@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ItemsGroup/> should render correctly 1`] = `
+<div>
+  <div
+    style="margin-top: 50px;"
+  >
+    <h3
+      class="sc-AxjAm drHYgj"
+    >
+      Fruit
+    </h3>
+    <div
+      class="sc-AxirZ gymQos"
+    >
+      <div
+        class="sc-AxiKw eBVBFr"
+      >
+        <span>
+          Apple
+        </span>
+        <i
+          class="sc-AxhCb iPaXDK material-icons-round"
+        >
+          add
+        </i>
+      </div>
+      <div
+        class="sc-AxiKw eBVBFr"
+      >
+        <span>
+          Banana
+        </span>
+        <i
+          class="sc-AxhCb iPaXDK material-icons-round"
+        >
+          add
+        </i>
+      </div>
+      <div
+        class="sc-AxiKw eBVBFr"
+      >
+        <span>
+          Orange
+        </span>
+        <i
+          class="sc-AxhCb iPaXDK material-icons-round"
+        >
+          add
+        </i>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -37,7 +37,7 @@ exports[`<Modal/> should render correctly 1`] = `
           Cancel
         </button>
         <button
-          class="sc-AxjAm hsvQTh"
+          class="sc-AxjAm izrjIM"
           type="raised"
         >
           OK

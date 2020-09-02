@@ -7,7 +7,7 @@ import {
   BORDER_RADIUS_1,
   FONT_SIZE_3,
   FONT_FAMILY,
-} from '../../Variables';
+} from '../../helpers/style-constants';
 
 const ListView = styled.ul`
   border: 1px solid ${COLORS.gray_1};

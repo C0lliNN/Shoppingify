@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { COLORS, BORDER_RADIUS_1, FONT_SIZE_1 } from '../../../Variables';
+import {
+  COLORS,
+  BORDER_RADIUS_1,
+  FONT_SIZE_1,
+} from '../../../helpers/style-constants';
 import PropTypes from 'prop-types';
 
 const Badge = styled.span`

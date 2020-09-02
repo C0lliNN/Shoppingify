@@ -5,7 +5,7 @@ import {
   COLORS,
   FONT_SIZE_2,
   FONT_FAMILY,
-} from '../../../Variables';
+} from '../../../helpers/style-constants';
 import PropTypes from 'prop-types';
 
 const FormGroup = styled.div`

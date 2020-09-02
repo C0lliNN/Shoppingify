@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import * as variables from '../../../Variables';
+import * as variables from '../../../helpers/style-constants';
 import ReactTooltip from 'react-tooltip';
 
 const CartIconWrapper = styled.div`
@@ -15,6 +15,7 @@ const CartIconWrapper = styled.div`
 const IconWrapper = styled.div.attrs((props) => ({
   'data-tip': props['data-tip'],
   'data-for': props['data-for'],
+  'data-testid': props['data-testid'],
 }))`
   width: 42px;
   height: 42px;
@@ -42,11 +43,15 @@ const Icon = styled.i`
   font-size: 20px;
 `;
 
-function CartItem() {
+function CartIcon() {
   return (
     <CartIconWrapper>
       <Badge>3</Badge>
-      <IconWrapper data-tip="Shopping Cart" data-for="cartIcon">
+      <IconWrapper
+        data-tip="Shopping Cart"
+        data-for="cartIcon"
+        data-testid="icon"
+      >
         <Icon className="material-icons-outlined">shopping_cart</Icon>
       </IconWrapper>
       <ReactTooltip
@@ -60,4 +65,4 @@ function CartItem() {
   );
 }
 
-export default CartItem;
+export default CartIcon;

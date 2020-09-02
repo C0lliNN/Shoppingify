@@ -5,7 +5,7 @@ import {
   LG_BREAK_POINT,
   INFO_BAR_MD_SIZE,
   INFO_BAR_LG_SIZE,
-} from '../../Variables';
+} from '../../helpers/style-constants';
 
 const StyledInfoBar = styled.aside`
   background-color: green;

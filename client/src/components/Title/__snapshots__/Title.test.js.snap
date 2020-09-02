@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Title/> should render correctly 1`] = `
+<div>
+  <h1
+    class="sc-AxjAm lhRgVU"
+  >
+    <span
+      style="color: rgb(249, 161, 9); font-weight: bold;"
+    >
+      Shoppingify
+       
+    </span>
+    allows you take your shopping list wherever you go
+  </h1>
+</div>
+`;

@@ -6,7 +6,7 @@ import {
   FONT_FAMILY,
   FONT_SIZE_2,
   BUTTON_TYPES,
-} from '../../../Variables';
+} from '../../../helpers/style-constants';
 import PropTypes from 'prop-types';
 
 const Button = styled.button`

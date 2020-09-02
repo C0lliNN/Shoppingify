@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InfoBar/> should render correctly 1`] = `
+<div>
+  <aside
+    class="sc-AxjAm eRJdmn"
+  >
+    <div>
+      InfoBar
+    </div>
+  </aside>
+</div>
+`;

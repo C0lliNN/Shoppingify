@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import * as variables from '../../Variables';
+import * as variables from '../../helpers/style-constants';
 import logo from '../../assets/images/logo.svg';
 import { NavLink, Link } from 'react-router-dom';
 import CartItem from './CartIcon/CartIcon';
@@ -25,6 +25,7 @@ const StyledNavBar = styled.nav`
 const Icon = styled.i.attrs((props) => ({
   'data-tip': props['data-tip'],
   'data-for': props['data-for'],
+  'data-testid': props['data-testid'],
 }))`
   color: #454545;
   font-size: 24px;
@@ -70,6 +71,7 @@ function NavBar() {
             className="material-icons-round"
             data-tip="Items"
             data-for="items"
+            data-testid="itemsIcon"
           >
             toc
           </Icon>

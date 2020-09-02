@@ -1,7 +1,7 @@
 import React from 'react';
 import Badge from './Badge';
 import { render, cleanup } from '@testing-library/react';
-import { COLORS } from '../../../Variables';
+import { COLORS } from '../../../helpers/style-constants';
 
 describe('<Badge/>', () => {
   let errorMessage = null;

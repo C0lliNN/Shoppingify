@@ -7,7 +7,7 @@ import {
   BORDER_RADIUS_2,
   FONT_FAMILY,
   FONT_SIZE_4,
-} from '../../../Variables';
+} from '../../../helpers/style-constants';
 
 const WrapperDiv = styled.div`
   display: flex;
