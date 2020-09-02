@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import * as variables from '../../helpers/style-constants';
+import { showItemDetails } from '../../store/actions';
+import { connect } from 'react-redux';
 
 const Title = styled.h3`
   font-family: ${variables.FONT_FAMILY};
@@ -14,7 +16,7 @@ const Title = styled.h3`
 
 const Items = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 `;
@@ -31,7 +33,7 @@ const Card = styled.div`
   justify-content: space-between;
   width: 80px;
   margin-bottom: 15px;
-  @media (min-width: ${variables.MD_BREAK_POINT}px) {
+  @media (min-width: ${variables.LG_BREAK_POINT}px) {
     width: 120px;
     margin-bottom: 30px;
     font-size: ${variables.FONT_SIZE_3};
@@ -48,14 +50,14 @@ const Icon = styled.i`
   cursor: pointer;
 `;
 
-function ItemsGroup({ category, items }) {
+function ItemsGroup({ category, items, showItemDetails }) {
   return (
     <div style={{ marginTop: '50px' }}>
       <Title>{category}</Title>
       <Items>
         {items.map((item) => (
           <Card key={item.name}>
-            <Item>{item.name}</Item>
+            <Item onClick={() => showItemDetails(item)}>{item.name}</Item>
             <Icon className="material-icons-round">add</Icon>
           </Card>
         ))}
@@ -67,6 +69,11 @@ function ItemsGroup({ category, items }) {
 ItemsGroup.propTypes = {
   category: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
+  showItemDetails: PropTypes.func,
 };
 
-export default ItemsGroup;
+const mapDispatchToProps = {
+  showItemDetails,
+};
+
+export default connect(null, mapDispatchToProps)(ItemsGroup);

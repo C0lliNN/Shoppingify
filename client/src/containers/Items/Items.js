@@ -37,9 +37,23 @@ function Items() {
         {
           category: 'Fruits',
           items: [
-            { name: 'Apple' },
-            { name: 'Banana' },
-            { name: 'Abacate' },
+            {
+              name: 'Apple',
+              image: 'https://picsum.photos/400',
+              note: 'Note',
+              category: { name: 'Fruit' },
+            },
+            {
+              name: 'Banana',
+              image: 'https://picsum.photos/300/400',
+              note:
+                'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim consectetur ratione inventore distinctio rerum eos sapiente nostrum impedit voluptate nulla nesciunt amet dignissimos asperiores laudantium hic porro nihil suscipit, facilis consequatur corporis repudiandae officia beatae! Voluptate laborum et harum commodi mollitia eius. Aliquam voluptatum laboriosam ipsam velit quas cum excepturi, magnam maiores, perferendis earum quam nihil perspiciatis odit, saepe ea. Repellendus magni eum ipsum magnam, quod eligendi quis recusandae corrupti temporibus labore, rerum cupiditate facilis porro atque repellat doloribus aliquid totam minus illum. Suscipit error amet reiciendis, quod eum repudiandae quaerat fugiat voluptatum corporis, vitae quisquam, vel assumenda accusamus eius!',
+              category: { name: 'Fruit' },
+            },
+            {
+              name: 'Abacate',
+              category: { name: 'Fruit' },
+            },
             { name: 'Orange' },
             { name: 'really Big Name' },
           ],
