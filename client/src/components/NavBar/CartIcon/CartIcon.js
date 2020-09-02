@@ -1,7 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import * as variables from '../../../helpers/style-constants';
 import ReactTooltip from 'react-tooltip';
+import { showListBuilder } from '../../../store/actions';
+import { connect } from 'react-redux';
 
 const CartIconWrapper = styled.div`
   position: relative;
@@ -43,7 +46,7 @@ const Icon = styled.i`
   font-size: 20px;
 `;
 
-function CartIcon() {
+function CartIcon({ showListBuilder }) {
   return (
     <CartIconWrapper>
       <Badge>3</Badge>
@@ -51,6 +54,7 @@ function CartIcon() {
         data-tip="Shopping Cart"
         data-for="cartIcon"
         data-testid="icon"
+        onClick={showListBuilder}
       >
         <Icon className="material-icons-outlined">shopping_cart</Icon>
       </IconWrapper>
@@ -65,4 +69,12 @@ function CartIcon() {
   );
 }
 
-export default CartIcon;
+CartIcon.propTypes = {
+  showListBuilder: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = {
+  showListBuilder,
+};
+
+export default connect(null, mapDispatchToProps)(CartIcon);
