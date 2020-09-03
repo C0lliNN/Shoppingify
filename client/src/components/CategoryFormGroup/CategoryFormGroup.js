@@ -76,11 +76,14 @@ function CategoryFormGroup({ categories, categoryValue, setCategoryValue }) {
     .filter(
       (category) =>
         !categoryValue ||
-        category.toLowerCase().includes(categoryValue.toLowerCase())
+        category.name.toLowerCase().includes(categoryValue.toLowerCase())
     )
     .map((category) => (
-      <ListItem key={category} onClick={() => handleListItemClick(category)}>
-        {category}
+      <ListItem
+        key={category.id}
+        onClick={() => handleListItemClick(category.name)}
+      >
+        {category.name}
       </ListItem>
     ));
 
