@@ -13,3 +13,14 @@ export const SIGNUP_FAILED = 'SIGNUP_FAILED';
 export const LOGOUT = 'LOGOUT';
 
 export const CHECK_LOGIN = 'CHECK_LOGIN';
+
+export const CHANGE_LIST_NAME = 'CHANGE_LIST_NAME';
+export const SAVE_LIST = 'SAVE_LIST';
+export const COMPLETE_LIST = 'COMPLETE_LIST';
+export const CANCEL_LIST = 'CANCEL_LIST';
+
+export const ADD_ITEM = 'ADD_ITEM';
+export const INCREMENT_ITEM_QUANTITY = 'INCREMENT_ITEM_QUANTITY';
+export const DECREMENT_ITEM_QUANTITY = 'DECREMENT_ITEM_QUANTITY';
+export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const CHECK_ITEM = 'CHECK_ITEM';
