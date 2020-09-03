@@ -1,10 +1,6 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render } from '../../tests/utilities';
 import ItemsGroup from './ItemsGroup';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import store from '../../store';
-
 let errorMessage = null;
 let category = null;
 let items = null;
@@ -17,13 +13,7 @@ beforeEach(() => {
 });
 
 function exec() {
-  return render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <ItemsGroup category={category} items={items} />
-      </BrowserRouter>
-    </Provider>
-  );
+  return render(<ItemsGroup category={category} items={items} />);
 }
 
 describe('<ItemsGroup/>', () => {

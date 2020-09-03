@@ -1,9 +1,6 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render } from '../../../tests/utilities';
 import ItemDetails from './ItemDetails';
-import { Provider } from 'react-redux';
-import store from '../../../store/index';
-import { BrowserRouter } from 'react-router-dom';
 
 const item = {
   name: 'Apple',
@@ -17,13 +14,7 @@ const item = {
 const mockFunction = jest.fn();
 
 function exec() {
-  return render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <ItemDetails item={item} showListBuilder={mockFunction} />
-      </BrowserRouter>
-    </Provider>
-  );
+  return render(<ItemDetails item={item} showListBuilder={mockFunction} />);
 }
 
 describe('<ItemDetails/>', () => {
