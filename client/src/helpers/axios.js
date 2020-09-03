@@ -1,13 +1,15 @@
 import axios from 'axios';
-import store from './store/index';
+import store from '../store/index';
 
 export default function getAxios() {
-  const config = {};
+  const config = {
+    headers: {},
+  };
   // eslint-disable-next-line no-undef
   if (process.env.NODE_ENV === 'development') {
-    config.baseUrl = 'http://localhost:5000/api/v1';
+    config.baseURL = 'http://localhost:5000/api/v1';
   } else {
-    config.baseUrl = '/api/v1';
+    config.baseURL = '/api/v1';
   }
 
   config.headers['Content-Type'] = 'application/json';
@@ -16,6 +18,8 @@ export default function getAxios() {
   if (token) {
     config.headers['Authorization'] = `Bearer ${token}`;
   }
+
+  console.log(config);
 
   return axios.create(config);
 }
