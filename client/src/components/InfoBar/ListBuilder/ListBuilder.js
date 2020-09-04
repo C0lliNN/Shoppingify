@@ -53,7 +53,7 @@ const CustomButton = styled.button`
   border: none;
   outline: none;
   font-family: ${variables.FONT_FAMILY};
-  margin-top: 5px;
+  margin-top: 10px;
 `;
 
 const ListNameContainer = styled.div`

@@ -16,7 +16,6 @@ const Title = styled.h3`
 
 const Items = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 `;
@@ -33,8 +32,10 @@ const Card = styled.div`
   justify-content: space-between;
   width: 80px;
   margin-bottom: 15px;
+  margin-left: 5px;
   @media (min-width: ${variables.LG_BREAK_POINT}px) {
     width: 120px;
+    margin-left: 15px;
     margin-bottom: 30px;
     font-size: ${variables.FONT_SIZE_3};
   }
