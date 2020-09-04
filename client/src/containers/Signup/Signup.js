@@ -97,24 +97,27 @@ function Signup({ isLoading, error, signupHandler }) {
       <>
         <Form onSubmit={handleSignupSubmit} method="post" action="#">
           <FormGroup>
-            <FormGroup.Label>Name</FormGroup.Label>
+            <FormGroup.Label htmlFor="name">Name</FormGroup.Label>
             <FormGroup.Input
+              id="name"
               placeholder="Enter your name"
               value={name}
               onChange={(event) => setName(event.target.value)}
             />
           </FormGroup>
           <FormGroup>
-            <FormGroup.Label>Email</FormGroup.Label>
+            <FormGroup.Label htmlFor="email">Email</FormGroup.Label>
             <FormGroup.Input
+              id="email"
               placeholder="Enter your email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
             />
           </FormGroup>
           <FormGroup>
-            <FormGroup.Label>Password</FormGroup.Label>
+            <FormGroup.Label htmlFor="password">Password</FormGroup.Label>
             <FormGroup.Input
+              id="password"
               type="password"
               placeholder="Enter your password"
               value={password}
@@ -122,8 +125,11 @@ function Signup({ isLoading, error, signupHandler }) {
             />
           </FormGroup>
           <FormGroup>
-            <FormGroup.Label>Confirm Password</FormGroup.Label>
+            <FormGroup.Label htmlFor="passwordConfirmation">
+              Confirm Password
+            </FormGroup.Label>
             <FormGroup.Input
+              id="passwordConfirmation"
               type="password"
               placeholder="Repeat the password"
               value={passwordConfirmation}

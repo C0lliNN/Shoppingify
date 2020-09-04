@@ -79,17 +79,19 @@ function Login({ loginHandler, isLoading, error }) {
       <React.Fragment>
         <Form action="#" method="post" onSubmit={handleLoginSubmit}>
           <FormGroup>
-            <FormGroup.Label>Email</FormGroup.Label>
+            <FormGroup.Label htmlFor="email">Email</FormGroup.Label>
             <FormGroup.Input
+              id="email"
               placeholder="Enter your email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
             ></FormGroup.Input>
           </FormGroup>
           <FormGroup>
-            <FormGroup.Label>Password</FormGroup.Label>
+            <FormGroup.Label htmlFor="password">Password</FormGroup.Label>
             <FormGroup.Input
               type="password"
+              id="password"
               placeholder="Enter your password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
