@@ -11,7 +11,7 @@ import {
 
 const WrapperDiv = styled.div`
   display: flex;
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
   width: 100%;
@@ -75,7 +75,7 @@ const SecondRowRapper = styled.div`
   justify-content: flex-end;
 `;
 
-function Modal({ title, onClose, cancelButton, okButton }) {
+function Modal({ title, onClose, cancelButton, okButton, children }) {
   return (
     <WrapperDiv>
       <Backdrop />
@@ -86,6 +86,7 @@ function Modal({ title, onClose, cancelButton, okButton }) {
             <Icon className="material-icons">clear</Icon>
           </Button>
         </FirstRowWrapper>
+        {children}
         <SecondRowRapper>
           {cancelButton}
           {okButton}
@@ -100,6 +101,7 @@ Modal.propTypes = {
   okButton: PropTypes.node,
   onClose: PropTypes.func,
   title: PropTypes.string.isRequired,
+  children: PropTypes.any,
 };
 
 export default Modal;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ButtonBar/> should render correctly 1`] = `
+<div>
+  <div
+    class="sc-AxjAm jqnyKw"
+  >
+    <button
+      class="sc-AxirZ cMsEQX"
+    >
+      OK
+    </button>
+  </div>
+</div>
+`;

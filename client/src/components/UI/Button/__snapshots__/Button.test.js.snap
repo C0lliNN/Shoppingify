@@ -100,6 +100,26 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 </div>
 `;
 
+exports[`<Button/> should render correctly when the type is outlined and the variant is valid 10`] = `
+<div>
+  <button
+    class="sc-AxjAm gGtJpP"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is outlined and the variant is valid 11`] = `
+<div>
+  <button
+    class="sc-AxjAm hlLSXX"
+  >
+    Button
+  </button>
+</div>
+`;
+
 exports[`<Button/> should render correctly when the type is raised and the variant is valid 1`] = `
 <div>
   <button
@@ -184,6 +204,26 @@ exports[`<Button/> should render correctly when the type is raised and the varia
 <div>
   <button
     class="sc-AxjAm fmeTgw"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is raised and the variant is valid 10`] = `
+<div>
+  <button
+    class="sc-AxjAm epDVWU"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`<Button/> should render correctly when the type is raised and the variant is valid 11`] = `
+<div>
+  <button
+    class="sc-AxjAm brRZRY"
   >
     Button
   </button>

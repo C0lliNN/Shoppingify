@@ -3,7 +3,7 @@
 exports[`<CategoryFormGroup/> should render correctly 1`] = `
 <div>
   <div
-    class="sc-AxjAm fsPBHC"
+    class="sc-AxjAm ediThQ"
   >
     <input
       class="sc-AxirZ kKTTBK"
@@ -24,24 +24,16 @@ exports[`<CategoryFormGroup/> should render correctly 1`] = `
   >
     <li
       class="sc-AxheI kIpRpv"
-    >
-      Category 1
-    </li>
+    />
     <li
       class="sc-AxheI kIpRpv"
-    >
-      Category 2
-    </li>
+    />
     <li
       class="sc-AxheI kIpRpv"
-    >
-      Category 3
-    </li>
+    />
     <li
       class="sc-AxheI kIpRpv"
-    >
-      Category 4
-    </li>
+    />
   </ul>
 </div>
 `;

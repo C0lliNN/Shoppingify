@@ -3,8 +3,13 @@ import React from 'react';
 import styled from 'styled-components';
 import * as variables from '../../helpers/style-constants';
 import { connect } from 'react-redux';
-import { SHOW_ITEM_DETAILS } from '../../store/actions/actionTypes';
+import {
+  SHOW_ITEM_DETAILS,
+  SHOW_CREATE_ITEM,
+} from '../../store/actions/actionTypes';
 import ItemDetails from './ItemDetails/ItemDetails';
+import ListBuilder from './ListBuilder/ListBuilder';
+import CreateItem from './CreateItem/CreateItem';
 
 const StyledInfoBar = styled.aside`
   height: 100%;
@@ -24,8 +29,10 @@ function InfoBar({ contentType, item }) {
 
   if (contentType === SHOW_ITEM_DETAILS) {
     content = <ItemDetails item={item} />;
+  } else if (contentType === SHOW_CREATE_ITEM) {
+    content = <CreateItem />;
   } else {
-    content = <div>InfoBar</div>;
+    content = <ListBuilder />;
   }
 
   return <StyledInfoBar>{content}</StyledInfoBar>;

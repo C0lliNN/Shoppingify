@@ -89,3 +89,23 @@ exports[`<Badge/> should render correctly if the variant is valid 9`] = `
   </span>
 </div>
 `;
+
+exports[`<Badge/> should render correctly if the variant is valid 10`] = `
+<div>
+  <span
+    class="sc-AxjAm iouhoj"
+  >
+    badge
+  </span>
+</div>
+`;
+
+exports[`<Badge/> should render correctly if the variant is valid 11`] = `
+<div>
+  <span
+    class="sc-AxjAm cELZVv"
+  >
+    badge
+  </span>
+</div>
+`;

@@ -1,11 +1,18 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import InfoBar from './components/InfoBar/InfoBar';
 import styled from 'styled-components';
 import * as variables from './helpers/style-constants';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Items from './containers/Items/Items';
+import { connect } from 'react-redux';
+import Login from './containers/Login/Login';
+import Signup from './containers/Signup/Signup';
+import { checkAuth } from './store/actions';
+import { useEffect } from 'react';
+import Logout from './containers/Logout/Logout';
 
 const MainContentWrapper = styled.div`
   margin-left: ${variables.NAVBAR_XS_SIZE}px;
@@ -20,20 +27,52 @@ const MainContentWrapper = styled.div`
   }
 `;
 
-function App() {
+function App({ isAuth, checkAuth }) {
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
   return (
     <main className="App">
       <BrowserRouter>
-        <NavBar />
-        <MainContentWrapper>
-          <Switch>
-            <Route path="/" component={Items} />
-          </Switch>
-          <InfoBar />
-        </MainContentWrapper>
+        {isAuth ? (
+          <React.Fragment>
+            <NavBar />
+            <MainContentWrapper>
+              <Switch>
+                <Redirect from="/signup" to="/" />
+                <Route path="/logout" component={Logout} />
+                <Route path="/" component={Items} />
+              </Switch>
+              <InfoBar />
+            </MainContentWrapper>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <Switch>
+              <Route path="/signup" component={Signup} />
+              <Route path="/" component={Login} />
+            </Switch>
+          </React.Fragment>
+        )}
       </BrowserRouter>
     </main>
   );
 }
 
-export default App;
+App.propTypes = {
+  isAuth: PropTypes.bool.isRequired,
+  checkAuth: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    isAuth: state.auth.token !== null,
+  };
+};
+
+const mapDispatchToProps = {
+  checkAuth,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

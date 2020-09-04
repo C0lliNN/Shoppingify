@@ -3,10 +3,62 @@
 exports[`<InfoBar/> should render correctly 1`] = `
 <div>
   <aside
-    class="sc-AxmLO ikFwql"
+    class="sc-fzpmMD dPlWFi"
   >
-    <div>
-      InfoBar
+    <div
+      class="sc-AxmLO ebtaiT"
+    >
+      <div
+        class="sc-fzozJi gOqWKZ"
+      >
+        <img
+          alt="bottle illustration"
+          class="sc-fzpans bNRjHC"
+          src="bottle.svg"
+        />
+        <div
+          style="margin-left: 5px;"
+        >
+          <h3
+            class="sc-fzoLsD jEAnWv"
+          >
+            Didn't find what you need?
+          </h3>
+          <button
+            class="sc-fzplWN chnRYW"
+          >
+            Add Item
+          </button>
+        </div>
+      </div>
+      <div
+        class="sc-fznyAO kdKWyA"
+      >
+        <h3
+          class="sc-fznKkj eLkAGK"
+        >
+          Shopping List
+        </h3>
+        <i
+          class="sc-fznZeY bppYyw material-icons-round"
+        >
+          edit
+        </i>
+      </div>
+      <div
+        class="sc-AxhCb ohEyP"
+      >
+        <button
+          class="sc-AxiKw VDLGN"
+        >
+          cancel
+        </button>
+        <button
+          class="sc-AxiKw hSJBCn"
+        >
+          complete
+        </button>
+      </div>
     </div>
   </aside>
 </div>

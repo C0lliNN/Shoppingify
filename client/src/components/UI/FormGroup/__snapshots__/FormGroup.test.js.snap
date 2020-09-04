@@ -3,7 +3,7 @@
 exports[`<FormGroup/> should render a input correctly if a label is provided 1`] = `
 <div>
   <div
-    class="sc-AxjAm fsPBHC"
+    class="sc-AxjAm ediThQ"
   >
     <input
       class="sc-AxirZ kKTTBK"
@@ -21,7 +21,7 @@ exports[`<FormGroup/> should render a input correctly if a label is provided 1`]
 exports[`<FormGroup/> should render a input correctly if no label is provided 1`] = `
 <div>
   <div
-    class="sc-AxjAm fsPBHC"
+    class="sc-AxjAm ediThQ"
   >
     <input
       class="sc-AxirZ kKTTBK"
@@ -34,7 +34,7 @@ exports[`<FormGroup/> should render a input correctly if no label is provided 1`
 exports[`<FormGroup/> should render a select correctly if a label is provided 1`] = `
 <div>
   <div
-    class="sc-AxjAm fsPBHC"
+    class="sc-AxjAm ediThQ"
   >
     <select
       class="sc-AxhCb SaXZS"
@@ -57,7 +57,7 @@ exports[`<FormGroup/> should render a select correctly if a label is provided 1`
 exports[`<FormGroup/> should render a select correctly if no label is provided 1`] = `
 <div>
   <div
-    class="sc-AxjAm fsPBHC"
+    class="sc-AxjAm ediThQ"
   >
     <select
       class="sc-AxhCb SaXZS"
@@ -75,7 +75,7 @@ exports[`<FormGroup/> should render a select correctly if no label is provided 1
 exports[`<FormGroup/> should render a textarea correctly if a label is provided 1`] = `
 <div>
   <div
-    class="sc-AxjAm fsPBHC"
+    class="sc-AxjAm ediThQ"
   >
     <textarea
       class="sc-AxiKw jdYDTq"
@@ -93,7 +93,7 @@ exports[`<FormGroup/> should render a textarea correctly if a label is provided 
 exports[`<FormGroup/> should render a textarea correctly if no label is provided 1`] = `
 <div>
   <div
-    class="sc-AxjAm fsPBHC"
+    class="sc-AxjAm ediThQ"
   >
     <textarea
       class="sc-AxiKw jdYDTq"

@@ -13,7 +13,7 @@ const FormGroup = styled.div`
   align-items: center;
   justify-content: start;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 `;
 
 const formControlStyles = `

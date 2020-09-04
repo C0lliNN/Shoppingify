@@ -6,6 +6,7 @@ import * as variables from '../../../helpers/style-constants';
 import { showListBuilder } from '../../../store/actions';
 import { connect } from 'react-redux';
 import Button from '../../UI/Button/Button';
+import ButtonBar from '../../ButtonBar/ButtonBar';
 
 const Container = styled.div`
   padding: 20px 15px;
@@ -41,24 +42,6 @@ const Value = styled.h5`
   font-family: ${variables.FONT_FAMILY};
   font-weight: 600;
   margin-top: 10px;
-`;
-
-const ButtonBar = styled.div`
-  padding: 20px 0px;
-  display: block;
-  background: transparent;
-  text-align: center;
-
-  @media (min-width: ${variables.MD_BREAK_POINT}px) {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    background: #fefefe;
-    width: ${variables.INFO_BAR_MD_SIZE}px;
-  }
-  @media (min-width: ${variables.LG_BREAK_POINT}px) {
-    width: ${variables.INFO_BAR_LG_SIZE}px;
-  }
 `;
 
 function ItemDetails({ item, showListBuilder }) {

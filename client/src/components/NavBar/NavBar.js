@@ -97,6 +97,16 @@ function NavBar() {
           </Icon>
           <ReactTooltip id="statistics" {...tooltipConfig} />
         </StyledNavLink>
+        <StyledNavLink to="/logout" exact>
+          <Icon
+            className="material-icons-round"
+            data-tip="Logout"
+            data-for="logout"
+          >
+            power_settings_new
+          </Icon>
+          <ReactTooltip id="logout" {...tooltipConfig} />
+        </StyledNavLink>
       </IconsWrapper>
       <CartItem />
     </StyledNavBar>

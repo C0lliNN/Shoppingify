@@ -15,11 +15,10 @@ export default function getAxios() {
   config.headers['Content-Type'] = 'application/json';
 
   const token = store.getState().auth.token;
+
   if (token) {
     config.headers['Authorization'] = `Bearer ${token}`;
   }
-
-  console.log(config);
 
   return axios.create(config);
 }

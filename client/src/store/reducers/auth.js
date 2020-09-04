@@ -1,12 +1,11 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  isAuth: false,
   isLoading: false,
   token: null,
   expiresIn: null,
   error: null,
-  user: null,
+  userName: null,
 };
 
 function authReducer(state = initialState, action) {
@@ -22,7 +21,7 @@ function authReducer(state = initialState, action) {
         ...state,
         token: action.token,
         expiresIn: action.expiresIn,
-        user: action.user,
+        userName: action.name,
         isLoading: false,
       };
     }
@@ -44,7 +43,7 @@ function authReducer(state = initialState, action) {
         ...state,
         token: action.token,
         expiresIn: action.expiresIn,
-        user: action.user,
+        userName: action.name,
         isLoading: false,
       };
     }
@@ -56,12 +55,7 @@ function authReducer(state = initialState, action) {
       };
     }
     case actionTypes.LOGOUT: {
-      return {
-        ...state,
-        token: null,
-        expiresIn: null,
-        user: null,
-      };
+      return initialState;
     }
     default:
       return state;

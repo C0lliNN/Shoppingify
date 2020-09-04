@@ -8,6 +8,8 @@ export const COLORS = {
   gray_3: '#828282',
   black_1: '#000000',
   black_2: '#34333A',
+  burgundy: '#80485b',
+  light_brown: '#fff0de',
 };
 
 export const BUTTON_TYPES = ['raised', 'outlined', 'flat'];
