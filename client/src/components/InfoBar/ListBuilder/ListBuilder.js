@@ -9,10 +9,17 @@ import { connect } from 'react-redux';
 import { showCreateItem } from '../../../store/actions';
 
 const StyledListBuilder = styled.div`
-  height: 100%;
   background-color: ${variables.COLORS.light_brown};
   padding: 30px 15px;
   box-sizing: border-box;
+  position: relative;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @media (min-width: ${variables.MD_BREAK_POINT}px) {
+    height: 100%;
+  }
 `;
 
 const IllustrationContainer = styled.div`

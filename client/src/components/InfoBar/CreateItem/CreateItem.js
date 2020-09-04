@@ -14,6 +14,15 @@ import getAxios from '../../../helpers/axios';
 
 const StyledCreateItem = styled.div`
   padding: 20px 15px;
+  box-sizing: border-box;
+  position: relative;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @media (min-width: ${variables.MD_BREAK_POINT}px) {
+    height: 100%;
+  }
 `;
 
 const Title = styled.h3`
