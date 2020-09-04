@@ -2,7 +2,7 @@ const express = require('express');
 const { List, validateList } = require('../models/list');
 const router = express.Router();
 const validateObjectId = require('../middlewares/validate-object-id');
-const validateListMiddleware = require('../middlewares/validate-list');
+const validateModel = require('../middlewares/validate-model');
 
 router.get('/', async (request, response) => {
   const userId = request.user._id;
@@ -13,9 +13,9 @@ router.get('/', async (request, response) => {
 router.get(
   '/:id',
   validateObjectId,
-  validateListMiddleware,
+  validateModel(List),
   async (request, response) => {
-    response.send(request.list);
+    response.send(request.model);
   }
 );
 
@@ -38,9 +38,9 @@ router.post('/', async (request, response) => {
 router.patch(
   '/:id/complete',
   validateObjectId,
-  validateListMiddleware,
+  validateModel(List),
   async (request, response) => {
-    const list = request.list;
+    const list = request.model;
 
     if (list.status !== 'active') {
       return response
@@ -58,9 +58,9 @@ router.patch(
 router.patch(
   '/:id/cancel',
   validateObjectId,
-  validateListMiddleware,
+  validateModel(List),
   async (request, response) => {
-    const list = request.list;
+    const list = request.model;
 
     if (list.status !== 'active') {
       return response

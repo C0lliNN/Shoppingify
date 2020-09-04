@@ -52,7 +52,6 @@ const Icon = styled.i`
 `;
 
 function ItemsGroup({ category, items, showItemDetails }) {
-  console.log(category);
   return (
     <div style={{ marginTop: '50px' }}>
       <Title>{category.name}</Title>

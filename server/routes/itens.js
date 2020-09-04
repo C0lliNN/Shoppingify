@@ -1,5 +1,7 @@
 const express = require('express');
 const { Item, validateItem } = require('../models/item');
+const validateObjectId = require('../middlewares/validate-object-id');
+const validateModel = require('../middlewares/validate-model');
 const router = express.Router();
 
 router.get('/', async (request, response) => {
@@ -24,5 +26,16 @@ router.post('/', async (request, response) => {
   await item.save();
   response.status(201).send(item);
 });
+
+router.delete(
+  '/:id',
+  validateObjectId,
+  validateModel(Item),
+  async (request, response) => {
+    const item = request.model;
+    await item.deleteOne();
+    response.sendStatus(200);
+  }
+);
 
 module.exports = router;

@@ -41,12 +41,28 @@ function itemsDataReducer(state = initialState, action) {
         });
       }
 
-      console.log(data);
+      return data;
+    }
+    case actionTypes.REMOVE_ITEM: {
+      const data = [...state];
+      const item = action.item;
+
+      const group = data.find(
+        (groupItem) => groupItem.category._id === item.category._id
+      );
+
+      if (group) {
+        const newItems = group.items.filter((p) => p._id !== item._id);
+        group.items = newItems;
+      }
+
+      if (!group.items.length) {
+        return data.filter((p) => p.category._id !== group.category._id);
+      }
 
       return data;
     }
-    case actionTypes.REMOVE_ITEM:
-      return state.filter((item) => item._id !== action.itemId);
+
     default:
       return state;
   }

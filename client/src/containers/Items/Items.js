@@ -30,10 +30,27 @@ const Header = styled.div`
   }
 `;
 
+const Text = styled.p`
+  font-size: ${variables.FONT_SIZE_3};
+  font-family: ${variables.FONT_FAMILY};
+  font-weight: 600;
+  margin-top: 50px;
+`;
+
 function Items({ getItemsData, data }) {
   useEffect(() => {
     getItemsData();
   }, [getItemsData]);
+
+  let content = null;
+
+  if (data.length) {
+    content = data
+      .filter((group) => group.category._id)
+      .map((group) => <ItemsGroup key={group.category._id} {...group} />);
+  } else {
+    content = <Text>No items yet</Text>;
+  }
 
   return (
     <StyledItems>
@@ -41,9 +58,7 @@ function Items({ getItemsData, data }) {
         <Title />
         <SearchBar />
       </Header>
-      {data.map((group) => (
-        <ItemsGroup key={group.category._id} {...group} />
-      ))}
+      {content}
     </StyledItems>
   );
 }

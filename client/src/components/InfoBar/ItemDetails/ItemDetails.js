@@ -3,10 +3,15 @@ import React from 'react';
 import styled from 'styled-components';
 import BackButton from '../../BackButton/BackButton';
 import * as variables from '../../../helpers/style-constants';
-import { showListBuilder } from '../../../store/actions';
+import { showListBuilder, removeItem } from '../../../store/actions';
 import { connect } from 'react-redux';
 import Button from '../../UI/Button/Button';
 import ButtonBar from '../../ButtonBar/ButtonBar';
+import { useState } from 'react';
+import getAxios from '../../../helpers/axios';
+import Modal from '../../UI/Modal/Modal';
+import Spinner from '../../UI/Spinner/Spinner';
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
 const Container = styled.div`
   padding: 20px 15px;
@@ -50,7 +55,39 @@ const InfoGroupWrapper = styled.div`
   }
 `;
 
-function ItemDetails({ item, showListBuilder }) {
+function ItemDetails({ item, showListBuilder, removeItem }) {
+  const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
+
+  async function handleDeleteItem() {
+    const axios = getAxios();
+    setIsLoading(true);
+    try {
+      await axios.delete(`/itens/${item._id}`);
+
+      setShowModal(false);
+      setIsLoading(false);
+      removeItem(item);
+      showListBuilder();
+    } catch (error) {
+      setIsLoading(false);
+      setError(error.message);
+    }
+  }
+
+  function closeModal() {
+    setShowModal(false);
+  }
+
+  let modalContent = null;
+
+  if (isLoading) {
+    modalContent = <Spinner />;
+  } else if (error) {
+    modalContent = <ErrorMessage message={error} />;
+  }
+
   const imgHolder = {};
 
   if (item.image) {
@@ -74,17 +111,42 @@ function ItemDetails({ item, showListBuilder }) {
         <Value>{item.note ? item.note : 'No Notes'}</Value>
       </InfoGroupWrapper>
       <ButtonBar>
-        <Button btnType="flat">delete</Button>
+        <Button btnType="flat" onClick={() => setShowModal(true)}>
+          delete
+        </Button>
         <Button btnType="raised" variant="primary">
           Add to list
         </Button>
       </ButtonBar>
+      {showModal && (
+        <Modal
+          title="Do you really want to remove this item?"
+          onClose={closeModal}
+          okButton={
+            <Button
+              btnType="raised"
+              variant="danger"
+              onClick={handleDeleteItem}
+            >
+              Yes
+            </Button>
+          }
+          cancelButton={
+            <Button btnType="flat" onClick={closeModal}>
+              Cancel
+            </Button>
+          }
+        >
+          {modalContent}
+        </Modal>
+      )}
     </Container>
   );
 }
 
 ItemDetails.propTypes = {
   item: PropTypes.shape({
+    _id: PropTypes.string,
     category: PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired,
@@ -93,10 +155,12 @@ ItemDetails.propTypes = {
     note: PropTypes.string,
   }),
   showListBuilder: PropTypes.func.isRequired,
+  removeItem: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {
   showListBuilder,
+  removeItem,
 };
 
 export default connect(null, mapDispatchToProps)(ItemDetails);

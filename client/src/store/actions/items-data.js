@@ -40,3 +40,10 @@ export function addItem(item) {
     item: item,
   };
 }
+
+export function removeItem(item) {
+  return {
+    type: actionTypes.REMOVE_ITEM,
+    item: item,
+  };
+}
