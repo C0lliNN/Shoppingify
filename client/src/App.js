@@ -1,18 +1,20 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import InfoBar from './components/InfoBar/InfoBar';
 import styled from 'styled-components';
 import * as variables from './helpers/style-constants';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import Items from './containers/Items/Items';
 import { connect } from 'react-redux';
 import Login from './containers/Login/Login';
 import Signup from './containers/Signup/Signup';
 import { checkAuth } from './store/actions';
 import { useEffect } from 'react';
 import Logout from './containers/Logout/Logout';
+import Spinner from './components/UI/Spinner/Spinner';
+
+const Items = React.lazy(() => import('./containers/Items/Items'));
 
 const MainContentWrapper = styled.div`
   margin-left: ${variables.NAVBAR_XS_SIZE}px;
@@ -41,8 +43,11 @@ function App({ isAuth, checkAuth }) {
             <MainContentWrapper>
               <Switch>
                 <Redirect from="/signup" to="/" />
+                <Redirect from="/login" to="/" />
                 <Route path="/logout" component={Logout} />
-                <Route path="/" component={Items} />
+                <Suspense fallback={<Spinner />}>
+                  <Route path="/" component={Items} />
+                </Suspense>
               </Switch>
               <InfoBar />
             </MainContentWrapper>

@@ -51,12 +51,13 @@ const Icon = styled.i`
 `;
 
 function ItemsGroup({ category, items, showItemDetails }) {
+  console.log(category);
   return (
     <div style={{ marginTop: '50px' }}>
-      <Title>{category}</Title>
+      <Title>{category.name}</Title>
       <Items>
         {items.map((item) => (
-          <Card key={item.name}>
+          <Card key={item._id}>
             <Item onClick={() => showItemDetails(item)}>{item.name}</Item>
             <Icon className="material-icons-round">add</Icon>
           </Card>
@@ -67,8 +68,11 @@ function ItemsGroup({ category, items, showItemDetails }) {
 }
 
 ItemsGroup.propTypes = {
-  category: PropTypes.string.isRequired,
-  items: PropTypes.array.isRequired,
+  category: PropTypes.shape({
+    _id: PropTypes.string,
+    name: PropTypes.string,
+  }),
+  items: PropTypes.array,
   showItemDetails: PropTypes.func,
 };
 

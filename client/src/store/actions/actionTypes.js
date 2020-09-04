@@ -19,8 +19,12 @@ export const SAVE_LIST = 'SAVE_LIST';
 export const COMPLETE_LIST = 'COMPLETE_LIST';
 export const CANCEL_LIST = 'CANCEL_LIST';
 
-export const ADD_ITEM = 'ADD_ITEM';
+export const LIST_ADD_ITEM = 'LIST_ADD_ITEM';
 export const INCREMENT_ITEM_QUANTITY = 'INCREMENT_ITEM_QUANTITY';
 export const DECREMENT_ITEM_QUANTITY = 'DECREMENT_ITEM_QUANTITY';
-export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const LIST_REMOVE_ITEM = 'LIST_REMOVE_ITEM';
 export const CHECK_ITEM = 'CHECK_ITEM';
+
+export const GET_ITEMS_DATA = 'GET_ITEMS_DATA';
+export const ADD_ITEM = 'ADD_ITEM';
+export const REMOVE_ITEM = 'REMOVE_ITEM';

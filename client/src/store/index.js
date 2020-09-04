@@ -4,11 +4,13 @@ import infoBarReducer from './reducers/info-bar';
 import thunk from 'redux-thunk';
 import activeListReducer from './reducers/active-list';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import itemsDataReducer from './reducers/items-data';
 
 const rootReducer = combineReducers({
   auth: authReducer,
   infoBar: infoBarReducer,
   activeList: activeListReducer,
+  itemsData: itemsDataReducer,
 });
 
 const composeEnhancers = composeWithDevTools({

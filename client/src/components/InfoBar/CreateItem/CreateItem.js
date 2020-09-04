@@ -11,6 +11,8 @@ import { showListBuilder } from '../../../store/actions';
 import { connect } from 'react-redux';
 import Modal from '../../UI/Modal/Modal';
 import getAxios from '../../../helpers/axios';
+import Spinner from '../../UI/Spinner/Spinner';
+import { addItem } from '../../../store/actions/active-list';
 
 const StyledCreateItem = styled.div`
   padding: 20px 15px;
@@ -47,21 +49,23 @@ function validateInput(data) {
   if (image && !image.match(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i)){
     return "The image must be a valid url"
   }
-  if (!category) {
+  if (!category.name) {
     return 'The category is required';
   }
-  if (category.length < 4 || category.length > 120) {
+  if (category.name.length < 4 || category.name.length > 120) {
     return 'The category must contain between 4 and 120 chars';
   }
 
   return null;
 }
 
-function CreateItem({ categories, showListBuilder }) {
+function CreateItem({ categories, showListBuilder, addItem }) {
   const [name, setName] = useState('');
   const [note, setNote] = useState('');
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState(null);
@@ -69,7 +73,20 @@ function CreateItem({ categories, showListBuilder }) {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const payload = { name, note, image, category };
+    let categoryPayload = categories.find(
+      (categoryItem) => categoryItem.name === category
+    );
+
+    if (!categoryPayload) {
+      categoryPayload = { name: category };
+    }
+
+    const payload = {
+      name,
+      note,
+      image,
+      category: categoryPayload,
+    };
 
     const error = validateInput(payload);
 
@@ -79,9 +96,15 @@ function CreateItem({ categories, showListBuilder }) {
     } else {
       try {
         const response = await getAxios().post('/itens', payload);
-        console.log(response.data);
+
+        addItem(response.data);
+
+        setIsLoading(false);
+        showListBuilder();
       } catch (error) {
-        console.error(error);
+        setShowModal(true);
+        setModalTitle(error.message);
+        setIsLoading(false);
       }
     }
   }
@@ -94,39 +117,45 @@ function CreateItem({ categories, showListBuilder }) {
     <StyledCreateItem>
       <form onSubmit={handleSubmit} action="#" method="post">
         <Title>Add a new item</Title>
-        <FromGroup>
-          <FromGroup.Label>Name</FromGroup.Label>
-          <FromGroup.Input
-            placeholder="Enter a name"
-            name="name"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-          />
-        </FromGroup>
-        <FromGroup>
-          <FromGroup.Label>Note(optional)</FromGroup.Label>
-          <FromGroup.Textarea
-            placeholder="Enter a note"
-            rows="3"
-            name="note"
-            value={note}
-            onChange={(event) => setNote(event.target.value)}
-          ></FromGroup.Textarea>
-        </FromGroup>
-        <FromGroup>
-          <FromGroup.Label>Image(optional)</FromGroup.Label>
-          <FromGroup.Input
-            placeholder="Enter a url"
-            name="image"
-            value={image}
-            onChange={(event) => setImage(event.target.value)}
-          />
-        </FromGroup>
-        <CategoryFormGroup
-          categories={categories}
-          categoryValue={category}
-          setCategoryValue={setCategory}
-        />
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <React.Fragment>
+            <FromGroup>
+              <FromGroup.Label>Name</FromGroup.Label>
+              <FromGroup.Input
+                placeholder="Enter a name"
+                name="name"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
+            </FromGroup>
+            <FromGroup>
+              <FromGroup.Label>Note(optional)</FromGroup.Label>
+              <FromGroup.Textarea
+                placeholder="Enter a note"
+                rows="3"
+                name="note"
+                value={note}
+                onChange={(event) => setNote(event.target.value)}
+              ></FromGroup.Textarea>
+            </FromGroup>
+            <FromGroup>
+              <FromGroup.Label>Image(optional)</FromGroup.Label>
+              <FromGroup.Input
+                placeholder="Enter a url"
+                name="image"
+                value={image}
+                onChange={(event) => setImage(event.target.value)}
+              />
+            </FromGroup>
+            <CategoryFormGroup
+              categories={categories}
+              categoryValue={category}
+              setCategoryValue={setCategory}
+            />
+          </React.Fragment>
+        )}
         <ButtonBar>
           <Button btnType="flat" onClick={showListBuilder}>
             cancel
@@ -154,15 +183,17 @@ function CreateItem({ categories, showListBuilder }) {
 CreateItem.propTypes = {
   categories: PropTypes.array,
   showListBuilder: PropTypes.func,
+  addItem: PropTypes.func,
 };
 
 const mapDispatchToProps = {
   showListBuilder,
+  addItem,
 };
 
 const mapStateToProps = (state) => {
   return {
-    categories: state.activeList.itemsGroup.map((group) => group.category),
+    categories: state.itemsData.map((group) => group.category),
   };
 };
 

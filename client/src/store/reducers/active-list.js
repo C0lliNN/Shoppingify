@@ -22,7 +22,7 @@ function activeListReducer(state = initialState, action) {
         name: action.newName,
       };
     }
-    case actionTypes.ADD_ITEM: {
+    case actionTypes.LIST_ADD_ITEM: {
       return {
         ...state,
         itemsGroup: state.itemsGroup.concat([action.item]),

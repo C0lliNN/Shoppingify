@@ -8,7 +8,7 @@ const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 40;
 const MAX_NOTE_LENGTH = 255;
 const MIN_IMAGE_LENGTH = 4;
-const MAX_IMAGE_LENGTH = 255;
+const MAX_IMAGE_LENGTH = 1024;
 
 const Item = mongoose.model(
   'itens',
@@ -49,7 +49,7 @@ const Item = mongoose.model(
 function validateItem(data) {
   const validator = Joi.object({
     name: Joi.string().required().min(MIN_NAME_LENGTH).max(MAX_NAME_LENGTH),
-    note: Joi.string().max(MAX_NOTE_LENGTH),
+    note: Joi.string().optional().allow('').max(MAX_NOTE_LENGTH),
     category: Joi.object({
       _id: Joi.objectId(),
       name: Joi.string()
@@ -57,6 +57,11 @@ function validateItem(data) {
         .min(MIN_CATEGORY_LENGTH)
         .max(MAX_CATEGORY_LENGTH),
     }).required(),
+    image: Joi.string()
+      .optional()
+      .allow('')
+      .min(MIN_IMAGE_LENGTH)
+      .max(MAX_IMAGE_LENGTH),
   });
 
   return validator.validate(data);

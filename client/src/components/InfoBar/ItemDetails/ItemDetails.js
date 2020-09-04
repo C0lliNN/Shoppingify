@@ -44,12 +44,19 @@ const Value = styled.h5`
   margin-top: 10px;
 `;
 
+const InfoGroupWrapper = styled.div`
+  @media (min-width: ${variables.MD_BREAK_POINT}px) {
+    margin-bottom: 100px;
+  }
+`;
+
 function ItemDetails({ item, showListBuilder }) {
   const imgHolder = {};
 
   if (item.image) {
     imgHolder.backgroundImage = `url('${item.image}')`;
     imgHolder.backgroundSize = 'cover';
+    imgHolder.backgroundPosition = 'center';
   }
 
   imgHolder.backgroundColor = variables.COLORS.gray_2;
@@ -62,8 +69,10 @@ function ItemDetails({ item, showListBuilder }) {
       <Value style={{ fontSize: variables.FONT_SIZE_4 }}>{item.name}</Value>
       <Title>category</Title>
       <Value>{item.category.name}</Value>
-      <Title>note</Title>
-      <Value>{item.note ? item.note : 'No Notes'}</Value>
+      <InfoGroupWrapper>
+        <Title>note</Title>
+        <Value>{item.note ? item.note : 'No Notes'}</Value>
+      </InfoGroupWrapper>
       <ButtonBar>
         <Button btnType="flat">delete</Button>
         <Button btnType="raised" variant="primary">

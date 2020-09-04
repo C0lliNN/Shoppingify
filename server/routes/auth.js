@@ -28,7 +28,11 @@ router.post('/', async (request, response) => {
 
   response
     .status(200)
-    .send({ token: user.generateToken(), expiresIn: TOKEN_EXPIRATION_TIME });
+    .send({
+      token: user.generateToken(),
+      expiresIn: TOKEN_EXPIRATION_TIME,
+      name: user.name,
+    });
 });
 
 module.exports = router;

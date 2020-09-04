@@ -1,11 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import Title from '../../components/Title/Title';
 import SearchBar from '../../components/UI/SearchBar/SearchBar';
-import { useState } from 'react';
 import { useEffect } from 'react';
 import ItemsGroup from '../../components/ItemsGroup/ItemsGroup';
 import * as variables from '../../helpers/style-constants';
+import { getItemsData } from '../../store/actions';
+import { connect } from 'react-redux';
 
 const StyledItems = styled.div`
   padding: 20px;
@@ -28,49 +30,10 @@ const Header = styled.div`
   }
 `;
 
-function Items() {
-  const [data, setData] = useState([]);
-
+function Items({ getItemsData, data }) {
   useEffect(() => {
-    setTimeout(() => {
-      setData([
-        {
-          category: 'Fruits',
-          items: [
-            {
-              name: 'Apple',
-              image: 'https://picsum.photos/400',
-              note: 'Note',
-              category: { name: 'Fruit' },
-            },
-            {
-              name: 'Banana',
-              image: 'https://picsum.photos/300/400',
-              note:
-                'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim consectetur ratione inventore distinctio rerum eos sapiente nostrum impedit voluptate nulla nesciunt amet dignissimos asperiores laudantium hic porro nihil suscipit, facilis consequatur corporis repudiandae officia beatae! Voluptate laborum et harum commodi mollitia eius. Aliquam voluptatum laboriosam ipsam velit quas cum excepturi, magnam maiores, perferendis earum quam nihil perspiciatis odit, saepe ea. Repellendus magni eum ipsum magnam, quod eligendi quis recusandae corrupti temporibus labore, rerum cupiditate facilis porro atque repellat doloribus aliquid totam minus illum. Suscipit error amet reiciendis, quod eum repudiandae quaerat fugiat voluptatum corporis, vitae quisquam, vel assumenda accusamus eius!',
-              category: { name: 'Fruit' },
-            },
-            {
-              name: 'Abacate',
-              category: { name: 'Fruit' },
-            },
-            { name: 'Orange' },
-            { name: 'really Big Name' },
-          ],
-        },
-        {
-          category: 'Meat and Fish',
-          items: [
-            { name: 'Beef' },
-            { name: 'Chicken' },
-            { name: 'Perk' },
-            { name: 'Fish' },
-            { name: 'Salmon' },
-          ],
-        },
-      ]);
-    }, 1500);
-  }, []);
+    getItemsData();
+  }, [getItemsData]);
 
   return (
     <StyledItems>
@@ -79,10 +42,25 @@ function Items() {
         <SearchBar />
       </Header>
       {data.map((group) => (
-        <ItemsGroup key={group.category} {...group} />
+        <ItemsGroup key={group.category._id} {...group} />
       ))}
     </StyledItems>
   );
 }
 
-export default Items;
+Items.propTypes = {
+  data: PropTypes.array,
+  getItemsData: PropTypes.func,
+};
+
+const mapDispatchToProps = {
+  getItemsData,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    data: state.itemsData,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Items);

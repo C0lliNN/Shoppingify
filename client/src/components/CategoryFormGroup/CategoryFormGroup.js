@@ -2,21 +2,16 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import FromGroup from '../UI/FormGroup/FormGroup';
 import styled from 'styled-components';
-import {
-  COLORS,
-  BORDER_RADIUS_1,
-  FONT_SIZE_3,
-  FONT_FAMILY,
-} from '../../helpers/style-constants';
+import * as variables from '../../helpers/style-constants';
 
 const ListView = styled.ul`
-  border: 1px solid ${COLORS.gray_1};
+  border: 1px solid ${variables.COLORS.gray_1};
   box-sizing: border-box;
   padding: 12px;
   list-style: none;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
-  border-top-left-radius: ${BORDER_RADIUS_1};
-  border-bottom-left-radius: ${BORDER_RADIUS_1};
+  border-top-left-radius: ${variables.BORDER_RADIUS_1};
+  border-bottom-left-radius: ${variables.BORDER_RADIUS_1};
   height: 145px;
   overflow-y: auto;
 
@@ -25,35 +20,39 @@ const ListView = styled.ul`
   }
 
   &::-webkit-scrollbar-track {
-    background: ${COLORS.white};
-    border-top-right-radius: ${BORDER_RADIUS_1};
-    border-bottom-right-radius: ${BORDER_RADIUS_1};
+    background: ${variables.COLORS.white};
+    border-top-right-radius: ${variables.BORDER_RADIUS_1};
+    border-bottom-right-radius: ${variables.BORDER_RADIUS_1};
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${COLORS.gray_1};
-    border-radius: ${BORDER_RADIUS_1};
+    background: ${variables.COLORS.gray_1};
+    border-radius: ${variables.BORDER_RADIUS_1};
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: ${COLORS.gray_2};
+    background: ${variables.COLORS.gray_2};
+  }
+
+  @media (min-width: ${variables.MD_BREAK_POINT}px) {
+    margin-bottom: 100px;
   }
 `;
 
 const ListItem = styled.li`
-  font-size: ${FONT_SIZE_3};
+  font-size: ${variables.FONT_SIZE_3};
   line-height: 22px;
   padding: 10px;
   box-sizing: border-box;
-  border-radius: ${BORDER_RADIUS_1};
+  border-radius: ${variables.BORDER_RADIUS_1};
   font-weight: 500;
-  font-family: ${FONT_FAMILY};
-  color: ${COLORS.gray_3};
+  font-family: ${variables.FONT_FAMILY};
+  color: ${variables.COLORS.gray_3};
   cursor: pointer;
   &:hover,
   &:active {
     background-color: #f2f2f2;
-    color: ${COLORS.black_1};
+    color: ${variables.COLORS.black_1};
   }
 `;
 
@@ -80,7 +79,7 @@ function CategoryFormGroup({ categories, categoryValue, setCategoryValue }) {
     )
     .map((category) => (
       <ListItem
-        key={category.id}
+        key={category._id}
         onClick={() => handleListItemClick(category.name)}
       >
         {category.name}
