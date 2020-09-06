@@ -95,7 +95,7 @@ function CreateItem({ categories, showListBuilder, addItem }) {
       setShowModal(true);
     } else {
       try {
-        const response = await getAxios().post('/itens', payload);
+        const response = await getAxios().post('/items', payload);
 
         addItem(response.data);
 
@@ -157,7 +157,7 @@ function CreateItem({ categories, showListBuilder, addItem }) {
           </React.Fragment>
         )}
         <ButtonBar>
-          <Button btnType="flat" onClick={showListBuilder}>
+          <Button btnType="flat" onClick={showListBuilder} type="button">
             cancel
           </Button>
           <Button btnType="raised" variant="primary" type="submit">

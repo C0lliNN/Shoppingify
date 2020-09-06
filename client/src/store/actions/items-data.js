@@ -6,7 +6,7 @@ export function getItemsData() {
 
   return (dispatch) => {
     axios
-      .get('/itens')
+      .get('/items')
       .then((response) => {
         let lastItem = null;
 

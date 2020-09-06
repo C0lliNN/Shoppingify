@@ -64,7 +64,7 @@ function ItemDetails({ item, showListBuilder, removeItem }) {
     const axios = getAxios();
     setIsLoading(true);
     try {
-      await axios.delete(`/itens/${item._id}`);
+      await axios.delete(`/items/${item._id}`);
 
       setShowModal(false);
       setIsLoading(false);

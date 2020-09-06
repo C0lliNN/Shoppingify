@@ -32,10 +32,10 @@ const Card = styled.div`
   justify-content: space-between;
   width: 80px;
   margin-bottom: 15px;
-  margin-left: 5px;
+  margin-right: 5px;
   @media (min-width: ${variables.LG_BREAK_POINT}px) {
     width: 120px;
-    margin-left: 15px;
+    margin-right: 15px;
     margin-bottom: 30px;
     font-size: ${variables.FONT_SIZE_3};
   }
