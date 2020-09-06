@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import BackButton from './BackButton';
+import 'jest-styled-components';
 
 describe('<BackButton/>', () => {
   it('should render correctly', () => {

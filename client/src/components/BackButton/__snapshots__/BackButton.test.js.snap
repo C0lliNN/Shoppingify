@@ -1,12 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BackButton/> should render correctly 1`] = `
+.c0 {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  color: #F9A109;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  color: #F9A109;
+  font-size: 18px;
+}
+
 <div>
   <button
-    class="sc-AxjAm feAvEu"
+    class="c0"
   >
     <i
-      class="sc-AxirZ geITFa material-icons-round"
+      class="c1 material-icons-round"
     >
       keyboard_backspace
     </i>

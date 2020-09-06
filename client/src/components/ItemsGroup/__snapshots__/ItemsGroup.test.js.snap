@@ -1,56 +1,122 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ItemsGroup/> should render correctly 1`] = `
+.c0 {
+  font-family: Quicksand;
+  font-size: 18px;
+  color: #000000;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0px 2px 12px rgba(0,0,0,0.05);
+  padding: 8px 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 80px;
+  margin-bottom: 15px;
+  margin-right: 5px;
+}
+
+.c3 {
+  cursor: pointer;
+}
+
+.c4 {
+  font-size: 18px;
+  color: #c1c1c4;
+  cursor: pointer;
+}
+
+@media (min-width:1200px) {
+  .c2 {
+    width: 120px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+    font-size: 18px;
+  }
+}
+
 <div>
   <div
     style="margin-top: 50px;"
   >
     <h3
-      class="sc-AxjAm iPmHoR"
+      class="c0"
     >
       Fruit
     </h3>
     <div
-      class="sc-AxirZ kZXQEr"
+      class="c1"
     >
       <div
-        class="sc-AxiKw jiIYom"
+        class="c2"
       >
         <span
-          class="sc-AxhCb dnXiiO"
+          class="c3"
         >
           Apple
         </span>
         <i
-          class="sc-AxhUy iXJonX material-icons-round"
+          class="c4 material-icons-round"
         >
           add
         </i>
       </div>
       <div
-        class="sc-AxiKw jiIYom"
+        class="c2"
       >
         <span
-          class="sc-AxhCb dnXiiO"
+          class="c3"
         >
           Banana
         </span>
         <i
-          class="sc-AxhUy iXJonX material-icons-round"
+          class="c4 material-icons-round"
         >
           add
         </i>
       </div>
       <div
-        class="sc-AxiKw jiIYom"
+        class="c2"
       >
         <span
-          class="sc-AxhCb dnXiiO"
+          class="c3"
         >
           Orange
         </span>
         <i
-          class="sc-AxhUy iXJonX material-icons-round"
+          class="c4 material-icons-round"
         >
           add
         </i>

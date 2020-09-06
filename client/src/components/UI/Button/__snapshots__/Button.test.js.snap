@@ -1,9 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Button/> should render correctly when the type is flat 1`] = `
+.c0 {
+  background-color: transparent;
+  border-radius: 12px;
+  color: #34333A;
+  border-color: transparent;
+  padding: 5px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  color: #BDBDBD   border-color:#BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm enabNO"
+    class="c0"
   >
     Button
   </button>
@@ -11,9 +31,30 @@ exports[`<Button/> should render correctly when the type is flat 1`] = `
 `;
 
 exports[`<Button/> should render correctly when the type is outlined and the variant is valid 1`] = `
+.c0 {
+  background-color: transparent;
+  border-radius: 24px;
+  border-color: #F9A109;
+  color: #F9A109;
+  padding: 6px 15px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm jPPpTr"
+    class="c0"
   >
     Button
   </button>
@@ -21,9 +62,30 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 `;
 
 exports[`<Button/> should render correctly when the type is outlined and the variant is valid 2`] = `
+.c0 {
+  background-color: transparent;
+  border-radius: 24px;
+  border-color: #56CCF2;
+  color: #56CCF2;
+  padding: 6px 15px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm cRGcaf"
+    class="c0"
   >
     Button
   </button>
@@ -31,9 +93,30 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 `;
 
 exports[`<Button/> should render correctly when the type is outlined and the variant is valid 3`] = `
+.c0 {
+  background-color: transparent;
+  border-radius: 24px;
+  border-color: #EB5757;
+  color: #EB5757;
+  padding: 6px 15px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm gWHsMn"
+    class="c0"
   >
     Button
   </button>
@@ -41,9 +124,30 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 `;
 
 exports[`<Button/> should render correctly when the type is outlined and the variant is valid 4`] = `
+.c0 {
+  background-color: transparent;
+  border-radius: 24px;
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  padding: 6px 15px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm fsAewT"
+    class="c0"
   >
     Button
   </button>
@@ -51,9 +155,30 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 `;
 
 exports[`<Button/> should render correctly when the type is outlined and the variant is valid 5`] = `
+.c0 {
+  background-color: transparent;
+  border-radius: 24px;
+  border-color: #E0E0E0;
+  color: #E0E0E0;
+  padding: 6px 15px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm lnxQaf"
+    class="c0"
   >
     Button
   </button>
@@ -61,9 +186,30 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 `;
 
 exports[`<Button/> should render correctly when the type is outlined and the variant is valid 6`] = `
+.c0 {
+  background-color: transparent;
+  border-radius: 24px;
+  border-color: #BDBDBD;
+  color: #BDBDBD;
+  padding: 6px 15px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm idfFJz"
+    class="c0"
   >
     Button
   </button>
@@ -71,9 +217,30 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 `;
 
 exports[`<Button/> should render correctly when the type is outlined and the variant is valid 7`] = `
+.c0 {
+  background-color: transparent;
+  border-radius: 24px;
+  border-color: #828282;
+  color: #828282;
+  padding: 6px 15px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm cfXcMn"
+    class="c0"
   >
     Button
   </button>
@@ -81,9 +248,30 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 `;
 
 exports[`<Button/> should render correctly when the type is outlined and the variant is valid 8`] = `
+.c0 {
+  background-color: transparent;
+  border-radius: 24px;
+  border-color: #000000;
+  color: #000000;
+  padding: 6px 15px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm ecyNiv"
+    class="c0"
   >
     Button
   </button>
@@ -91,9 +279,30 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 `;
 
 exports[`<Button/> should render correctly when the type is outlined and the variant is valid 9`] = `
+.c0 {
+  background-color: transparent;
+  border-radius: 24px;
+  border-color: #34333A;
+  color: #34333A;
+  padding: 6px 15px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm jsSYbr"
+    class="c0"
   >
     Button
   </button>
@@ -101,9 +310,30 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 `;
 
 exports[`<Button/> should render correctly when the type is outlined and the variant is valid 10`] = `
+.c0 {
+  background-color: transparent;
+  border-radius: 24px;
+  border-color: #80485b;
+  color: #80485b;
+  padding: 6px 15px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm gGtJpP"
+    class="c0"
   >
     Button
   </button>
@@ -111,9 +341,30 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 `;
 
 exports[`<Button/> should render correctly when the type is outlined and the variant is valid 11`] = `
+.c0 {
+  background-color: transparent;
+  border-radius: 24px;
+  border-color: #fff0de;
+  color: #fff0de;
+  padding: 6px 15px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm hlLSXX"
+    class="c0"
   >
     Button
   </button>
@@ -121,9 +372,30 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 `;
 
 exports[`<Button/> should render correctly when the type is raised and the variant is valid 1`] = `
+.c0 {
+  background-color: #F9A109;
+  border-color: #F9A109;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm ipahIg"
+    class="c0"
   >
     Button
   </button>
@@ -131,9 +403,30 @@ exports[`<Button/> should render correctly when the type is raised and the varia
 `;
 
 exports[`<Button/> should render correctly when the type is raised and the variant is valid 2`] = `
+.c0 {
+  background-color: #56CCF2;
+  border-color: #56CCF2;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm gCpmSU"
+    class="c0"
   >
     Button
   </button>
@@ -141,9 +434,30 @@ exports[`<Button/> should render correctly when the type is raised and the varia
 `;
 
 exports[`<Button/> should render correctly when the type is raised and the variant is valid 3`] = `
+.c0 {
+  background-color: #EB5757;
+  border-color: #EB5757;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm bnnTqo"
+    class="c0"
   >
     Button
   </button>
@@ -151,9 +465,30 @@ exports[`<Button/> should render correctly when the type is raised and the varia
 `;
 
 exports[`<Button/> should render correctly when the type is raised and the variant is valid 4`] = `
+.c0 {
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm fmKmmU"
+    class="c0"
   >
     Button
   </button>
@@ -161,9 +496,30 @@ exports[`<Button/> should render correctly when the type is raised and the varia
 `;
 
 exports[`<Button/> should render correctly when the type is raised and the variant is valid 5`] = `
+.c0 {
+  background-color: #E0E0E0;
+  border-color: #E0E0E0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm eUnVnk"
+    class="c0"
   >
     Button
   </button>
@@ -171,9 +527,30 @@ exports[`<Button/> should render correctly when the type is raised and the varia
 `;
 
 exports[`<Button/> should render correctly when the type is raised and the variant is valid 6`] = `
+.c0 {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm bfMzJY"
+    class="c0"
   >
     Button
   </button>
@@ -181,9 +558,30 @@ exports[`<Button/> should render correctly when the type is raised and the varia
 `;
 
 exports[`<Button/> should render correctly when the type is raised and the variant is valid 7`] = `
+.c0 {
+  background-color: #828282;
+  border-color: #828282;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm gQrRs"
+    class="c0"
   >
     Button
   </button>
@@ -191,9 +589,30 @@ exports[`<Button/> should render correctly when the type is raised and the varia
 `;
 
 exports[`<Button/> should render correctly when the type is raised and the variant is valid 8`] = `
+.c0 {
+  background-color: #000000;
+  border-color: #000000;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm cByrnQ"
+    class="c0"
   >
     Button
   </button>
@@ -201,9 +620,30 @@ exports[`<Button/> should render correctly when the type is raised and the varia
 `;
 
 exports[`<Button/> should render correctly when the type is raised and the variant is valid 9`] = `
+.c0 {
+  background-color: #34333A;
+  border-color: #34333A;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm fmeTgw"
+    class="c0"
   >
     Button
   </button>
@@ -211,9 +651,30 @@ exports[`<Button/> should render correctly when the type is raised and the varia
 `;
 
 exports[`<Button/> should render correctly when the type is raised and the variant is valid 10`] = `
+.c0 {
+  background-color: #80485b;
+  border-color: #80485b;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm epDVWU"
+    class="c0"
   >
     Button
   </button>
@@ -221,9 +682,30 @@ exports[`<Button/> should render correctly when the type is raised and the varia
 `;
 
 exports[`<Button/> should render correctly when the type is raised and the variant is valid 11`] = `
+.c0 {
+  background-color: #fff0de;
+  border-color: #fff0de;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c0:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
 <div>
   <button
-    class="sc-AxjAm brRZRY"
+    class="c0"
   >
     Button
   </button>

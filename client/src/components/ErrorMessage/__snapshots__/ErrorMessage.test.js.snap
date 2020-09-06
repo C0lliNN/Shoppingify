@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ErrorMessage/> should render correctly 1`] = `
+.c0 {
+  padding: 15px;
+}
+
+.c1 {
+  font-family: Quicksand;
+  font-size: 18px;
+  font-weight: 600;
+  color: #EB5757;
+  margin-bottom: 8px;
+}
+
+.c2 {
+  font-family: Quicksand;
+  font-size: 14px;
+  font-weight: 600;
+  color: #EB5757;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <h4
+      class="c1"
+    >
+      Something Went Wrong!
+    </h4>
+    <p
+      class="c2"
+    >
+      Invalid Email
+    </p>
+  </div>
+</div>
+`;

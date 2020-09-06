@@ -5,8 +5,6 @@ const TOKEN = 'TOKEN';
 const EXPIRATION_TIME = 'EXPIRATION_TIME';
 const USER_NAME = 'USER_NAME';
 
-const axios = getAxios();
-
 function loginStart() {
   return {
     type: actionTypes.LOGIN_START,
@@ -33,6 +31,7 @@ export function loginHandler(email, password) {
   return (dispatch) => {
     dispatch(loginStart());
 
+    const axios = getAxios();
     axios
       .post('/auth', { email: email, password: password })
       .then((response) => {
@@ -70,6 +69,7 @@ export function signupHandler(payload) {
   return (dispatch) => {
     dispatch(signupStart());
 
+    const axios = getAxios();
     axios
       .post('/users', payload)
       .then((response) => {

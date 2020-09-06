@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Title from './Title';
 import getByTextWithMarkup from '../../helpers/withMarkup';
+import 'jest-styled-components';
 
 describe('<Title/>', () => {
   it('should render correctly', () => {

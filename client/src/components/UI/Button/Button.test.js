@@ -2,6 +2,7 @@ import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
 import Button from './Button';
 import { COLORS } from '../../../helpers/style-constants';
+import 'jest-styled-components';
 
 describe('<Button/>', () => {
   let errorMessage = null;

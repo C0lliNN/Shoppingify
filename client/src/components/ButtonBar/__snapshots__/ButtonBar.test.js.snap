@@ -1,12 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ButtonBar/> should render correctly 1`] = `
+.c0 {
+  padding: 20px 0px;
+  display: block;
+  background: transparent;
+  text-align: center;
+}
+
+.c1 {
+  background-color: #F9A109;
+  border-color: #F9A109;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c1:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
+@media (min-width:768px) {
+  .c0 {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: #fefefe;
+    width: 250px;
+  }
+}
+
+@media (min-width:1200px) {
+  .c0 {
+    width: 370px;
+  }
+}
+
 <div>
   <div
-    class="sc-AxjAm jqnyKw"
+    class="c0"
   >
     <button
-      class="sc-AxirZ cMsEQX"
+      class="c1"
     >
       OK
     </button>

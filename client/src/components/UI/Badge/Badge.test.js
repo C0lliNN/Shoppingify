@@ -2,6 +2,7 @@ import React from 'react';
 import Badge from './Badge';
 import { render, cleanup } from '@testing-library/react';
 import { COLORS } from '../../../helpers/style-constants';
+import 'jest-styled-components';
 
 describe('<Badge/>', () => {
   let errorMessage = null;

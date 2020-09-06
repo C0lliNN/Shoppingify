@@ -1,0 +1,247 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login/> should render correctly 1`] = `
+.c0 {
+  width: 80%;
+  max-width: 700px;
+  margin: 20px auto 0px auto;
+}
+
+.c1 {
+  background-color: #fff0de;
+  border-radius: 24px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 20px 0px #0000001c;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c3 {
+  font-weight: 600;
+  font-family: Quicksand;
+  font-size: 24px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.c6 {
+  display: block;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 12px;
+  border: 2px solid #BDBDBD;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: 500;
+  color: #34333A;
+}
+
+.c6:focus {
+  border-color: #F9A109;
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
+}
+
+.c6:focus +label {
+  color: #F9A109;
+}
+
+.c6::-webkit-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c6::-moz-placeholder {
+  color: #BDBDBD;
+}
+
+.c6:-ms-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c6::placeholder {
+  color: #BDBDBD;
+}
+
+.c7 {
+  display: block;
+  width: 100%;
+  color: #34333A;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.c9 {
+  background-color: transparent;
+  border-radius: 12px;
+  color: #34333A;
+  border-color: transparent;
+  padding: 5px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c9:disabled {
+  color: #BDBDBD   border-color:#BDBDBD;
+  cursor: default;
+}
+
+.c10 {
+  background-color: #56CCF2;
+  border-color: #56CCF2;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c10:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
+.c4 {
+  margin-top: 50px;
+}
+
+.c8 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+@media (min-width:768px) {
+  .c0 {
+    margin: 100px auto 0px auto;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+      >
+        <img
+          alt="Shoppingify"
+          src="logo.svg"
+        />
+        <h3
+          class="c3"
+        >
+          Login
+        </h3>
+        <img
+          alt="Shoppingify"
+          src="logo.svg"
+        />
+      </div>
+      <form
+        action="#"
+        class="c4"
+        method="post"
+      >
+        <div
+          class="c5"
+        >
+          <input
+            class="c6"
+            id="email"
+            placeholder="Enter your email"
+            value=""
+          />
+          <label
+            class="c7"
+            for="email"
+          >
+            Email
+          </label>
+        </div>
+        <div
+          class="c5"
+        >
+          <input
+            class="c6"
+            id="password"
+            placeholder="Enter your password"
+            type="password"
+            value=""
+          />
+          <label
+            class="c7"
+            for="password"
+          >
+            Password
+          </label>
+        </div>
+        <div
+          class="c8"
+        >
+          <button
+            class="c9"
+            type="button"
+          >
+            Signup
+          </button>
+          <button
+            class="c10"
+            type="submit"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;

@@ -1,9 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Title/> should render correctly 1`] = `
+.c0 {
+  font-family: Quicksand;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@media (min-width:1200px) {
+  .c0 {
+    font-size: 24px;
+  }
+}
+
 <div>
   <h1
-    class="sc-AxjAm GKfhy"
+    class="c0"
   >
     <span
       style="color: rgb(249, 161, 9); font-weight: bold;"

@@ -1,16 +1,86 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<FormGroup/> should render a input correctly if a label is provided 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.c1 {
+  display: block;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 12px;
+  border: 2px solid #BDBDBD;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: 500;
+  color: #34333A;
+}
+
+.c1:focus {
+  border-color: #F9A109;
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
+}
+
+.c1:focus +label {
+  color: #F9A109;
+}
+
+.c1::-webkit-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::-moz-placeholder {
+  color: #BDBDBD;
+}
+
+.c1:-ms-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::placeholder {
+  color: #BDBDBD;
+}
+
+.c2 {
+  display: block;
+  width: 100%;
+  color: #34333A;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
 <div>
   <div
-    class="sc-AxjAm ediThQ"
+    class="c0"
   >
     <input
-      class="sc-AxirZ kKTTBK"
+      class="c1"
       placeholder="test"
     />
     <label
-      class="sc-AxhUy XuytY"
+      class="c2"
     >
       Test
     </label>
@@ -19,12 +89,73 @@ exports[`<FormGroup/> should render a input correctly if a label is provided 1`]
 `;
 
 exports[`<FormGroup/> should render a input correctly if no label is provided 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.c1 {
+  display: block;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 12px;
+  border: 2px solid #BDBDBD;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: 500;
+  color: #34333A;
+}
+
+.c1:focus {
+  border-color: #F9A109;
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
+}
+
+.c1:focus +label {
+  color: #F9A109;
+}
+
+.c1::-webkit-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::-moz-placeholder {
+  color: #BDBDBD;
+}
+
+.c1:-ms-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::placeholder {
+  color: #BDBDBD;
+}
+
 <div>
   <div
-    class="sc-AxjAm ediThQ"
+    class="c0"
   >
     <input
-      class="sc-AxirZ kKTTBK"
+      class="c1"
       placeholder="test"
     />
   </div>
@@ -32,12 +163,82 @@ exports[`<FormGroup/> should render a input correctly if no label is provided 1`
 `;
 
 exports[`<FormGroup/> should render a select correctly if a label is provided 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.c1 {
+  display: block;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 12px;
+  border: 2px solid #BDBDBD;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: 500;
+  color: #34333A;
+}
+
+.c1:focus {
+  border-color: #F9A109;
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
+}
+
+.c1:focus +label {
+  color: #F9A109;
+}
+
+.c1::-webkit-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::-moz-placeholder {
+  color: #BDBDBD;
+}
+
+.c1:-ms-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::placeholder {
+  color: #BDBDBD;
+}
+
+.c2 {
+  display: block;
+  width: 100%;
+  color: #34333A;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
 <div>
   <div
-    class="sc-AxjAm ediThQ"
+    class="c0"
   >
     <select
-      class="sc-AxhCb SaXZS"
+      class="c1"
     >
       <option
         value="1"
@@ -46,7 +247,7 @@ exports[`<FormGroup/> should render a select correctly if a label is provided 1`
       </option>
     </select>
     <label
-      class="sc-AxhUy XuytY"
+      class="c2"
     >
       Test
     </label>
@@ -55,12 +256,73 @@ exports[`<FormGroup/> should render a select correctly if a label is provided 1`
 `;
 
 exports[`<FormGroup/> should render a select correctly if no label is provided 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.c1 {
+  display: block;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 12px;
+  border: 2px solid #BDBDBD;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: 500;
+  color: #34333A;
+}
+
+.c1:focus {
+  border-color: #F9A109;
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
+}
+
+.c1:focus +label {
+  color: #F9A109;
+}
+
+.c1::-webkit-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::-moz-placeholder {
+  color: #BDBDBD;
+}
+
+.c1:-ms-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::placeholder {
+  color: #BDBDBD;
+}
+
 <div>
   <div
-    class="sc-AxjAm ediThQ"
+    class="c0"
   >
     <select
-      class="sc-AxhCb SaXZS"
+      class="c1"
     >
       <option
         value="1"
@@ -73,16 +335,86 @@ exports[`<FormGroup/> should render a select correctly if no label is provided 1
 `;
 
 exports[`<FormGroup/> should render a textarea correctly if a label is provided 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.c1 {
+  display: block;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 12px;
+  border: 2px solid #BDBDBD;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: 500;
+  color: #34333A;
+}
+
+.c1:focus {
+  border-color: #F9A109;
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
+}
+
+.c1:focus +label {
+  color: #F9A109;
+}
+
+.c1::-webkit-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::-moz-placeholder {
+  color: #BDBDBD;
+}
+
+.c1:-ms-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::placeholder {
+  color: #BDBDBD;
+}
+
+.c2 {
+  display: block;
+  width: 100%;
+  color: #34333A;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
 <div>
   <div
-    class="sc-AxjAm ediThQ"
+    class="c0"
   >
     <textarea
-      class="sc-AxiKw jdYDTq"
+      class="c1"
       placeholder="test"
     />
     <label
-      class="sc-AxhUy XuytY"
+      class="c2"
     >
       Test
     </label>
@@ -91,12 +423,73 @@ exports[`<FormGroup/> should render a textarea correctly if a label is provided 
 `;
 
 exports[`<FormGroup/> should render a textarea correctly if no label is provided 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.c1 {
+  display: block;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 12px;
+  border: 2px solid #BDBDBD;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: 500;
+  color: #34333A;
+}
+
+.c1:focus {
+  border-color: #F9A109;
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
+}
+
+.c1:focus +label {
+  color: #F9A109;
+}
+
+.c1::-webkit-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::-moz-placeholder {
+  color: #BDBDBD;
+}
+
+.c1:-ms-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::placeholder {
+  color: #BDBDBD;
+}
+
 <div>
   <div
-    class="sc-AxjAm ediThQ"
+    class="c0"
   >
     <textarea
-      class="sc-AxiKw jdYDTq"
+      class="c1"
       placeholder="test"
     />
   </div>

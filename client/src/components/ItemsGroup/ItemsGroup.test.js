@@ -1,15 +1,19 @@
 import React from 'react';
 import { render } from '../../tests/utilities';
 import ItemsGroup from './ItemsGroup';
-let errorMessage = null;
 let category = null;
 let items = null;
+import 'jest-styled-components';
 
 beforeEach(() => {
-  console.error = jest.fn((message) => (errorMessage = message));
+  category = { name: 'Fruit' };
+  items = [
+    { _id: '1', name: 'Apple' },
+    { _id: '2', name: 'Banana' },
+    { _id: '3', name: 'Orange' },
+  ];
 
-  category = 'Fruit';
-  items = [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Orange' }];
+  console.error = jest.fn();
 });
 
 function exec() {
@@ -17,13 +21,10 @@ function exec() {
 }
 
 describe('<ItemsGroup/>', () => {
-  it('should console.error if a category is not defined', () => {
+  it('should throw an error if a category is not defined', () => {
     category = undefined;
 
-    exec();
-
-    expect(console.error).toHaveBeenCalled();
-    expect(errorMessage).toMatch(/category/i);
+    expect(() => exec()).toThrowError();
   });
   it('should console.error if items is not an array', () => {
     items = 12;
@@ -38,7 +39,7 @@ describe('<ItemsGroup/>', () => {
   it('should display the category', () => {
     const { getByText } = exec();
 
-    expect(getByText(category)).not.toBeNull();
+    expect(getByText(category.name)).not.toBeNull();
   });
   it('should display the items', () => {
     const { getByText } = exec();

@@ -46,6 +46,7 @@
     "eslint": "^6.6.0",
     "eslint-plugin-jest": "^23.20.0",
     "eslint-plugin-react": "^7.20.6",
+    "jest-styled-components": "^7.0.3",
     "prettier": "^2.0.5",
     "react-test-renderer": "^16.13.1"
   },

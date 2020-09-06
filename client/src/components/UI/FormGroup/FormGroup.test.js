@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import FormGroup from './FormGroup';
+import 'jest-styled-components';
 
 describe('<FormGroup/>', () => {
   let errorMessage = null;

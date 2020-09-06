@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import CategoryFormGroup from './CategoryFormGroup';
+import 'jest-styled-components';
 
 let categories = null;
 let categoryValue = null;

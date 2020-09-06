@@ -1,38 +1,163 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CategoryFormGroup/> should render correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.c1 {
+  display: block;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 12px;
+  border: 2px solid #BDBDBD;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: 500;
+  color: #34333A;
+}
+
+.c1:focus {
+  border-color: #F9A109;
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
+}
+
+.c1:focus +label {
+  color: #F9A109;
+}
+
+.c1::-webkit-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::-moz-placeholder {
+  color: #BDBDBD;
+}
+
+.c1:-ms-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::placeholder {
+  color: #BDBDBD;
+}
+
+.c2 {
+  display: block;
+  width: 100%;
+  color: #34333A;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.c3 {
+  border: 1px solid #E0E0E0;
+  box-sizing: border-box;
+  padding: 12px;
+  list-style: none;
+  box-shadow: 0px 2px 12px rgba(0,0,0,0.04);
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  height: 145px;
+  overflow-y: auto;
+}
+
+.c3::-webkit-scrollbar {
+  width: 5px;
+}
+
+.c3::-webkit-scrollbar-track {
+  background: #FFFFFF;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.c3::-webkit-scrollbar-thumb {
+  background: #E0E0E0;
+  border-radius: 12px;
+}
+
+.c3::-webkit-scrollbar-thumb:hover {
+  background: #BDBDBD;
+}
+
+.c4 {
+  font-size: 18px;
+  line-height: 22px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  font-weight: 500;
+  font-family: Quicksand;
+  color: #828282;
+  cursor: pointer;
+}
+
+.c4:hover,
+.c4:active {
+  background-color: #f2f2f2;
+  color: #000000;
+}
+
+@media (min-width:768px) {
+  .c3 {
+    margin-bottom: 100px;
+  }
+}
+
 <div>
   <div
-    class="sc-AxjAm ediThQ"
+    class="c0"
   >
     <input
-      class="sc-AxirZ kKTTBK"
+      class="c1"
       id="category"
       placeholder="Enter a Category"
       value=""
     />
     <label
-      class="sc-AxhUy XuytY"
+      class="c2"
       for="category"
     >
       Category
     </label>
   </div>
   <ul
-    class="sc-AxgMl duRBxp"
+    class="c3"
     style="visibility: hidden;"
   >
     <li
-      class="sc-AxheI kIpRpv"
+      class="c4"
     />
     <li
-      class="sc-AxheI kIpRpv"
+      class="c4"
     />
     <li
-      class="sc-AxheI kIpRpv"
+      class="c4"
     />
     <li
-      class="sc-AxheI kIpRpv"
+      class="c4"
     />
   </ul>
 </div>
