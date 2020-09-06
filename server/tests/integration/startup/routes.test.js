@@ -1,6 +1,6 @@
 const { start, stop } = require('../../../startup/server');
 const { initDatabase, dropDatabase } = require('../../../startup/database');
-const { User } = require('../../../models/User');
+const { User } = require('../../../models/user');
 const request = require('supertest');
 const bcrypt = require('bcrypt');
 
@@ -12,7 +12,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  stop();
+  await stop();
   await dropDatabase();
 });
 
@@ -44,9 +44,9 @@ describe('api/v1/auth routes should not be protected', () => {
   });
 });
 
-describe('api/v1/itens routes should be protected', () => {
+describe('api/v1/items routes should be protected', () => {
   it('should send 400 if no Authorization is defined', async () => {
-    await request(app).get('/api/v1/itens').expect(401);
+    await request(app).get('/api/v1/items').expect(401);
   });
   it('should send 200 if Authorization is defined', async () => {
     const user = new User({
@@ -56,7 +56,7 @@ describe('api/v1/itens routes should be protected', () => {
     });
 
     await request(app)
-      .get('/api/v1/itens')
+      .get('/api/v1/items')
       .set('Authorization', `Bearer ${user.generateToken()}`)
       .expect(200);
   });

@@ -1,14 +1,16 @@
 const express = require('express');
 const { Item, validateItem } = require('../models/item');
-const validateObjectId = require('../middlewares/validate-object-id');
-const validateModel = require('../middlewares/validate-model');
+const getItem = require('../middlewares/get-item');
+const authorization = require('../middlewares/authorization');
 const router = express.Router();
 
+router.param('item', getItem);
+
 router.get('/', async (request, response) => {
-  const itens = await Item.find({ user: request.user._id }).sort(
+  const items = await Item.find({ user: request.user._id }).sort(
     'category.name name'
   );
-  response.send(itens);
+  response.send(items);
 });
 
 router.post('/', async (request, response) => {
@@ -27,15 +29,10 @@ router.post('/', async (request, response) => {
   response.status(201).send(item);
 });
 
-router.delete(
-  '/:id',
-  validateObjectId,
-  validateModel(Item),
-  async (request, response) => {
-    const item = request.model;
-    await item.deleteOne();
-    response.sendStatus(200);
-  }
-);
+router.delete('/:item', authorization('item'), async (request, response) => {
+  const item = request.item;
+  await item.deleteOne();
+  response.sendStatus(200);
+});
 
 module.exports = router;

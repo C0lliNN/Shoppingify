@@ -11,7 +11,7 @@ function exec() {
 beforeEach(() => {
   payload = {
     name: 'Monthly Shopping List',
-    itens: [
+    items: [
       {
         _id: '5f455552f75a6016403b9971',
         name: 'Banana',
@@ -53,145 +53,145 @@ describe('validateList', () => {
     expect(error).toBeTruthy();
     expect(error.message).toMatch(/name.*100.*/i);
   });
-  it('should generate an error if itens is falsy', () => {
+  it('should generate an error if items is falsy', () => {
     FALSY_VALUES.forEach((value) => {
-      payload.itens = value;
+      payload.items = value;
 
       const { error } = exec();
 
       expect(error).toBeTruthy();
-      expect(error.message).toMatch(/itens/);
+      expect(error.message).toMatch(/items/);
     });
   });
-  it('should generate an error if itens is not an array', () => {
-    payload.itens = 25;
+  it('should generate an error if items is not an array', () => {
+    payload.items = 25;
 
     const { error } = exec();
 
     expect(error).toBeTruthy();
-    expect(error.message).toMatch(/itens.*array.*/);
+    expect(error.message).toMatch(/items.*array.*/);
   });
-  it('should generate an error if itens has no items', () => {
-    payload.itens = [];
+  it('should generate an error if items has no items', () => {
+    payload.items = [];
 
     const { error } = exec();
 
     expect(error).toBeTruthy();
-    expect(error.message).toMatch(/itens.*1.*/);
+    expect(error.message).toMatch(/items.*1.*/);
   });
   it('should generate an error it one item has falsy _id', () => {
     FALSY_VALUES.forEach((value) => {
-      payload.itens[0]._id = value;
+      payload.items[0]._id = value;
 
       const { error } = exec();
 
       expect(error).toBeTruthy();
-      expect(error.message).toMatch(/itens.*_id.*/);
+      expect(error.message).toMatch(/items.*_id.*/);
     });
   });
   it('should generate an error it one item has invalid _id', () => {
-    payload.itens[0]._id = '124';
+    payload.items[0]._id = '124';
 
     const { error } = exec();
 
     expect(error).toBeTruthy();
-    expect(error.message).toMatch(/itens.*_id.*/);
+    expect(error.message).toMatch(/items.*_id.*/);
   });
   it('should generate an error it one item has falsy name', () => {
     FALSY_VALUES.forEach((value) => {
-      payload.itens[0].name = value;
+      payload.items[0].name = value;
 
       const { error } = exec();
 
       expect(error).toBeTruthy();
-      expect(error.message).toMatch(/itens.*name.*/);
+      expect(error.message).toMatch(/items.*name.*/);
     });
   });
   it('should generate an error if one item has name.length < 3', () => {
-    payload.itens[0].name = 'Ra';
+    payload.items[0].name = 'Ra';
 
     const { error } = exec();
 
     expect(error).toBeTruthy();
-    expect(error.message).toMatch(/itens.*name.*3.*/i);
+    expect(error.message).toMatch(/items.*name.*3.*/i);
   });
   it('should generate an error if one time has name.length > 40', () => {
-    payload.itens[0].name = lorem.sentence(20);
+    payload.items[0].name = lorem.sentence(20);
 
     const { error } = exec();
 
     expect(error).toBeTruthy();
-    expect(error.message).toMatch(/itens.*name.*40.*/i);
+    expect(error.message).toMatch(/items.*name.*40.*/i);
   });
   it('should generate an error if one item has falsy category', () => {
     FALSY_VALUES.forEach((value) => {
-      payload.itens[0].category = value;
+      payload.items[0].category = value;
 
       const { error } = exec();
 
       expect(error).toBeTruthy();
-      expect(error.message).toMatch(/itens.*category/i);
+      expect(error.message).toMatch(/items.*category/i);
     });
   });
   it('should generate an error if one item has falsy category._id', () => {
     FALSY_VALUES.forEach((value) => {
-      payload.itens[0].category._id = value;
+      payload.items[0].category._id = value;
 
       const { error } = exec();
 
       expect(error).toBeTruthy();
-      expect(error.message).toMatch(/itens.*category.*_id/i);
+      expect(error.message).toMatch(/items.*category.*_id/i);
     });
   });
   it('should generate an error if one item has invalid category._id', () => {
-    payload.itens[0].category._id = '12445';
+    payload.items[0].category._id = '12445';
 
     const { error } = exec();
 
     expect(error).toBeTruthy();
-    expect(error.message).toMatch(/itens.*category.*_id/i);
+    expect(error.message).toMatch(/items.*category.*_id/i);
   });
   it('should generate an error if one item has falsy category.name', () => {
     FALSY_VALUES.forEach((value) => {
-      payload.itens[0].category.name = value;
+      payload.items[0].category.name = value;
 
       const { error } = exec();
 
       expect(error).toBeTruthy();
-      expect(error.message).toMatch(/itens.*category/i);
+      expect(error.message).toMatch(/items.*category/i);
     });
   });
   it('should generate an error if one item has category.name.length < 3', () => {
-    payload.itens[0].category.name = 'Ra';
+    payload.items[0].category.name = 'Ra';
 
     const { error } = exec();
 
     expect(error).toBeTruthy();
-    expect(error.message).toMatch(/itens.*category.*3/i);
+    expect(error.message).toMatch(/items.*category.*3/i);
   });
   it('should generate an error if one item has category.name.length > 120', () => {
-    payload.itens[0].category.name = lorem.sentence(60);
+    payload.items[0].category.name = lorem.sentence(60);
 
     const { error } = exec();
 
     expect(error).toBeTruthy();
-    expect(error.message).toMatch(/itens.*category.*120/i);
+    expect(error.message).toMatch(/items.*category.*120/i);
   });
   it('should generate an error it one item has no quantity', () => {
-    payload.itens[0].quantity = null;
+    payload.items[0].quantity = null;
 
     const { error } = exec();
 
     expect(error).toBeTruthy();
-    expect(error.message).toMatch(/itens.*quantity.*/);
+    expect(error.message).toMatch(/items.*quantity.*/);
   });
   it('should generate an error if one item has a quantity < 1', () => {
-    payload.itens[0].quantity = 0;
+    payload.items[0].quantity = 0;
 
     const { error } = exec();
 
     expect(error).toBeTruthy();
-    expect(error.message).toMatch(/itens.*quantity.*1.*/);
+    expect(error.message).toMatch(/items.*quantity.*1.*/);
   });
   it('should generate an error if list status is falsy', () => {
     FALSY_VALUES.forEach((value) => {
@@ -211,7 +211,7 @@ describe('validateList', () => {
     expect(error).toBeTruthy();
     expect(error.message).toMatch(/status/);
   });
-  it('should not generate an error if name, itens, and status are defined correctly', () => {
+  it('should not generate an error if name, items, and status are defined correctly', () => {
     const { error } = exec();
 
     expect(error).toBeFalsy();

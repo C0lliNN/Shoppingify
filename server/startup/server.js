@@ -2,11 +2,12 @@ require('dotenv').config({ debug: process.env.DEBUG });
 if (process.env.NODE_ENV === 'test') {
   process.env.DEBUG = false;
 }
+require('./logger');
+const debug = require('debug')('shoppingify:server');
 require('express-async-errors');
 const express = require('express');
 const app = express();
 const { initDatabase } = require('./database');
-const debug = require('debug')('server');
 const initRoutes = require('./routes');
 
 let server = null;
@@ -24,8 +25,8 @@ async function start() {
   return app;
 }
 
-function stop() {
-  debug('Stopping...');
+async function stop() {
+  debug('Stopping');
   if (server) {
     server.close();
   }

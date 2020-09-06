@@ -17,7 +17,7 @@ const List = mongoose.model(
       minlength: MIN_NAME_LENGTH,
       maxlength: MAX_NAME_LENGTH,
     },
-    itens: {
+    items: {
       type: [
         {
           _id: {
@@ -75,7 +75,7 @@ const List = mongoose.model(
 function validateList(data) {
   const validator = Joi.object({
     name: Joi.string().required().min(MIN_NAME_LENGTH).max(MAX_NAME_LENGTH),
-    itens: Joi.array()
+    items: Joi.array()
       .items(
         Joi.object({
           _id: Joi.objectId().required(),

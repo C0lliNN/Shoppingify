@@ -19,7 +19,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  stop();
+  await stop();
   await dropDatabase();
 });
 

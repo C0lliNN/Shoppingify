@@ -1,8 +1,10 @@
 const express = require('express');
 const { List, validateList } = require('../models/list');
+const getList = require('../middlewares/get-list');
+const authorization = require('../middlewares/authorization');
 const router = express.Router();
-const validateObjectId = require('../middlewares/validate-object-id');
-const validateModel = require('../middlewares/validate-model');
+
+router.param('list', getList);
 
 router.get('/', async (request, response) => {
   const userId = request.user._id;
@@ -10,14 +12,15 @@ router.get('/', async (request, response) => {
   response.send(lists);
 });
 
-router.get(
-  '/:id',
-  validateObjectId,
-  validateModel(List),
-  async (request, response) => {
-    response.send(request.model);
-  }
-);
+router.get('/active', async (request, response) => {
+  const userId = request.user._id;
+  const activeList = await List.findOne({ user: userId, status: 'active' });
+  response.send(activeList);
+});
+
+router.get('/:list', authorization('list'), (request, response) => {
+  response.send(request.list);
+});
 
 router.post('/', async (request, response) => {
   const { value, error } = validateList(request.body);
@@ -28,6 +31,14 @@ router.post('/', async (request, response) => {
 
   const userId = request.user._id;
 
+  const activeList = await List.findOne({ user: userId, status: 'active' });
+
+  if (activeList) {
+    return response
+      .status(400)
+      .send({ message: 'You already have a active list' });
+  }
+
   const list = new List(value);
   list.user = userId;
   await list.save();
@@ -36,11 +47,10 @@ router.post('/', async (request, response) => {
 });
 
 router.patch(
-  '/:id/complete',
-  validateObjectId,
-  validateModel(List),
+  '/:list/complete',
+  authorization('list'),
   async (request, response) => {
-    const list = request.model;
+    const list = request.list;
 
     if (list.status !== 'active') {
       return response
@@ -56,11 +66,10 @@ router.patch(
 );
 
 router.patch(
-  '/:id/cancel',
-  validateObjectId,
-  validateModel(List),
+  '/:list/cancel',
+  authorization('list'),
   async (request, response) => {
-    const list = request.model;
+    const list = request.list;
 
     if (list.status !== 'active') {
       return response

@@ -1,4 +1,4 @@
-const authMiddleware = require('../../../middlewares/auth');
+const authMiddleware = require('../../../middlewares/authentication');
 const { User } = require('../../../models/user');
 
 describe('auth middleware', () => {

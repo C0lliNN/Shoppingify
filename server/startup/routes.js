@@ -3,16 +3,16 @@ const path = require('path');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const authentication = require('../middlewares/authentication');
-const fileUpload = require('express-fileupload');
 const error = require('../middlewares/error');
 const helmet = require('helmet');
+const compression = require('compression');
 
 module.exports = function (app) {
   app.use(cors());
   app.use(express.json());
   app.use(cookieParser());
-  app.use(fileUpload());
   app.use(helmet());
+  app.use(compression());
 
   app.use('/api/v1/users', require('../routes/users'));
   app.use('/api/v1/auth', require('../routes/auth'));

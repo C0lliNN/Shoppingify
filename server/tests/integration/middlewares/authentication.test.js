@@ -1,7 +1,7 @@
 const request = require('supertest');
 const { start, stop } = require('../../../startup/server');
 const { dropDatabase } = require('../../../startup/database');
-const { User } = require('../../../models/User');
+const { User } = require('../../../models/user');
 const jwt = require('jsonwebtoken');
 const faker = require('faker');
 
@@ -11,11 +11,11 @@ let token = null;
 function exec(code) {
   if (token) {
     return request(app)
-      .get('/api/v1/itens')
+      .get('/api/v1/items')
       .set('Authorization', `Bearer ${token}`)
       .expect(code);
   } else {
-    return request(app).get('/api/v1/itens').expect(code);
+    return request(app).get('/api/v1/items').expect(code);
   }
 }
 
@@ -32,7 +32,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  stop();
+  await stop();
   await dropDatabase();
 });
 

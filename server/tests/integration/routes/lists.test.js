@@ -2,12 +2,10 @@ const request = require('supertest');
 const { start, stop } = require('../../../startup/server');
 const { dropDatabase } = require('../../../startup/database');
 const bcrypt = require('bcrypt');
-const { User } = require('../../../models/User');
-const jwt = require('jsonwebtoken');
+const { User } = require('../../../models/user');
 const { List } = require('../../../models/list');
 
 let app = null;
-let userId = null;
 let token = null;
 let payload = null;
 
@@ -15,6 +13,13 @@ function execGetListRequest(code, id) {
   return request(app)
     .get(`/api/v1/lists/${id}`)
     .expect(code)
+    .set('Authorization', `Bearer ${token}`);
+}
+
+function execGetActiveListRequest() {
+  return request(app)
+    .get('/api/v1/lists/active')
+    .expect(200)
     .set('Authorization', `Bearer ${token}`);
 }
 
@@ -41,7 +46,7 @@ beforeEach(async () => {
 
   payload = {
     name: 'July Shopping List',
-    itens: [
+    items: [
       {
         _id: '5f3ae6bc45c56326083561c5',
         name: 'Apple',
@@ -59,7 +64,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  stop();
+  await stop();
   await dropDatabase();
 });
 
@@ -74,13 +79,32 @@ describe('GET /lists', () => {
     expect(body[0]._id).toBeTruthy();
     expect(body[0].name).toBeTruthy();
     expect(body[0].status).toBeTruthy();
-    expect(body[0].itens).toBeTruthy();
+    expect(body[0].items).toBeTruthy();
   });
 });
+describe('GET /lists/active', () => {
+  it('should send 200 and a falsy value if there is no active list', async () => {
+    const activeList = await List.findOne({ name: 'October 2020 List' });
+    await execPatchRequest('complete', activeList.id, 200);
 
-describe('GET /lists/:id', () => {
+    const { body } = await execGetActiveListRequest();
+
+    expect(body._id).toBeFalsy();
+    expect(body.name).toBeFalsy();
+  });
+  it('should send 200 and the data if there is one active list', async () => {
+    const { body } = await execGetActiveListRequest();
+
+    expect(body.name).toBe('October 2020 List');
+  });
+});
+describe('GET /lists/:list', () => {
   it('should send 404 if the id does not have any match', async () => {
     await execGetListRequest(404, '5f455552f75a6016403b9971');
+  });
+  it('should send 403 if the user does not own the list', async () => {
+    const list = await List.findOne({ name: 'November 2020 List' });
+    await execGetListRequest(403, list.id);
   });
   it('should send 200 and a list object if the id is valid', async () => {
     const list = await List.findOne({ name: 'October 2020 List' });
@@ -97,7 +121,16 @@ describe('POST /lists', () => {
 
     await execPostRequest(400);
   });
+  it('should send 400 if the user already has a active list', async () => {
+    const { body } = await execPostRequest(400);
+
+    expect(body.message).toMatch(/active/);
+  });
   it('should send 201 and an list object if the payload is valid', async () => {
+    // Only one list can be active at a time
+    const activeList = await List.findOne({ name: 'October 2020 List' });
+    await execPatchRequest('complete', activeList.id, 200);
+
     const { body } = await execPostRequest(201);
 
     expect(body).toMatchObject(payload);
@@ -117,6 +150,10 @@ describe('PATCH /lists/:id/complete', () => {
   it('should send 400 if the list has a status different of "active"', async () => {
     const list = await List.findOne({ name: 'September 2020 List' });
     await execPatchRequest('complete', list.id, 400);
+  });
+  it('should send 403 if the list does not belong to the user', async () => {
+    const list = await List.findOne({ name: 'November 2020 List' });
+    await execPatchRequest('complete', list.id, 403);
   });
   it('should send 200 and the list should be updated in the db if id is valid', async () => {
     const list = await List.findOne({ name: 'October 2020 List' });
@@ -139,6 +176,10 @@ describe('PATCH /lists/:id/cancel', () => {
 
     await execPatchRequest('cancel', list.id, 400);
   });
+  it('should send 403 if the list does not belong to the user', async () => {
+    const list = await List.findOne({ name: 'November 2020 List' });
+    await execPatchRequest('cancel', list.id, 403);
+  });
   it('should send 200 and the list should be updated in the db if id is valid', async () => {
     const list = await List.findOne({ name: 'October 2020 List' });
 
@@ -156,12 +197,13 @@ async function seedDatabase() {
     email: 'test@test.com',
     password: hashedPassword,
   });
-  userId = user._id;
-  token = jwt.sign({ _id: userId }, process.env.JWT_KEY);
+
+  token = user.generateToken();
+
   await List.create(
     {
       name: 'September 2020 List',
-      itens: [
+      items: [
         {
           _id: '5f455552f75a6016403b9971',
           name: 'Banana',
@@ -182,11 +224,11 @@ async function seedDatabase() {
         },
       ],
       status: 'canceled',
-      user: userId,
+      user: user.id,
     },
     {
       name: 'October 2020 List',
-      itens: [
+      items: [
         {
           _id: '5f455552f75a6016403b9971',
           name: 'Banana',
@@ -207,19 +249,13 @@ async function seedDatabase() {
         },
       ],
       status: 'active',
-      user: userId,
+      user: user.id,
     }
   );
 
-  const user2 = await User.create({
-    name: 'John',
-    email: 'john@test.com',
-    password: hashedPassword,
-  });
-
   await List.create({
-    name: 'October 2020 List',
-    itens: [
+    name: 'November 2020 List',
+    items: [
       {
         _id: '5f455552f75a6016403b9971',
         name: 'Orange',
@@ -231,6 +267,6 @@ async function seedDatabase() {
       },
     ],
     status: 'active',
-    user: user2.id,
+    user: '5f455552f75a6016403b9971',
   });
 }

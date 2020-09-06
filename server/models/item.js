@@ -11,7 +11,7 @@ const MIN_IMAGE_LENGTH = 4;
 const MAX_IMAGE_LENGTH = 1024;
 
 const Item = mongoose.model(
-  'itens',
+  'items',
   new mongoose.Schema({
     name: {
       type: String,
@@ -61,7 +61,8 @@ function validateItem(data) {
       .optional()
       .allow('')
       .min(MIN_IMAGE_LENGTH)
-      .max(MAX_IMAGE_LENGTH),
+      .max(MAX_IMAGE_LENGTH)
+      .uri(),
   });
 
   return validator.validate(data);

@@ -9,7 +9,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  stop();
+  await stop();
 });
 
 describe('auth middleware', () => {
@@ -19,6 +19,7 @@ describe('auth middleware', () => {
     Joi.object = jest.fn().mockReturnValue(new Error(message));
 
     const { body } = await request(app).post('/api/v1/auth').expect(500);
+
     expect(body).toBeTruthy();
     expect(body.message).toBeTruthy();
   });

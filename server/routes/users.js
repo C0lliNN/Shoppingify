@@ -1,5 +1,5 @@
 const express = require('express');
-const { validateUser, User, TOKEN_EXPIRATION_TIME } = require('../models/User');
+const { validateUser, User, TOKEN_EXPIRATION_TIME } = require('../models/user');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 

@@ -1,4 +1,4 @@
-const debug = require('debug')('database');
+const debug = require('debug')('shoppingify:database');
 const mongoose = require('mongoose');
 
 async function initDatabase() {
@@ -20,8 +20,8 @@ async function initDatabase() {
   }
 }
 
-async function dropDatabase() {
-  await mongoose.connection.dropDatabase();
+function dropDatabase() {
+  return mongoose.connection.dropDatabase();
 }
 
 module.exports.initDatabase = initDatabase;

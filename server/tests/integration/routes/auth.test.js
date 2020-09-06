@@ -1,6 +1,6 @@
 const { start, stop } = require('../../../startup/server');
 const { dropDatabase } = require('../../../startup/database');
-const { User } = require('../../../models/User');
+const { User } = require('../../../models/user');
 const request = require('supertest');
 const bcrypt = require('bcrypt');
 const { FALSY_VALUES } = require('../../../utility');
@@ -26,7 +26,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  stop();
+  await stop();
   await dropDatabase();
 });
 

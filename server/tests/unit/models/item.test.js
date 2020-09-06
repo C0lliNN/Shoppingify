@@ -8,6 +8,7 @@ beforeEach(() => {
   payload = {
     name: 'Name Test',
     note: 'This is a Test List',
+    image: 'https://i.imgur.com/wGRFC2L.jpg',
     category: {
       _id: '507f1f77bcf86cd799439011',
       name: 'Name Test',
@@ -30,7 +31,6 @@ describe('validateItem', () => {
       expect(error.message).toMatch(/name/i);
     });
   });
-
   it('should generate an error if the name has less than 3 chars', () => {
     payload.name = 'ra';
 
@@ -88,6 +88,30 @@ describe('validateItem', () => {
 
     expect(error).toBeTruthy();
     expect(error.message).toMatch(/category\.name.*120/);
+  });
+  it('should generate an error if image has less than 4 chars', () => {
+    payload.image = 'tes';
+
+    const { error } = exec();
+
+    expect(error.message).toMatch(/image.*4/);
+    expect(error).toBeTruthy();
+  });
+  it('should generate an error if the image has more then 1024 chars', () => {
+    payload.image = lorem.sentence(500);
+
+    const { error } = exec();
+
+    expect(error.message).toMatch(/image.*1024/);
+    expect(error).toBeTruthy();
+  });
+  it('should generate an error if the image is not a valid uri', () => {
+    payload.image = 'raphael';
+
+    const { error } = exec();
+
+    expect(error.message).toMatch(/image.*uri/);
+    expect(error).toBeTruthy();
   });
   it('should not generate an error if name is truthy, category object is valid and user is valid', () => {
     const { error, value } = exec();
