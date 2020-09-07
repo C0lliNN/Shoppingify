@@ -45,11 +45,6 @@ describe('<CategoryFormGroup/>', () => {
     expect(console.error).toHaveBeenCalled();
     expect(errorMessage).toMatch(/.*value.*/i);
   });
-  it('should throw an erro if categoryValue is not a string', () => {
-    categoryValue = { value: '12' };
-
-    expect(() => exec()).toThrowError();
-  });
   it('should console.error if setCategoryValue is not defined', () => {
     setCategoryValue = null;
 

@@ -72,6 +72,7 @@ function CategoryFormGroup({ categories, categoryValue, setCategoryValue }) {
   }
 
   const listItems = categories
+    .filter((category) => category && category.name)
     .filter(
       (category) =>
         !categoryValue ||

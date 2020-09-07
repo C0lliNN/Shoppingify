@@ -96,7 +96,6 @@ function CreateItem({ categories, showListBuilder, addItem }) {
     } else {
       try {
         const response = await getAxios().post('/items', payload);
-
         addItem(response.data);
 
         setIsLoading(false);
@@ -122,18 +121,20 @@ function CreateItem({ categories, showListBuilder, addItem }) {
         ) : (
           <React.Fragment>
             <FromGroup>
-              <FromGroup.Label>Name</FromGroup.Label>
+              <FromGroup.Label htmlFor="name">Name</FromGroup.Label>
               <FromGroup.Input
                 placeholder="Enter a name"
+                id="name"
                 name="name"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
               />
             </FromGroup>
             <FromGroup>
-              <FromGroup.Label>Note(optional)</FromGroup.Label>
+              <FromGroup.Label htmlFor="note">Note(optional)</FromGroup.Label>
               <FromGroup.Textarea
                 placeholder="Enter a note"
+                id="note"
                 rows="3"
                 name="note"
                 value={note}
@@ -141,10 +142,11 @@ function CreateItem({ categories, showListBuilder, addItem }) {
               ></FromGroup.Textarea>
             </FromGroup>
             <FromGroup>
-              <FromGroup.Label>Image(optional)</FromGroup.Label>
+              <FromGroup.Label htmlFor="image">Image(optional)</FromGroup.Label>
               <FromGroup.Input
                 placeholder="Enter a url"
                 name="image"
+                id="image"
                 value={image}
                 onChange={(event) => setImage(event.target.value)}
               />
@@ -193,7 +195,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => {
   return {
-    categories: state.itemsData.map((group) => group.category),
+    categories: state.itemsData.data.map((group) => group.category),
   };
 };
 
