@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UnAuthContainer/> should render correctly 1`] = `
+<div>
+  <div
+    class="sc-AxjAm kcPFpt"
+  >
+    <div
+      class="sc-AxirZ fwsGNn"
+    >
+      <div
+        class="sc-AxiKw gsASVG"
+      >
+        <img
+          alt="Shoppingify"
+          src="logo.svg"
+        />
+        <h3
+          class="sc-AxhCb fnLSuL"
+        >
+          Container
+        </h3>
+        <img
+          alt="Shoppingify"
+          src="logo.svg"
+        />
+      </div>
+      Custom Title
+    </div>
+  </div>
+</div>
+`;

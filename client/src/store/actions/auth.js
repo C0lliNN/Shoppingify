@@ -28,18 +28,19 @@ function loginFailed(error) {
 }
 
 export function loginHandler(email, password) {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(loginStart());
 
-    const axios = getAxios();
-    axios
-      .post('/auth', { email: email, password: password })
-      .then((response) => {
-        dispatch(loginSuccess(response.data));
-      })
-      .catch((error) => {
-        dispatch(loginFailed(error.message));
+    try {
+      const axios = getAxios();
+      const response = await axios.post('/auth', {
+        email: email,
+        password: password,
       });
+      dispatch(loginSuccess(response.data));
+    } catch (error) {
+      dispatch(loginFailed(error.message));
+    }
   };
 }
 
@@ -66,18 +67,17 @@ function signupFailed(error) {
 }
 
 export function signupHandler(payload) {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(signupStart());
 
-    const axios = getAxios();
-    axios
-      .post('/users', payload)
-      .then((response) => {
-        dispatch(signupSuccess(response.data));
-      })
-      .catch((error) => {
-        signupFailed(error);
-      });
+    try {
+      const axios = getAxios();
+      const response = await axios.post('/users', payload);
+
+      dispatch(signupSuccess(response.data));
+    } catch (error) {
+      dispatch(signupFailed(error.message));
+    }
   };
 }
 

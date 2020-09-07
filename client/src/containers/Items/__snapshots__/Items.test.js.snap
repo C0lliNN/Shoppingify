@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Items/> should render correctly 1`] = `
+<div>
+  <div
+    class="sc-fznKkj fNqfXh"
+  >
+    <div
+      class="sc-fznZeY NaBzt"
+    >
+      <h1
+        class="sc-AxjAm GKfhy"
+      >
+        <span
+          style="color: rgb(249, 161, 9); font-weight: bold;"
+        >
+          Shoppingify
+           
+        </span>
+        allows you take your shopping list wherever you go
+      </h1>
+      <div
+        class="sc-AxhUy hdwioC"
+      >
+        <div
+          class="sc-AxirZ fuDjKo"
+        >
+          <div
+            class="sc-AxiKw fqTuty material-icons-round"
+          >
+            search
+          </div>
+        </div>
+        <input
+          class="sc-AxhCb UzUCm"
+          placeholder="Search item"
+        />
+      </div>
+    </div>
+    <div
+      style="margin-top: 50px;"
+    >
+      <h3
+        class="sc-AxgMl ccGqat"
+      >
+        Fruit
+      </h3>
+      <div
+        class="sc-AxheI cAytUM"
+      >
+        <div
+          class="sc-Axmtr hzHwRp"
+        >
+          <span
+            class="sc-AxmLO ceQsip"
+          >
+            Apple
+          </span>
+          <i
+            class="sc-fzozJi jaJZqY material-icons-round"
+          >
+            add
+          </i>
+        </div>
+        <div
+          class="sc-Axmtr hzHwRp"
+        >
+          <span
+            class="sc-AxmLO ceQsip"
+          >
+            Banana
+          </span>
+          <i
+            class="sc-fzozJi jaJZqY material-icons-round"
+          >
+            add
+          </i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

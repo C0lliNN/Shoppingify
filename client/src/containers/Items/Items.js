@@ -8,6 +8,8 @@ import ItemsGroup from '../../components/ItemsGroup/ItemsGroup';
 import * as variables from '../../helpers/style-constants';
 import { getItemsData } from '../../store/actions';
 import { connect } from 'react-redux';
+import Spinner from '../../components/UI/Spinner/Spinner';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 const StyledItems = styled.div`
   padding: 20px;
@@ -37,14 +39,18 @@ const Text = styled.p`
   margin-top: 50px;
 `;
 
-function Items({ getItemsData, data }) {
+function Items({ getItemsData, data, isLoading, error }) {
   useEffect(() => {
     getItemsData();
   }, [getItemsData]);
 
   let content = null;
 
-  if (data.length) {
+  if (isLoading) {
+    content = <Spinner />;
+  } else if (error) {
+    content = <ErrorMessage message={error} />;
+  } else if (data.length) {
     content = data
       .filter((group) => group.category._id)
       .map((group) => <ItemsGroup key={group.category._id} {...group} />);
@@ -64,6 +70,8 @@ function Items({ getItemsData, data }) {
 }
 
 Items.propTypes = {
+  isLoading: PropTypes.bool,
+  error: PropTypes.string,
   data: PropTypes.array,
   getItemsData: PropTypes.func,
 };
@@ -74,7 +82,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.itemsData,
+    ...state.itemsData,
   };
 };
 

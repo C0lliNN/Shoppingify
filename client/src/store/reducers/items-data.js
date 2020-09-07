@@ -1,28 +1,47 @@
 import * as actionTypes from '../actions/actionTypes';
 
-const initialState = [
-  {
-    category: {
-      _id: null,
-      name: null,
-    },
-    items: [
-      {
+const initialState = {
+  isLoading: false,
+  error: null,
+  data: [
+    {
+      category: {
         _id: null,
         name: null,
-        note: null,
-        image: null,
       },
-    ],
-  },
-];
+      items: [
+        {
+          _id: null,
+          name: null,
+          note: null,
+          image: null,
+        },
+      ],
+    },
+  ],
+};
 
 function itemsDataReducer(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.GET_ITEMS_DATA:
-      return action.data;
+    case actionTypes.GET_ITEMS_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case actionTypes.GET_ITEMS_SUCCESS:
+      return {
+        data: action.data,
+        error: null,
+        isLoading: false,
+      };
+    case actionTypes.GET_ITEMS_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.error,
+      };
     case actionTypes.ADD_ITEM: {
-      const data = [...state];
+      const data = [...state.data];
       const { item } = action;
 
       const groupIndex = data.findIndex(
@@ -41,10 +60,13 @@ function itemsDataReducer(state = initialState, action) {
         });
       }
 
-      return data;
+      return {
+        ...state,
+        data,
+      };
     }
     case actionTypes.REMOVE_ITEM: {
-      const data = [...state];
+      const data = [...state.data];
       const item = action.item;
 
       const group = data.find(
@@ -60,7 +82,10 @@ function itemsDataReducer(state = initialState, action) {
         return data.filter((p) => p.category._id !== group.category._id);
       }
 
-      return data;
+      return {
+        ...state,
+        data,
+      };
     }
 
     default:

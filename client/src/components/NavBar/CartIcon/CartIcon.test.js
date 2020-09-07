@@ -4,6 +4,8 @@ import CartIcon from './CartIcon';
 
 describe('<CartIcon/>', () => {
   it('should render correctly', () => {
-    expect(() => render(<CartIcon />)).not.toThrowError();
+    const { getByText } = render(<CartIcon />);
+
+    expect(getByText('shopping_cart')).not.toBeNull();
   });
 });
