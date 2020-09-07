@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '../../tests/utilities';
 import UnAuthContainer from './UnAuthContainer';
+import 'jest-styled-components';
 
 const title = 'Container';
 const childrenText = 'Custom Title';

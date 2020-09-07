@@ -1,60 +1,228 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<InfoBar/> should render correctly 1`] = `
+.c10 {
+  background-color: transparent;
+  border-radius: 12px;
+  color: #34333A;
+  border-color: transparent;
+  padding: 5px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c10:disabled {
+  color: #BDBDBD   border-color:#BDBDBD;
+  cursor: default;
+}
+
+.c11 {
+  background-color: #56CCF2;
+  border-color: #56CCF2;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c11:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
+.c9 {
+  padding: 20px 0px;
+  display: block;
+  background: transparent;
+  text-align: center;
+}
+
+.c1 {
+  background-color: #fff0de;
+  padding: 30px 15px;
+  box-sizing: border-box;
+  position: relative;
+  overflow-y: auto;
+}
+
+.c1::-webkit-scrollbar {
+  display: none;
+}
+
+.c2 {
+  background-color: #80485b;
+  width: 100%;
+  height: 110px;
+  padding: 15px 0px;
+  border-radius: 24px;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c4 {
+  font-size: 14px;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.c3 {
+  width: 70px;
+  margin-top: -35px;
+}
+
+.c5 {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 8px 25px;
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  font-family: Quicksand;
+  margin-top: 10px;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: 40px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c7 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.c8 {
+  font-size: 24px;
+  color: #34333A;
+  cursor: pointer;
+}
+
+.c0 {
+  height: 100%;
+}
+
+@media (min-width:768px) {
+  .c9 {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: #fefefe;
+    width: 250px;
+  }
+}
+
+@media (min-width:1200px) {
+  .c9 {
+    width: 370px;
+  }
+}
+
+@media (min-width:768px) {
+  .c1 {
+    height: 100%;
+  }
+}
+
+@media (min-width:768px) {
+  .c0 {
+    position: fixed;
+    width: 250px;
+    right: 0;
+    top: 0;
+  }
+}
+
+@media (min-width:1200px) {
+  .c0 {
+    width: 370px;
+  }
+}
+
 <div>
   <aside
-    class="sc-fzqBkg eXomqF"
+    class="c0"
   >
     <div
-      class="sc-fzoLag dGHnDs"
+      class="c1"
     >
       <div
-        class="sc-fzoXzr CANek"
+        class="c2"
       >
         <img
           alt="bottle illustration"
-          class="sc-fznxsB ecYqKB"
+          class="c3"
           src="bottle.svg"
         />
         <div
           style="margin-left: 5px;"
         >
           <h3
-            class="sc-fzpjYC gaeFJf"
+            class="c4"
           >
             Didn't find what you need?
           </h3>
           <button
-            class="sc-fznJRM jTvzFg"
+            class="c5"
           >
             Add Item
           </button>
         </div>
       </div>
       <div
-        class="sc-fznWqX hubZNx"
+        class="c6"
       >
         <h3
-          class="sc-fzoiQi eKFsMM"
+          class="c7"
         >
           Shopping List
         </h3>
         <i
-          class="sc-fzqARJ fzAgRA material-icons-round"
+          class="c8 material-icons-round"
         >
           edit
         </i>
       </div>
       <div
-        class="sc-AxhCb ohEyP"
+        class="c9"
       >
         <button
-          class="sc-AxiKw VDLGN"
+          class="c10"
         >
           cancel
         </button>
         <button
-          class="sc-AxiKw hSJBCn"
+          class="c11"
         >
           complete
         </button>

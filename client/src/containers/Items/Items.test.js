@@ -3,6 +3,7 @@ import { render, getByTextWithMarkup } from '../../tests/utilities';
 import Items from './Items';
 import axios from 'axios';
 import { waitForElement } from '@testing-library/react';
+import 'jest-styled-components';
 
 function exec() {
   return render(<Items />);
