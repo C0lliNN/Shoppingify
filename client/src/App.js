@@ -8,13 +8,13 @@ import * as variables from './helpers/style-constants';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Login from './containers/Login/Login';
-import Signup from './containers/Signup/Signup';
 import { checkAuth } from './store/actions';
 import { useEffect } from 'react';
-import Logout from './containers/Logout/Logout';
 import Spinner from './components/UI/Spinner/Spinner';
 
 const Items = React.lazy(() => import('./containers/Items/Items'));
+const Signup = React.lazy(() => import('./containers/Signup/Signup'));
+const Logout = React.lazy(() => import('./containers/Logout/Logout'));
 
 const MainContentWrapper = styled.div`
   margin-left: ${variables.NAVBAR_XS_SIZE}px;
@@ -44,18 +44,39 @@ function App({ isAuth, checkAuth }) {
               <Switch>
                 <Redirect from="/signup" to="/" />
                 <Redirect from="/login" to="/" />
-                <Route path="/logout" component={Logout} />
-                <Suspense fallback={<Spinner />}>
-                  <Route path="/" component={Items} />
-                </Suspense>
+
+                <Route
+                  path="/logout"
+                  render={() => (
+                    <Suspense fallback={<Spinner />}>
+                      <Logout />
+                    </Suspense>
+                  )}
+                />
+                <Route
+                  path="/"
+                  render={() => (
+                    <Suspense fallback={<Spinner />}>
+                      <Items />
+                    </Suspense>
+                  )}
+                />
               </Switch>
+
               <InfoBar />
             </MainContentWrapper>
           </React.Fragment>
         ) : (
           <React.Fragment>
             <Switch>
-              <Route path="/signup" component={Signup} />
+              <Route
+                path="/signup"
+                render={() => (
+                  <Suspense fallback={<Spinner />}>
+                    <Signup />
+                  </Suspense>
+                )}
+              />
               <Route path="/" component={Login} />
             </Switch>
           </React.Fragment>
