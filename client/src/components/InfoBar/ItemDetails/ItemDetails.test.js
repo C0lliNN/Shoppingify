@@ -1,23 +1,42 @@
 import React from 'react';
 import { render } from '../../../tests/utilities';
 import ItemDetails from './ItemDetails';
+import axios from 'axios';
+import Items from '../../../containers/Items/Items';
+import { fireEvent } from '@testing-library/react';
 
 const item = {
+  _id: '1',
   name: 'Apple',
   image: 'https://picsum.photos/300/400',
   note: 'Note',
   category: {
+    _id: '2',
     name: 'Fruit',
   },
 };
 
+jest.mock('axios');
+
 const mockFunction = jest.fn();
 
 function exec() {
-  return render(<ItemDetails item={item} showListBuilder={mockFunction} />);
+  return render(
+    <>
+      <Items />
+      <ItemDetails item={item} showListBuilder={mockFunction} />
+    </>
+  );
 }
 
 describe('<ItemDetails/>', () => {
+  beforeEach(() => {
+    axios.create.mockImplementation(() => ({
+      get: jest.fn().mockResolvedValue({ data: [item] }),
+      delete: jest.fn().mockResolvedValue({ data: '' }),
+    }));
+  });
+
   it('should show the item image', () => {
     const { getByTitle } = exec();
     const element = getByTitle(item.name);
@@ -48,5 +67,13 @@ describe('<ItemDetails/>', () => {
     const { getByText } = exec();
 
     expect(getByText('Add to list')).not.toBeNull();
+  });
+  it('should be able to delete the item', async () => {
+    const { getByText } = exec();
+
+    fireEvent.click(getByText('delete'));
+    fireEvent.click(getByText('Yes'));
+
+    expect(() => getByText('add')).toThrowError();
   });
 });

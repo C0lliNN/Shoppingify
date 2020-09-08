@@ -39,7 +39,10 @@ export function loginHandler(email, password) {
       });
       dispatch(loginSuccess(response.data));
     } catch (error) {
-      dispatch(loginFailed(error.message));
+      const errorMessage = error.response
+        ? error.response.data.message
+        : error.message;
+      dispatch(loginFailed(errorMessage));
     }
   };
 }
@@ -76,7 +79,10 @@ export function signupHandler(payload) {
 
       dispatch(signupSuccess(response.data));
     } catch (error) {
-      dispatch(signupFailed(error.message));
+      const errorMessage = error.response
+        ? error.response.data.message
+        : error.message;
+      dispatch(signupFailed(errorMessage));
     }
   };
 }

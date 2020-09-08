@@ -101,9 +101,13 @@ function CreateItem({ categories, showListBuilder, addItem }) {
         setIsLoading(false);
         showListBuilder();
       } catch (error) {
-        setShowModal(true);
-        setModalTitle(error.message);
         setIsLoading(false);
+        if (error.response) {
+          setModalTitle(error.response.data.message);
+        } else {
+          setModalTitle(error.message);
+        }
+        setShowModal(true);
       }
     }
   }

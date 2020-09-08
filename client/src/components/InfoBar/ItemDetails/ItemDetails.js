@@ -71,8 +71,12 @@ function ItemDetails({ item, showListBuilder, removeItem }) {
       removeItem(item);
       showListBuilder();
     } catch (error) {
+      if (error.response) {
+        setError(error.response.data.message);
+      } else {
+        setError(error.message);
+      }
       setIsLoading(false);
-      setError(error.message);
     }
   }
 

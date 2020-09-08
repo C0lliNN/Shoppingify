@@ -8,7 +8,7 @@ import Button from '../../components/UI/Button/Button';
 import Modal from '../../components/UI/Modal/Modal';
 import { useHistory } from 'react-router';
 import { EMAIL_REGEX } from '../../helpers/regex';
-import { loginHandler } from '../../store/actions';
+import { loginHandler, logout } from '../../store/actions';
 import { connect } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -38,7 +38,7 @@ function validateInput(data) {
   }
 }
 
-function Login({ loginHandler, isLoading, error }) {
+function Login({ loginHandler, isLoading, error, reset }) {
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -73,7 +73,19 @@ function Login({ loginHandler, isLoading, error }) {
   if (isLoading) {
     content = <Spinner />;
   } else if (error) {
-    content = <ErrorMessage message={error} />;
+    content = (
+      <>
+        <ErrorMessage message={error} />
+        <Button
+          type="button"
+          btnType="raised"
+          variant="secondary"
+          onClick={reset}
+        >
+          Try Again
+        </Button>
+      </>
+    );
   } else {
     content = (
       <React.Fragment>
@@ -128,6 +140,7 @@ Login.propTypes = {
   error: PropTypes.string,
   isLoading: PropTypes.bool.isRequired,
   loginHandler: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -139,6 +152,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   loginHandler,
+  reset: logout,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

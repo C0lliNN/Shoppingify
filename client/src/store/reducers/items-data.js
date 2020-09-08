@@ -66,7 +66,7 @@ function itemsDataReducer(state = initialState, action) {
       };
     }
     case actionTypes.REMOVE_ITEM: {
-      const data = [...state.data];
+      let data = [...state.data];
       const item = action.item;
 
       const group = data.find(
@@ -79,7 +79,7 @@ function itemsDataReducer(state = initialState, action) {
       }
 
       if (!group.items.length) {
-        return data.filter((p) => p.category._id !== group.category._id);
+        data = data.filter((p) => p.category._id !== group.category._id);
       }
 
       return {

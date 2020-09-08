@@ -50,7 +50,11 @@ export function getItemsData() {
 
       dispatch(getItemsSuccess(itemsGroupData));
     } catch (error) {
-      dispatch(getItemsFailed(error.message));
+      const errorMessage = error.response
+        ? error.response.data.message
+        : error.message;
+
+      dispatch(getItemsFailed(errorMessage));
     }
   };
 }

@@ -8,7 +8,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import { useHistory } from 'react-router';
 import { useState } from 'react';
 import { EMAIL_REGEX } from '../../helpers/regex';
-import { signupHandler } from '../../store/actions';
+import { signupHandler, logout } from '../../store/actions';
 import { connect } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -52,7 +52,7 @@ function validateInput(data) {
   return null;
 }
 
-function Signup({ isLoading, error, signupHandler }) {
+function Signup({ isLoading, error, signupHandler, reset }) {
   const history = useHistory();
 
   const [name, setName] = useState('');
@@ -91,7 +91,19 @@ function Signup({ isLoading, error, signupHandler }) {
   if (isLoading) {
     content = <Spinner />;
   } else if (error) {
-    content = <ErrorMessage message={error} />;
+    content = (
+      <>
+        <ErrorMessage message={error} />
+        <Button
+          type="button"
+          btnType="raised"
+          variant="secondary"
+          onClick={reset}
+        >
+          Try Again
+        </Button>
+      </>
+    );
   } else {
     content = (
       <>
@@ -167,6 +179,7 @@ Signup.propTypes = {
   error: PropTypes.any,
   isLoading: PropTypes.bool.isRequired,
   signupHandler: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -178,6 +191,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   signupHandler,
+  reset: logout, // The logout handler returns back to the initial state
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
