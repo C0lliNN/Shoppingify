@@ -8,6 +8,13 @@ router.post('/', async (request, response) => {
   if (error) {
     return response.status(400).send({ message: error.message });
   }
+
+  const existingUser = await User.findOne({ email: value.email });
+
+  if (existingUser) {
+    return response.status(400).send({ message: 'Email already in use!' });
+  }
+
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(value.password, salt);
 
