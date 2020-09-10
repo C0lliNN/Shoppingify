@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SaveBar/> should render correctly - active 1`] = `
+.c2 {
+  background-color: #F9A109;
+  border-color: #F9A109;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c2:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0px 30px;
+  border: 2px solid #F9A109;
+  border-radius: 12px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.c1 {
+  display: block;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 12px;
+  border: 2px solid #BDBDBD;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: 500;
+  color: #34333A;
+  border: none;
+  -webkit-box-flex: 2;
+  -webkit-flex-grow: 2;
+  -ms-flex-positive: 2;
+  flex-grow: 2;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+}
+
+.c1:focus {
+  border-color: #F9A109;
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
+}
+
+.c1:focus +label {
+  color: #F9A109;
+}
+
+.c1::-webkit-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::-moz-placeholder {
+  color: #BDBDBD;
+}
+
+.c1:-ms-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::placeholder {
+  color: #BDBDBD;
+}
+
+<div>
+  <form
+    class="c0"
+  >
+    <input
+      class="c1"
+      placeholder="Enter a name"
+      value=""
+    />
+    <button
+      class="c2"
+      type="submit"
+    >
+      Save
+    </button>
+  </form>
+</div>
+`;
+
+exports[`<SaveBar/> should render correctly - disabled 1`] = `
+.c2 {
+  background-color: #F9A109;
+  border-color: #F9A109;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 20px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.c2:disabled {
+  background-color: #BDBDBD;
+  border-color: #BDBDBD;
+  cursor: default;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0px 30px;
+  border: 2px solid #F9A109;
+  border-radius: 12px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-color: #BDBDBD;
+}
+
+.c1 {
+  display: block;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 12px;
+  border: 2px solid #BDBDBD;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: 500;
+  color: #34333A;
+  border: none;
+  -webkit-box-flex: 2;
+  -webkit-flex-grow: 2;
+  -ms-flex-positive: 2;
+  flex-grow: 2;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+}
+
+.c1:focus {
+  border-color: #F9A109;
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
+}
+
+.c1:focus +label {
+  color: #F9A109;
+}
+
+.c1::-webkit-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::-moz-placeholder {
+  color: #BDBDBD;
+}
+
+.c1:-ms-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c1::placeholder {
+  color: #BDBDBD;
+}
+
+<div>
+  <form
+    class="c0"
+    disabled=""
+  >
+    <input
+      class="c1"
+      disabled=""
+      placeholder="Enter a name"
+      value=""
+    />
+    <button
+      class="c2"
+      disabled=""
+      type="submit"
+    >
+      Save
+    </button>
+  </form>
+</div>
+`;
