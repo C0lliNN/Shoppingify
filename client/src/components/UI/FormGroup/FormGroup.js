@@ -8,7 +8,7 @@ import {
 } from '../../../helpers/style-constants';
 import PropTypes from 'prop-types';
 
-const FormGroup = styled.div`
+const StyledFromGroup = styled.div`
   display: flex;
   align-items: center;
   justify-content: start;
@@ -61,7 +61,7 @@ const Label = styled.label`
   font-size: ${FONT_SIZE_2};
 `;
 
-function Wrapper(props) {
+function FormGroup(props) {
   const children = [];
 
   if (Array.isArray(props.children)) {
@@ -80,19 +80,19 @@ function Wrapper(props) {
     children.push(props.children);
   }
 
-  return <FormGroup>{children}</FormGroup>;
+  return <StyledFromGroup>{children}</StyledFromGroup>;
 }
 
-Wrapper.Input = Input;
-Wrapper.Textarea = Textarea;
-Wrapper.Select = Select;
-Wrapper.Label = Label;
+FormGroup.Input = Input;
+FormGroup.Textarea = Textarea;
+FormGroup.Select = Select;
+FormGroup.Label = Label;
 
-Wrapper.propTypes = {
+FormGroup.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
 };
 
-export default Wrapper;
+export default FormGroup;

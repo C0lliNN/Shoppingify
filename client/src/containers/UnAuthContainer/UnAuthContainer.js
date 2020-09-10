@@ -5,18 +5,19 @@ import * as variables from '../../helpers/style-constants';
 import logo from '../../assets/images/logo.svg';
 
 const Container = styled.div`
-  width: 80%;
-  max-width: 700px;
-  margin: 20px auto 0px auto;
-  @media (min-width: ${variables.MD_BREAK_POINT}px) {
-    margin: 100px auto 0px auto;
-  }
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Card = styled.div`
   background-color: ${variables.COLORS.light_brown};
   border-radius: ${variables.BORDER_RADIUS_2};
   padding: 20px;
+  width: 80%;
+  margin: auto;
+  max-width: 700px;
   box-sizing: border-box;
   box-shadow: 0px 0px 20px 0px #0000001c;
 `;

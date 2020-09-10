@@ -7,18 +7,28 @@ import * as variables from '../../../helpers/style-constants';
 import bottle from '../../../assets/images/bottle.svg';
 import { connect } from 'react-redux';
 import { showCreateItem } from '../../../store/actions';
+import FormGroup from '../../UI/FormGroup/FormGroup';
+import { useState } from 'react';
+import Modal from '../../UI/Modal/Modal';
+import cartIllustration from '../../../assets/images/shopping.svg';
+import SaveBar from './SaveBar/SaveBar';
 
 const StyledListBuilder = styled.div`
   background-color: ${variables.COLORS.light_brown};
-  padding: 30px 15px;
+  padding: 30px;
   box-sizing: border-box;
   position: relative;
   overflow-y: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
   &::-webkit-scrollbar {
     display: none;
   }
   @media (min-width: ${variables.MD_BREAK_POINT}px) {
-    height: 100%;
+    padding-bottom: 120px;
   }
 `;
 
@@ -39,7 +49,7 @@ const Title = styled.h3`
   font-weight: 600;
 `;
 
-const Image = styled.img`
+const BottleIllustration = styled.img`
   width: 70px;
   margin-top: -35px;
 `;
@@ -71,28 +81,75 @@ const ListName = styled.h3`
 const EditIcon = styled.i`
   font-size: ${variables.FONT_SIZE_4};
   color: ${variables.COLORS.black_2};
-  cursor: pointer;
+`;
+
+const Header = styled.div`
+  width: 100%;
+`;
+
+const Text = styled.p`
+  font-family: ${variables.FONT_FAMILY};
+  font-size: ${variables.FONT_SIZE_3};
+  font-weight: 600;
+`;
+
+const CartIllustrationContainer = styled.div`
+  text-align: center;
+  width: 100%;
+`;
+
+const CartIllustration = styled.img`
+  width: 80%;
+  max-width: 245px;
+  margin: auto;
 `;
 
 function ListBuilder({ list, showCreateItem }) {
+  const [name, setName] = useState('');
+
+  const hasItems = list && list.category && list.category._id;
+
+  function handleOnSave() {
+    console.log('Saving...');
+  }
+
   return (
     <StyledListBuilder>
-      <IllustrationContainer>
-        <Image src={bottle} alt="bottle illustration" />
-        <div style={{ marginLeft: '5px' }}>
-          <Title>{"Didn't find what you need?"}</Title>
-          <CustomButton onClick={showCreateItem}>Add Item</CustomButton>
-        </div>
-      </IllustrationContainer>
-      <ListNameContainer>
-        <ListName>{list.name}</ListName>
-        <EditIcon className="material-icons-round">edit</EditIcon>
-      </ListNameContainer>
+      <Header>
+        <IllustrationContainer>
+          <BottleIllustration src={bottle} alt="bottle illustration" />
+          <div style={{ marginLeft: '5px' }}>
+            <Title>{"Didn't find what you need?"}</Title>
+            <CustomButton onClick={showCreateItem}>Add Item</CustomButton>
+          </div>
+        </IllustrationContainer>
+        <ListNameContainer>
+          <ListName>{list.name}</ListName>
+          <EditIcon className="material-icons-round">edit</EditIcon>
+        </ListNameContainer>
+      </Header>
+      {!hasItems && <Text>No Items</Text>}
+      {!hasItems && (
+        <CartIllustrationContainer>
+          <CartIllustration src={cartIllustration} alt="" />
+        </CartIllustrationContainer>
+      )}
       <ButtonBar>
-        <Button btnType="flat">cancel</Button>
-        <Button btnType="raised" variant="secondary">
-          complete
-        </Button>
+        {list.saved ? (
+          <>
+            <Button btnType="flat">cancel</Button>
+            <Button btnType="raised" variant="secondary">
+              complete
+            </Button>
+          </>
+        ) : (
+          <SaveBar
+            disabled={!hasItems}
+            onSave={handleOnSave}
+            name={name}
+            setName={setName}
+          />
+        )}
       </ButtonBar>
     </StyledListBuilder>
   );
@@ -100,7 +157,11 @@ function ListBuilder({ list, showCreateItem }) {
 
 ListBuilder.propTypes = {
   list: PropTypes.shape({
+    category: PropTypes.shape({
+      _id: PropTypes.any,
+    }),
     name: PropTypes.string.isRequired,
+    saved: PropTypes.any,
   }).isRequired,
   showCreateItem: PropTypes.func.isRequired,
 };

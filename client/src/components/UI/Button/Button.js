@@ -36,7 +36,7 @@ const Button = styled.button`
           border-radius: ${BORDER_RADIUS_1}; 
           color: ${COLORS.black_2};
           border-color: transparent;
-          padding: 5px;
+          padding: 20px;
         `;
       }
       default:

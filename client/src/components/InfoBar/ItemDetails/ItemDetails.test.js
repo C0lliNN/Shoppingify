@@ -3,7 +3,11 @@ import { render } from '../../../tests/utilities';
 import ItemDetails from './ItemDetails';
 import axios from 'axios';
 import Items from '../../../containers/Items/Items';
-import { fireEvent } from '@testing-library/react';
+import {
+  fireEvent,
+  waitForElementToBeRemoved,
+  waitForElement,
+} from '@testing-library/react';
 
 const item = {
   _id: '1',
@@ -71,9 +75,11 @@ describe('<ItemDetails/>', () => {
   it('should be able to delete the item', async () => {
     const { getByText } = exec();
 
+    await waitForElement(() => getByText('add'));
+
     fireEvent.click(getByText('delete'));
     fireEvent.click(getByText('Yes'));
 
-    expect(() => getByText('add')).toThrowError();
+    await waitForElementToBeRemoved(() => getByText('add'));
   });
 });

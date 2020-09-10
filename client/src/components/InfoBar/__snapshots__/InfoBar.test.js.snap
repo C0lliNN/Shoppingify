@@ -1,29 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<InfoBar/> should render correctly 1`] = `
-.c10 {
-  background-color: transparent;
-  border-radius: 12px;
-  color: #34333A;
-  border-color: transparent;
-  padding: 5px;
-  border-width: 2px;
-  border-style: solid;
-  font-size: 14px;
-  font-family: Quicksand;
-  font-weight: bold;
-  outline: none;
-  cursor: pointer;
-}
-
-.c10:disabled {
-  color: #BDBDBD   border-color:#BDBDBD;
-  cursor: default;
-}
-
-.c11 {
-  background-color: #56CCF2;
-  border-color: #56CCF2;
+.c16 {
+  background-color: #F9A109;
+  border-color: #F9A109;
   border-radius: 12px;
   color: #FFFFFF;
   padding: 20px;
@@ -36,32 +16,115 @@ exports[`<InfoBar/> should render correctly 1`] = `
   cursor: pointer;
 }
 
-.c11:disabled {
+.c16:disabled {
   background-color: #BDBDBD;
   border-color: #BDBDBD;
   cursor: default;
 }
 
-.c9 {
+.c13 {
   padding: 20px 0px;
   display: block;
   background: transparent;
   text-align: center;
 }
 
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0px 30px;
+  border: 2px solid #F9A109;
+  border-radius: 12px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-color: #BDBDBD;
+}
+
+.c15 {
+  display: block;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 12px;
+  border: 2px solid #BDBDBD;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  font-family: Quicksand;
+  font-weight: 500;
+  color: #34333A;
+  border: none;
+  -webkit-box-flex: 2;
+  -webkit-flex-grow: 2;
+  -ms-flex-positive: 2;
+  flex-grow: 2;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+}
+
+.c15:focus {
+  border-color: #F9A109;
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
+}
+
+.c15:focus +label {
+  color: #F9A109;
+}
+
+.c15::-webkit-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c15::-moz-placeholder {
+  color: #BDBDBD;
+}
+
+.c15:-ms-input-placeholder {
+  color: #BDBDBD;
+}
+
+.c15::placeholder {
+  color: #BDBDBD;
+}
+
 .c1 {
   background-color: #fff0de;
-  padding: 30px 15px;
+  padding: 30px;
   box-sizing: border-box;
   position: relative;
   overflow-y: auto;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .c1::-webkit-scrollbar {
   display: none;
 }
 
-.c2 {
+.c3 {
   background-color: #80485b;
   width: 100%;
   height: 110px;
@@ -78,18 +141,18 @@ exports[`<InfoBar/> should render correctly 1`] = `
   align-items: flex-start;
 }
 
-.c4 {
+.c5 {
   font-size: 14px;
   color: #FFFFFF;
   font-weight: 600;
 }
 
-.c3 {
+.c4 {
   width: 70px;
   margin-top: -35px;
 }
 
-.c5 {
+.c6 {
   background-color: #FFFFFF;
   border-radius: 12px;
   padding: 8px 25px;
@@ -101,7 +164,7 @@ exports[`<InfoBar/> should render correctly 1`] = `
   margin-top: 10px;
 }
 
-.c6 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -117,15 +180,35 @@ exports[`<InfoBar/> should render correctly 1`] = `
   justify-content: space-between;
 }
 
-.c7 {
+.c8 {
   font-size: 24px;
   font-weight: 600;
 }
 
-.c8 {
+.c9 {
   font-size: 24px;
   color: #34333A;
-  cursor: pointer;
+}
+
+.c2 {
+  width: 100%;
+}
+
+.c10 {
+  font-family: Quicksand;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.c11 {
+  text-align: center;
+  width: 100%;
+}
+
+.c12 {
+  width: 80%;
+  max-width: 245px;
+  margin: auto;
 }
 
 .c0 {
@@ -133,7 +216,7 @@ exports[`<InfoBar/> should render correctly 1`] = `
 }
 
 @media (min-width:768px) {
-  .c9 {
+  .c13 {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -143,14 +226,14 @@ exports[`<InfoBar/> should render correctly 1`] = `
 }
 
 @media (min-width:1200px) {
-  .c9 {
+  .c13 {
     width: 370px;
   }
 }
 
 @media (min-width:768px) {
   .c1 {
-    height: 100%;
+    padding-bottom: 120px;
   }
 }
 
@@ -179,53 +262,79 @@ exports[`<InfoBar/> should render correctly 1`] = `
       <div
         class="c2"
       >
-        <img
-          alt="bottle illustration"
-          class="c3"
-          src="bottle.svg"
-        />
         <div
-          style="margin-left: 5px;"
+          class="c3"
         >
-          <h3
+          <img
+            alt="bottle illustration"
             class="c4"
+            src="bottle.svg"
+          />
+          <div
+            style="margin-left: 5px;"
           >
-            Didn't find what you need?
-          </h3>
-          <button
-            class="c5"
-          >
-            Add Item
-          </button>
+            <h3
+              class="c5"
+            >
+              Didn't find what you need?
+            </h3>
+            <button
+              class="c6"
+            >
+              Add Item
+            </button>
+          </div>
         </div>
-      </div>
-      <div
-        class="c6"
-      >
-        <h3
+        <div
           class="c7"
         >
-          Shopping List
-        </h3>
-        <i
-          class="c8 material-icons-round"
-        >
-          edit
-        </i>
+          <h3
+            class="c8"
+          >
+            Shopping List
+          </h3>
+          <i
+            class="c9 material-icons-round"
+          >
+            edit
+          </i>
+        </div>
+      </div>
+      <p
+        class="c10"
+      >
+        No Items
+      </p>
+      <div
+        class="c11"
+      >
+        <img
+          alt=""
+          class="c12"
+          src="shopping.svg"
+        />
       </div>
       <div
-        class="c9"
+        class="c13"
       >
-        <button
-          class="c10"
+        <form
+          class="c14"
+          disabled=""
         >
-          cancel
-        </button>
-        <button
-          class="c11"
-        >
-          complete
-        </button>
+          <input
+            class="c15"
+            disabled=""
+            placeholder="Enter a name"
+            value=""
+          />
+          <button
+            class="c16"
+            disabled=""
+            type="submit"
+          >
+            Save
+          </button>
+        </form>
       </div>
     </div>
   </aside>

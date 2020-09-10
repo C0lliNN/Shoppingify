@@ -6,7 +6,7 @@ exports[`<Button/> should render correctly when the type is flat 1`] = `
   border-radius: 12px;
   color: #34333A;
   border-color: transparent;
-  padding: 5px;
+  padding: 20px;
   border-width: 2px;
   border-style: solid;
   font-size: 14px;

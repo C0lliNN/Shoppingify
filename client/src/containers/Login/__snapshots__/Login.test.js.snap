@@ -2,15 +2,28 @@
 
 exports[`<Login/> should render correctly 1`] = `
 .c0 {
-  width: 80%;
-  max-width: 700px;
-  margin: 20px auto 0px auto;
+  min-height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .c1 {
   background-color: #fff0de;
   border-radius: 24px;
   padding: 20px;
+  width: 80%;
+  margin: auto;
+  max-width: 700px;
   box-sizing: border-box;
   box-shadow: 0px 0px 20px 0px #0000001c;
 }
@@ -111,7 +124,7 @@ exports[`<Login/> should render correctly 1`] = `
   border-radius: 12px;
   color: #34333A;
   border-color: transparent;
-  padding: 5px;
+  padding: 20px;
   border-width: 2px;
   border-style: solid;
   font-size: 14px;
@@ -154,12 +167,6 @@ exports[`<Login/> should render correctly 1`] = `
 .c8 {
   text-align: center;
   margin-top: 50px;
-}
-
-@media (min-width:768px) {
-  .c0 {
-    margin: 100px auto 0px auto;
-  }
 }
 
 <div>
