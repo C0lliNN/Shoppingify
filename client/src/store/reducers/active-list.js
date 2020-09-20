@@ -2,30 +2,44 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   saved: false,
-  name: 'Shopping List',
+  name: '',
   itemsGroup: [
     {
       category: {
-        id: '',
+        _id: '',
         name: '',
       },
-      items: [{ id: '', name: '', quantity: 0, checked: false }],
+      items: [{ _id: '', name: '', quantity: 0, checked: false }],
     },
   ],
 };
 
 function activeListReducer(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.CHANGE_LIST_NAME: {
-      return {
-        ...state,
-        name: action.newName,
-      };
-    }
     case actionTypes.LIST_ADD_ITEM: {
+      const item = { ...action.item, quantity: 1 };
+      const itemsGroup = [...state.itemsGroup];
+      const index = itemsGroup.findIndex(
+        (p) => p.category._id === item.category._id
+      );
+
+      let newItemsGroup = null;
+
+      if (index >= 0) {
+        itemsGroup[index].items = itemsGroup[index].items.concat([item]);
+        newItemsGroup = itemsGroup;
+      } else {
+        newItemsGroup = itemsGroup.concat([
+          {
+            category: item.category,
+            items: [item],
+          },
+        ]);
+      }
+
       return {
         ...state,
-        itemsGroup: state.itemsGroup.concat([action.item]),
+        itemsGroup: newItemsGroup,
       };
     }
 

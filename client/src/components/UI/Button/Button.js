@@ -62,12 +62,11 @@ const Button = styled.button`
         case 'raised': {
           return `
             background-color: ${COLORS.gray_2};
+            border-color: ${COLORS.gray_2}; 
           `;
         }
         case 'outlined': {
-          return `
-            color: ${COLORS.gray_2}; 
-          `;
+          return ``;
         }
         case 'flat': {
           return `
@@ -76,12 +75,11 @@ const Button = styled.button`
         }
         default:
           return `
-        background-color: ${COLORS.gray_2};
+            border-color: ${COLORS.gray_2};       
+            background-color: ${COLORS.gray_2};
         `;
       }
     }}
-  
-    border-color: ${COLORS.gray_2};  
     cursor: default;
   }
 `;

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import * as variables from '../../../helpers/style-constants';
-import ButtonBar from '../../ButtonBar/ButtonBar';
+import ButtonBar from '../../ButtonBar';
 import Button from '../../UI/Button/Button';
 import FromGroup from '../../UI/FormGroup/FormGroup';
 import CategoryFormGroup from '../../CategoryFormGroup/CategoryFormGroup';
@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import Modal from '../../UI/Modal/Modal';
 import getAxios from '../../../helpers/axios';
 import Spinner from '../../UI/Spinner/Spinner';
-import { addItem } from '../../../store/actions/active-list';
+import { addItem } from '../../../store/actions';
 
 const StyledCreateItem = styled.div`
   padding: 20px 15px;

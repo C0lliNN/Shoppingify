@@ -180,8 +180,7 @@ exports[`<CreateItem/> should add the item correctly if the payload is valid 1`]
 }
 
 .c21:disabled {
-  color: #BDBDBD   border-color:#BDBDBD;
-  cursor: default;
+  color: #BDBDBD  cursor:default;
 }
 
 .c22 {
@@ -666,8 +665,7 @@ exports[`<CreateItem/> should render correctly 1`] = `
 }
 
 .c8:disabled {
-  color: #BDBDBD   border-color:#BDBDBD;
-  cursor: default;
+  color: #BDBDBD  cursor:default;
 }
 
 .c9 {

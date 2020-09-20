@@ -1,17 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import ButtonBar from '../../ButtonBar/ButtonBar';
+import ButtonBar from '../../ButtonBar';
 import Button from '../../UI/Button/Button';
 import * as variables from '../../../helpers/style-constants';
 import bottle from '../../../assets/images/bottle.svg';
 import { connect } from 'react-redux';
 import { showCreateItem } from '../../../store/actions';
-import FormGroup from '../../UI/FormGroup/FormGroup';
 import { useState } from 'react';
-import Modal from '../../UI/Modal/Modal';
 import cartIllustration from '../../../assets/images/shopping.svg';
 import SaveBar from './SaveBar/SaveBar';
+import ItemsGroup from './ItemsGroup/ItemsGroup';
 
 const StyledListBuilder = styled.div`
   background-color: ${variables.COLORS.light_brown};
@@ -107,14 +106,15 @@ const CartIllustration = styled.img`
 function ListBuilder({ list, showCreateItem }) {
   const [name, setName] = useState('');
 
-  const hasItems = list && list.category && list.category._id;
+  const hasItems =
+    list && list.itemsGroup.filter((p) => p.category && p.category._id).length;
 
   function handleOnSave() {
     console.log('Saving...');
   }
 
   return (
-    <StyledListBuilder>
+    <StyledListBuilder style={{ display: hasItems ? 'block' : 'flex' }}>
       <Header>
         <IllustrationContainer>
           <BottleIllustration src={bottle} alt="bottle illustration" />
@@ -124,7 +124,7 @@ function ListBuilder({ list, showCreateItem }) {
           </div>
         </IllustrationContainer>
         <ListNameContainer>
-          <ListName>{list.name}</ListName>
+          <ListName>{list.name ? list.name : 'Shopping List'}</ListName>
           <EditIcon className="material-icons-round">edit</EditIcon>
         </ListNameContainer>
       </Header>
@@ -134,6 +134,17 @@ function ListBuilder({ list, showCreateItem }) {
           <CartIllustration src={cartIllustration} alt="" />
         </CartIllustrationContainer>
       )}
+      {hasItems
+        ? list.itemsGroup
+            .filter((p) => p.category && p.category._id)
+            .map((group) => (
+              <ItemsGroup
+                key={group.category._id}
+                group={group}
+                completing={list.saved}
+              />
+            ))
+        : null}
       <ButtonBar>
         {list.saved ? (
           <>
@@ -157,9 +168,23 @@ function ListBuilder({ list, showCreateItem }) {
 
 ListBuilder.propTypes = {
   list: PropTypes.shape({
-    category: PropTypes.shape({
-      _id: PropTypes.any,
-    }),
+    itemsGroup: PropTypes.arrayOf(
+      PropTypes.shape({
+        category: PropTypes.shape({
+          _id: PropTypes.string,
+          name: PropTypes.string,
+        }),
+        items: PropTypes.arrayOf(
+          PropTypes.shape({
+            _id: PropTypes.string,
+            name: PropTypes.string,
+            note: PropTypes.string,
+            image: PropTypes.string,
+            category: PropTypes.object,
+          })
+        ),
+      })
+    ),
     name: PropTypes.string.isRequired,
     saved: PropTypes.any,
   }).isRequired,

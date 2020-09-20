@@ -135,8 +135,7 @@ exports[`<Signup/> should render correctly 1`] = `
 }
 
 .c9:disabled {
-  color: #BDBDBD   border-color:#BDBDBD;
-  cursor: default;
+  color: #BDBDBD  cursor:default;
 }
 
 .c10 {

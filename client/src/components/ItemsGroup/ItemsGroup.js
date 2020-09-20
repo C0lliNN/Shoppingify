@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import * as variables from '../../helpers/style-constants';
-import { showItemDetails } from '../../store/actions';
+import { showItemDetails, addItemToList } from '../../store/actions';
 import { connect } from 'react-redux';
 
 const Title = styled.h3`
@@ -51,7 +51,7 @@ const Icon = styled.i`
   cursor: pointer;
 `;
 
-function ItemsGroup({ category, items, showItemDetails }) {
+function ItemsGroup({ category, items, showItemDetails, addItemToList }) {
   return (
     <div style={{ marginTop: '50px' }}>
       <Title>{category.name}</Title>
@@ -59,7 +59,12 @@ function ItemsGroup({ category, items, showItemDetails }) {
         {items.map((item) => (
           <Card key={item._id}>
             <Item onClick={() => showItemDetails(item)}>{item.name}</Item>
-            <Icon className="material-icons-round">add</Icon>
+            <Icon
+              className="material-icons-round"
+              onClick={() => addItemToList(item)}
+            >
+              add
+            </Icon>
           </Card>
         ))}
       </Items>
@@ -78,6 +83,7 @@ ItemsGroup.propTypes = {
 
 const mapDispatchToProps = {
   showItemDetails,
+  addItemToList,
 };
 
 export default connect(null, mapDispatchToProps)(ItemsGroup);

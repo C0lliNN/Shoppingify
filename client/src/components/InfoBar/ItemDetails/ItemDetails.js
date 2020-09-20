@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import BackButton from '../../BackButton/BackButton';
+import BackButton from '../../BackButton';
 import * as variables from '../../../helpers/style-constants';
 import { showListBuilder, removeItem } from '../../../store/actions';
 import { connect } from 'react-redux';
 import Button from '../../UI/Button/Button';
-import ButtonBar from '../../ButtonBar/ButtonBar';
+import ButtonBar from '../../ButtonBar';
 import { useState } from 'react';
 import getAxios from '../../../helpers/axios';
 import Modal from '../../UI/Modal/Modal';

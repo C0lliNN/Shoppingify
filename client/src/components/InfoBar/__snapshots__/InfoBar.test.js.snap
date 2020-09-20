@@ -258,6 +258,7 @@ exports[`<InfoBar/> should render correctly 1`] = `
   >
     <div
       class="c1"
+      style="display: flex;"
     >
       <div
         class="c2"

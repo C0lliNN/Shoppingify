@@ -17,8 +17,7 @@ exports[`<Button/> should render correctly when the type is flat 1`] = `
 }
 
 .c0:disabled {
-  color: #BDBDBD   border-color:#BDBDBD;
-  cursor: default;
+  color: #BDBDBD  cursor:default;
 }
 
 <div>
@@ -47,8 +46,6 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 }
 
 .c0:disabled {
-  color: #BDBDBD;
-  border-color: #BDBDBD;
   cursor: default;
 }
 
@@ -78,8 +75,6 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 }
 
 .c0:disabled {
-  color: #BDBDBD;
-  border-color: #BDBDBD;
   cursor: default;
 }
 
@@ -109,8 +104,6 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 }
 
 .c0:disabled {
-  color: #BDBDBD;
-  border-color: #BDBDBD;
   cursor: default;
 }
 
@@ -140,8 +133,6 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 }
 
 .c0:disabled {
-  color: #BDBDBD;
-  border-color: #BDBDBD;
   cursor: default;
 }
 
@@ -171,8 +162,6 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 }
 
 .c0:disabled {
-  color: #BDBDBD;
-  border-color: #BDBDBD;
   cursor: default;
 }
 
@@ -202,8 +191,6 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 }
 
 .c0:disabled {
-  color: #BDBDBD;
-  border-color: #BDBDBD;
   cursor: default;
 }
 
@@ -233,8 +220,6 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 }
 
 .c0:disabled {
-  color: #BDBDBD;
-  border-color: #BDBDBD;
   cursor: default;
 }
 
@@ -264,8 +249,6 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 }
 
 .c0:disabled {
-  color: #BDBDBD;
-  border-color: #BDBDBD;
   cursor: default;
 }
 
@@ -295,8 +278,6 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 }
 
 .c0:disabled {
-  color: #BDBDBD;
-  border-color: #BDBDBD;
   cursor: default;
 }
 
@@ -326,8 +307,6 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 }
 
 .c0:disabled {
-  color: #BDBDBD;
-  border-color: #BDBDBD;
   cursor: default;
 }
 
@@ -357,8 +336,6 @@ exports[`<Button/> should render correctly when the type is outlined and the var
 }
 
 .c0:disabled {
-  color: #BDBDBD;
-  border-color: #BDBDBD;
   cursor: default;
 }
 

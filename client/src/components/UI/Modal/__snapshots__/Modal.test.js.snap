@@ -17,8 +17,7 @@ exports[`<Modal/> should render correctly 1`] = `
 }
 
 .c5:disabled {
-  color: #BDBDBD   border-color:#BDBDBD;
-  cursor: default;
+  color: #BDBDBD  cursor:default;
 }
 
 .c8 {
@@ -37,8 +36,8 @@ exports[`<Modal/> should render correctly 1`] = `
 }
 
 .c8:disabled {
-  background-color: #BDBDBD;
   border-color: #BDBDBD;
+  background-color: #BDBDBD;
   cursor: default;
 }
 
