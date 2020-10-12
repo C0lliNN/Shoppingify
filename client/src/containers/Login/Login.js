@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import UnAuthContainer from '../UnAuthContainer/UnAuthContainer';
+import UnAuthContainer from '../UnAuthContainer';
 import { useState } from 'react';
 import FormGroup from '../../components/UI/FormGroup';
 import Button from '../../components/UI/Button/Button';
