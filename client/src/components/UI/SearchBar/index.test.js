@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import SearchBar from './SearchBar';
+import SearchBar from '.';
 import 'jest-styled-components';
 
 describe('<SearchBar/>', () => {
