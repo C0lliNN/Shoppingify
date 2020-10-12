@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '../../tests/utilities';
-import Signup from './Signup';
+import Signup from '.';
 import 'jest-styled-components';
 import {
   fireEvent,

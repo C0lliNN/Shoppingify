@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 import Spinner from './components/UI/Spinner/Spinner';
 
 const Items = React.lazy(() => import('./containers/Items'));
-const Signup = React.lazy(() => import('./containers/Signup/Signup'));
+const Signup = React.lazy(() => import('./containers/Signup'));
 const Logout = React.lazy(() => import('./containers/Logout'));
 
 const MainContentWrapper = styled.div`
