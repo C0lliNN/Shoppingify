@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Suspense } from 'react';
 import './App.css';
-import NavBar from './components/NavBar/NavBar';
+import NavBar from './components/NavBar';
 import InfoBar from './components/InfoBar';
 import styled from 'styled-components';
 import * as variables from './helpers/style-constants';

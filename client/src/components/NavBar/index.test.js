@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '../../tests/utilities';
-import NavBar from './NavBar';
+import NavBar from '.';
 
 function exec() {
   return render(<NavBar />);
