@@ -2,7 +2,7 @@ import React from 'react';
 import 'jest-styled-components';
 import { render } from '../../../tests/utilities';
 import Items from '../../../containers/Items/Items';
-import CreateItem from './CreateItem';
+import CreateItem from '.';
 import axios from 'axios';
 import { fireEvent, waitForElement } from '@testing-library/react';
 import { lorem } from 'faker';

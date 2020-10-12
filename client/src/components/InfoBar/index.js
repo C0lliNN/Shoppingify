@@ -7,7 +7,7 @@ import {
 } from '../../store/actions/actionTypes';
 import ItemDetails from './ItemDetails/ItemDetails';
 import ListBuilder from './ListBuilder/ListBuilder';
-import CreateItem from './CreateItem/CreateItem';
+import CreateItem from './CreateItem';
 import { StyledInfoBar } from './styles';
 
 

@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
-import * as variables from '../../../helpers/style-constants';
 import ButtonBar from '../../ButtonBar';
 import Button from '../../UI/Button/Button';
 import FromGroup from '../../UI/FormGroup/FormGroup';
@@ -13,25 +11,7 @@ import Modal from '../../UI/Modal/Modal';
 import getAxios from '../../../helpers/axios';
 import Spinner from '../../UI/Spinner/Spinner';
 import { addItem } from '../../../store/actions';
-
-const StyledCreateItem = styled.div`
-  padding: 20px 15px;
-  box-sizing: border-box;
-  position: relative;
-  overflow-y: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  @media (min-width: ${variables.MD_BREAK_POINT}px) {
-    height: 100%;
-  }
-`;
-
-const Title = styled.h3`
-  font-size: ${variables.FONT_SIZE_4};
-  font-weight: 600;
-  margin-bottom: 30px;
-`;
+import { StyledCreateItem, Title } from './styles';
 
 function validateInput(data) {
   const { name, note, image, category } = data;
