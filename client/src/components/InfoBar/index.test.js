@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '../../tests/utilities';
-import InfoBar from './InfoBar';
+import InfoBar from '.';
 import 'jest-styled-components';
 
 describe('<InfoBar/>', () => {
