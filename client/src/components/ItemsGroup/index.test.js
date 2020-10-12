@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '../../tests/utilities';
-import ItemsGroup from './ItemsGroup';
+import ItemsGroup from '.';
 let category = null;
 let items = null;
 import 'jest-styled-components';

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Title from '../../components/Title/Title';
 import SearchBar from '../../components/UI/SearchBar/SearchBar';
 import { useEffect } from 'react';
-import ItemsGroup from '../../components/ItemsGroup/ItemsGroup';
+import ItemsGroup from '../../components/ItemsGroup';
 import * as variables from '../../helpers/style-constants';
 import { getItemsData } from '../../store/actions';
 import { connect } from 'react-redux';
