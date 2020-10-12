@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '../../../tests/utilities';
-import CartIcon from './CartIcon';
+import CartIcon from '.';
 
 describe('<CartIcon/>', () => {
   it('should render correctly', () => {

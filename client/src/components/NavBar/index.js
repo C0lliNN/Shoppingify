@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as variables from '../../helpers/style-constants';
 import logo from '../../assets/images/logo.svg';
-import CartItem from './CartIcon/CartIcon';
+import CartItem from './CartIcon';
 import ReactTooltip from 'react-tooltip';
 import { StyledNavBar, IconsWrapper, StyledNavLink, Icon } from './styles';
 
