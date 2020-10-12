@@ -5,7 +5,7 @@ import {
   SHOW_ITEM_DETAILS,
   SHOW_CREATE_ITEM,
 } from '../../store/actions/actionTypes';
-import ItemDetails from './ItemDetails/ItemDetails';
+import ItemDetails from './ItemDetails';
 import ListBuilder from './ListBuilder/ListBuilder';
 import CreateItem from './CreateItem';
 import { StyledInfoBar } from './styles';
