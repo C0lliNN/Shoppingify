@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import Title from '../../components/Title/Title';
+import Title from '../../components/Title';
 import SearchBar from '../../components/UI/SearchBar/SearchBar';
 import { useEffect } from 'react';
 import ItemsGroup from '../../components/ItemsGroup';
