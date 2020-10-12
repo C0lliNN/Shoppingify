@@ -1,5 +1,5 @@
 import * as variables from '../../../../helpers/style-constants';
-import FormGroup from '../../../UI/FormGroup/FormGroup';
+import FormGroup from '../../../UI/FormGroup';
 import styled from 'styled-components';
 
 export const StyledSaveBar = styled.form`

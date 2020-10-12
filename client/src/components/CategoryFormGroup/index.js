@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import FromGroup from '../UI/FormGroup/FormGroup';
+import FromGroup from '../UI/FormGroup';
 import { ListView, ListItem } from './styles';
 
 function CategoryFormGroup({ categories, categoryValue, setCategoryValue }) {

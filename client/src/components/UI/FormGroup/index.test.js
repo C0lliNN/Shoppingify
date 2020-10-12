@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import FormGroup from './FormGroup';
+import FormGroup from '.';
 import 'jest-styled-components';
 
 describe('<FormGroup/>', () => {

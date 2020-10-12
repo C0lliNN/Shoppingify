@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ButtonBar from '../../ButtonBar';
 import Button from '../../UI/Button/Button';
-import FromGroup from '../../UI/FormGroup/FormGroup';
+import FromGroup from '../../UI/FormGroup';
 import CategoryFormGroup from '../../CategoryFormGroup';
 import { useState } from 'react';
 import { showListBuilder } from '../../../store/actions';
