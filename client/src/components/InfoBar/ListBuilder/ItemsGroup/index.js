@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '../../../UI/Button/Button';
-import Checkbox from '../../../UI/Checkbox/Checkbox';
+import Checkbox from '../../../UI/Checkbox';
 import {
   Wrapper,
   Category,
