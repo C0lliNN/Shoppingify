@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
 import UnAuthContainer from '../UnAuthContainer';
 import { useState } from 'react';
 import FormGroup from '../../components/UI/FormGroup';
@@ -12,15 +11,7 @@ import { loginHandler, logout } from '../../store/actions';
 import { connect } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ErrorMessage from '../../components/ErrorMessage';
-
-const Form = styled.form`
-  margin-top: 50px;
-`;
-
-const ButtonBar = styled.div`
-  text-align: center;
-  margin-top: 50px;
-`;
+import { Form, ButtonBar } from './styles';
 
 function validateInput(data) {
   const { email, password } = data;

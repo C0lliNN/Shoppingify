@@ -1,7 +1,7 @@
 import React from 'react';
 import 'jest-styled-components';
 import { render } from '../../../tests/utilities';
-import Items from '../../../containers/Items/Items';
+import Items from '../../../containers/Items';
 import CreateItem from '.';
 import axios from 'axios';
 import { fireEvent, waitForElement } from '@testing-library/react';

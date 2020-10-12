@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, getByTextWithMarkup } from '../../tests/utilities';
-import Items from './Items';
+import Items from '.';
 import axios from 'axios';
 import { waitForElement } from '@testing-library/react';
 import 'jest-styled-components';

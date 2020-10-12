@@ -7,12 +7,12 @@ import styled from 'styled-components';
 import * as variables from './helpers/style-constants';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Login from './containers/Login/Login';
+import Login from './containers/Login';
 import { checkAuth } from './store/actions';
 import { useEffect } from 'react';
 import Spinner from './components/UI/Spinner/Spinner';
 
-const Items = React.lazy(() => import('./containers/Items/Items'));
+const Items = React.lazy(() => import('./containers/Items'));
 const Signup = React.lazy(() => import('./containers/Signup/Signup'));
 const Logout = React.lazy(() => import('./containers/Logout/Logout'));
 

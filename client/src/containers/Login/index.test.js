@@ -1,7 +1,7 @@
 import React from 'react';
 import 'jest-styled-components';
 import { render } from '../../tests/utilities';
-import Login from './Login';
+import Login from '.';
 import {
   fireEvent,
   waitForElementToBeRemoved,

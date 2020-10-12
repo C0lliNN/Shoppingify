@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '../../../tests/utilities';
 import ItemDetails from '.';
 import axios from 'axios';
-import Items from '../../../containers/Items/Items';
+import Items from '../../../containers/Items';
 import {
   fireEvent,
   waitForElementToBeRemoved,
