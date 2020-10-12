@@ -1,9 +1,8 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import ButtonBar from '../../ButtonBar';
 import Button from '../../UI/Button/Button';
 import bottle from '../../../assets/images/bottle.svg';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { showCreateItem } from '../../../store/actions';
 import { useState } from 'react';
 import cartIllustration from '../../../assets/images/shopping.svg';
@@ -21,11 +20,14 @@ import {
   EditIcon,
   Text,
   CartIllustrationContainer,
-  CartIllustration
+  CartIllustration,
 } from './styles';
 
-function ListBuilder({ list, showCreateItem }) {
+function ListBuilder() {
   const [name, setName] = useState('');
+
+  const list = useSelector((state) => state.activeList);
+  const dispatch = useDispatch();
 
   const hasItems =
     list && list.itemsGroup.filter((p) => p.category && p.category._id).length;
@@ -41,7 +43,9 @@ function ListBuilder({ list, showCreateItem }) {
           <BottleIllustration src={bottle} alt="bottle illustration" />
           <div style={{ marginLeft: '5px' }}>
             <Title>{"Didn't find what you need?"}</Title>
-            <CustomButton onClick={showCreateItem}>Add Item</CustomButton>
+            <CustomButton onClick={() => dispatch(showCreateItem())}>
+              Add Item
+            </CustomButton>
           </div>
         </IllustrationContainer>
         <ListNameContainer>
@@ -87,38 +91,4 @@ function ListBuilder({ list, showCreateItem }) {
   );
 }
 
-ListBuilder.propTypes = {
-  list: PropTypes.shape({
-    itemsGroup: PropTypes.arrayOf(
-      PropTypes.shape({
-        category: PropTypes.shape({
-          _id: PropTypes.string,
-          name: PropTypes.string,
-        }),
-        items: PropTypes.arrayOf(
-          PropTypes.shape({
-            _id: PropTypes.string,
-            name: PropTypes.string,
-            note: PropTypes.string,
-            image: PropTypes.string,
-            category: PropTypes.object,
-          })
-        ),
-      })
-    ),
-    name: PropTypes.string.isRequired,
-    saved: PropTypes.any,
-  }).isRequired,
-  showCreateItem: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    list: state.activeList,
-  };
-};
-const mapDispatchToProps = {
-  showCreateItem,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListBuilder);
+export default ListBuilder;

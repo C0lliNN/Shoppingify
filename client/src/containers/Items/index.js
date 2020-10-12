@@ -1,19 +1,21 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import Title from '../../components/Title';
 import SearchBar from '../../components/UI/SearchBar';
 import { useEffect } from 'react';
 import ItemsGroup from '../../components/ItemsGroup';
 import { getItemsData } from '../../store/actions';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ErrorMessage from '../../components/ErrorMessage';
 import { Text, StyledItems, Header } from './styles';
 
-function Items({ getItemsData, data, isLoading, error }) {
+function Items() {
+  const dispatch = useDispatch();
+  const { data, isLoading, error } = useSelector((state) => state.itemsData);
+
   useEffect(() => {
-    getItemsData();
-  }, [getItemsData]);
+    dispatch(getItemsData());
+  }, [dispatch]);
 
   let content = null;
 
@@ -40,21 +42,4 @@ function Items({ getItemsData, data, isLoading, error }) {
   );
 }
 
-Items.propTypes = {
-  isLoading: PropTypes.bool,
-  error: PropTypes.string,
-  data: PropTypes.array,
-  getItemsData: PropTypes.func,
-};
-
-const mapDispatchToProps = {
-  getItemsData,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    ...state.itemsData,
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Items);
+export default Items;

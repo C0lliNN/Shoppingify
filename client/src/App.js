@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { Suspense } from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
@@ -6,7 +5,7 @@ import InfoBar from './components/InfoBar';
 import styled from 'styled-components';
 import * as variables from './helpers/style-constants';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Login from './containers/Login';
 import { checkAuth } from './store/actions';
 import { useEffect } from 'react';
@@ -29,10 +28,13 @@ const MainContentWrapper = styled.div`
   }
 `;
 
-function App({ isAuth, checkAuth }) {
+function App() {
+  const isAuth = useSelector((state) => state.auth.token != null);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    checkAuth();
-  }, [checkAuth]);
+    dispatch(checkAuth());
+  }, [dispatch]);
 
   return (
     <main className="App">
@@ -86,19 +88,4 @@ function App({ isAuth, checkAuth }) {
   );
 }
 
-App.propTypes = {
-  isAuth: PropTypes.bool.isRequired,
-  checkAuth: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    isAuth: state.auth.token !== null,
-  };
-};
-
-const mapDispatchToProps = {
-  checkAuth,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import UnAuthContainer from '../UnAuthContainer';
 import { useState } from 'react';
@@ -8,7 +7,7 @@ import Modal from '../../components/UI/Modal';
 import { useHistory } from 'react-router';
 import { EMAIL_REGEX } from '../../helpers/regex';
 import { loginHandler, logout } from '../../store/actions';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ErrorMessage from '../../components/ErrorMessage';
 import { Form, ButtonBar } from './styles';
@@ -29,13 +28,16 @@ function validateInput(data) {
   }
 }
 
-function Login({ loginHandler, isLoading, error, reset }) {
+function Login() {
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
+
+  const { isLoading, error } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   async function handleLoginSubmit(event) {
     event.preventDefault();
@@ -47,7 +49,7 @@ function Login({ loginHandler, isLoading, error, reset }) {
       setShowModal(true);
       setModalTitle(error);
     } else {
-      loginHandler(email, password);
+      dispatch(loginHandler(email, password));
     }
   }
 
@@ -71,7 +73,7 @@ function Login({ loginHandler, isLoading, error, reset }) {
           type="button"
           btnType="raised"
           variant="secondary"
-          onClick={reset}
+          onClick={() => dispatch(logout())}
         >
           Try Again
         </Button>
@@ -127,23 +129,4 @@ function Login({ loginHandler, isLoading, error, reset }) {
   return <UnAuthContainer title="Login">{content}</UnAuthContainer>;
 }
 
-Login.propTypes = {
-  error: PropTypes.string,
-  isLoading: PropTypes.bool.isRequired,
-  loginHandler: PropTypes.func.isRequired,
-  reset: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    isLoading: state.auth.isLoading,
-    error: state.auth.error,
-  };
-};
-
-const mapDispatchToProps = {
-  loginHandler,
-  reset: logout,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;

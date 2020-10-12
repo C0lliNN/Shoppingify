@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   SHOW_ITEM_DETAILS,
   SHOW_CREATE_ITEM,
@@ -10,8 +10,9 @@ import ListBuilder from './ListBuilder/index.js';
 import CreateItem from './CreateItem';
 import { StyledInfoBar } from './styles';
 
-
-function InfoBar({ contentType, item }) {
+function InfoBar() {
+  const contentType = useSelector((state) => state.infoBar.contentType);
+  const item = useSelector((state) => state.infoBar.item);
   let content = null;
 
   if (contentType === SHOW_ITEM_DETAILS) {
@@ -30,11 +31,4 @@ InfoBar.propTypes = {
   item: PropTypes.any,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    contentType: state.infoBar.contentType,
-    item: state.infoBar.item,
-  };
-};
-
-export default connect(mapStateToProps)(InfoBar);
+export default InfoBar;

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import UnAuthContainer from '../UnAuthContainer';
 import FormGroup from '../../components/UI/FormGroup';
@@ -8,7 +7,7 @@ import { useHistory } from 'react-router';
 import { useState } from 'react';
 import { EMAIL_REGEX } from '../../helpers/regex';
 import { signupHandler, logout } from '../../store/actions';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ErrorMessage from '../../components/ErrorMessage';
 import { Form, ButtonBar } from './styles';
@@ -43,7 +42,7 @@ function validateInput(data) {
   return null;
 }
 
-function Signup({ isLoading, error, signupHandler, reset }) {
+function Signup() {
   const history = useHistory();
 
   const [name, setName] = useState('');
@@ -53,6 +52,9 @@ function Signup({ isLoading, error, signupHandler, reset }) {
 
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
+
+  const { isLoading, error } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   async function handleSignupSubmit(event) {
     event.preventDefault();
@@ -65,7 +67,7 @@ function Signup({ isLoading, error, signupHandler, reset }) {
       setModalTitle(error);
     } else {
       delete payload.passwordConfirmation;
-      signupHandler(payload);
+      dispatch(signupHandler(payload));
     }
   }
 
@@ -89,7 +91,7 @@ function Signup({ isLoading, error, signupHandler, reset }) {
           type="button"
           btnType="raised"
           variant="secondary"
-          onClick={reset}
+          onClick={() => dispatch(logout())}
         >
           Try Again
         </Button>
@@ -166,23 +168,4 @@ function Signup({ isLoading, error, signupHandler, reset }) {
   return <UnAuthContainer title="Signup">{content}</UnAuthContainer>;
 }
 
-Signup.propTypes = {
-  error: PropTypes.any,
-  isLoading: PropTypes.bool.isRequired,
-  signupHandler: PropTypes.func.isRequired,
-  reset: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    isLoading: state.auth.isLoading,
-    error: state.auth.error,
-  };
-};
-
-const mapDispatchToProps = {
-  signupHandler,
-  reset: logout, // The logout handler returns back to the initial state
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default Signup;

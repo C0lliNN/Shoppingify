@@ -1,11 +1,12 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
 import { showListBuilder } from '../../../store/actions';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { CartIconWrapper, Badge, IconWrapper, Icon } from './styles';
 
-function CartIcon({ showListBuilder }) {
+function CartIcon() {
+  const dispatch = useDispatch();
+
   return (
     <CartIconWrapper>
       <Badge>3</Badge>
@@ -13,7 +14,7 @@ function CartIcon({ showListBuilder }) {
         data-tip="Shopping Cart"
         data-for="cartIcon"
         data-testid="icon"
-        onClick={showListBuilder}
+        onClick={() => dispatch(showListBuilder())}
       >
         <Icon className="material-icons-outlined">shopping_cart</Icon>
       </IconWrapper>
@@ -28,12 +29,4 @@ function CartIcon({ showListBuilder }) {
   );
 }
 
-CartIcon.propTypes = {
-  showListBuilder: PropTypes.func.isRequired,
-};
-
-const mapDispatchToProps = {
-  showListBuilder,
-};
-
-export default connect(null, mapDispatchToProps)(CartIcon);
+export default CartIcon;

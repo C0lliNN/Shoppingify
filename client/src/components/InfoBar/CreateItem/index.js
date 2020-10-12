@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import ButtonBar from '../../ButtonBar';
 import Button from '../../UI/Button/Button';
@@ -6,7 +5,7 @@ import FromGroup from '../../UI/FormGroup';
 import CategoryFormGroup from '../../CategoryFormGroup';
 import { useState } from 'react';
 import { showListBuilder } from '../../../store/actions';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Modal from '../../UI/Modal';
 import getAxios from '../../../helpers/axios';
 import Spinner from '../../UI/Spinner/Spinner';
@@ -39,7 +38,7 @@ function validateInput(data) {
   return null;
 }
 
-function CreateItem({ categories, showListBuilder, addItem }) {
+function CreateItem() {
   const [name, setName] = useState('');
   const [note, setNote] = useState('');
   const [image, setImage] = useState('');
@@ -49,6 +48,11 @@ function CreateItem({ categories, showListBuilder, addItem }) {
 
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState(null);
+
+  const dispatch = useDispatch();
+  const categories = useSelector((state) =>
+    state.itemsData.data.map((group) => group.category)
+  );
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -76,10 +80,10 @@ function CreateItem({ categories, showListBuilder, addItem }) {
     } else {
       try {
         const response = await getAxios().post('/items', payload);
-        addItem(response.data);
+        dispatch(addItem(response.data));
 
         setIsLoading(false);
-        showListBuilder();
+        dispatch(showListBuilder());
       } catch (error) {
         setIsLoading(false);
         if (error.response) {
@@ -143,7 +147,11 @@ function CreateItem({ categories, showListBuilder, addItem }) {
           </React.Fragment>
         )}
         <ButtonBar>
-          <Button btnType="flat" onClick={showListBuilder} type="button">
+          <Button
+            btnType="flat"
+            onClick={() => dispatch(showListBuilder())}
+            type="button"
+          >
             cancel
           </Button>
           <Button btnType="raised" variant="primary" type="submit">
@@ -166,21 +174,4 @@ function CreateItem({ categories, showListBuilder, addItem }) {
   );
 }
 
-CreateItem.propTypes = {
-  categories: PropTypes.array,
-  showListBuilder: PropTypes.func,
-  addItem: PropTypes.func,
-};
-
-const mapDispatchToProps = {
-  showListBuilder,
-  addItem,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    categories: state.itemsData.data.map((group) => group.category),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateItem);
+export default CreateItem;
