@@ -6,7 +6,7 @@ import {
   SHOW_CREATE_ITEM,
 } from '../../store/actions/actionTypes';
 import ItemDetails from './ItemDetails';
-import ListBuilder from './ListBuilder/ListBuilder';
+import ListBuilder from './ListBuilder/index.js';
 import CreateItem from './CreateItem';
 import { StyledInfoBar } from './styles';
 

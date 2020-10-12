@@ -1,107 +1,28 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
 import ButtonBar from '../../ButtonBar';
 import Button from '../../UI/Button/Button';
-import * as variables from '../../../helpers/style-constants';
 import bottle from '../../../assets/images/bottle.svg';
 import { connect } from 'react-redux';
 import { showCreateItem } from '../../../store/actions';
 import { useState } from 'react';
 import cartIllustration from '../../../assets/images/shopping.svg';
-import SaveBar from './SaveBar/SaveBar';
-import ItemsGroup from './ItemsGroup/ItemsGroup';
-
-const StyledListBuilder = styled.div`
-  background-color: ${variables.COLORS.light_brown};
-  padding: 30px;
-  box-sizing: border-box;
-  position: relative;
-  overflow-y: auto;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  @media (min-width: ${variables.MD_BREAK_POINT}px) {
-    padding-bottom: 120px;
-  }
-`;
-
-const IllustrationContainer = styled.div`
-  background-color: ${variables.COLORS.burgundy};
-  width: 100%;
-  height: 110px;
-  padding: 15px 0px;
-  border-radius: ${variables.BORDER_RADIUS_2};
-  box-sizing: border-box;
-  display: flex;
-  align-items: flex-start;
-`;
-
-const Title = styled.h3`
-  font-size: ${variables.FONT_SIZE_2};
-  color: ${variables.COLORS.white};
-  font-weight: 600;
-`;
-
-const BottleIllustration = styled.img`
-  width: 70px;
-  margin-top: -35px;
-`;
-
-const CustomButton = styled.button`
-  background-color: ${variables.COLORS.white};
-  border-radius: ${variables.BORDER_RADIUS_1};
-  padding: 8px 25px;
-  cursor: pointer;
-  font-weight: 600;
-  border: none;
-  outline: none;
-  font-family: ${variables.FONT_FAMILY};
-  margin-top: 10px;
-`;
-
-const ListNameContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 40px;
-  justify-content: space-between;
-`;
-
-const ListName = styled.h3`
-  font-size: ${variables.FONT_SIZE_4};
-  font-weight: 600;
-`;
-
-const EditIcon = styled.i`
-  font-size: ${variables.FONT_SIZE_4};
-  color: ${variables.COLORS.black_2};
-`;
-
-const Header = styled.div`
-  width: 100%;
-`;
-
-const Text = styled.p`
-  font-family: ${variables.FONT_FAMILY};
-  font-size: ${variables.FONT_SIZE_3};
-  font-weight: 600;
-`;
-
-const CartIllustrationContainer = styled.div`
-  text-align: center;
-  width: 100%;
-`;
-
-const CartIllustration = styled.img`
-  width: 80%;
-  max-width: 245px;
-  margin: auto;
-`;
+import SaveBar from './SaveBar/index.js';
+import ItemsGroup from './ItemsGroup';
+import {
+  StyledListBuilder,
+  Header,
+  IllustrationContainer,
+  BottleIllustration,
+  Title,
+  CustomButton,
+  ListNameContainer,
+  ListName,
+  EditIcon,
+  Text,
+  CartIllustrationContainer,
+  CartIllustration
+} from './styles';
 
 function ListBuilder({ list, showCreateItem }) {
   const [name, setName] = useState('');
