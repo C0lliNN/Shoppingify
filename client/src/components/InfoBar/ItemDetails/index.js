@@ -8,7 +8,7 @@ import Button from '../../UI/Button/Button';
 import ButtonBar from '../../ButtonBar';
 import { useState } from 'react';
 import getAxios from '../../../helpers/axios';
-import Modal from '../../UI/Modal/Modal';
+import Modal from '../../UI/Modal';
 import Spinner from '../../UI/Spinner/Spinner';
 import ErrorMessage from '../../ErrorMessage';
 import {

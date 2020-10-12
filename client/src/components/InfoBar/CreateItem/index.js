@@ -7,7 +7,7 @@ import CategoryFormGroup from '../../CategoryFormGroup';
 import { useState } from 'react';
 import { showListBuilder } from '../../../store/actions';
 import { connect } from 'react-redux';
-import Modal from '../../UI/Modal/Modal';
+import Modal from '../../UI/Modal';
 import getAxios from '../../../helpers/axios';
 import Spinner from '../../UI/Spinner/Spinner';
 import { addItem } from '../../../store/actions';

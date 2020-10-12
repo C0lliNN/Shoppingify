@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import UnAuthContainer from '../UnAuthContainer/UnAuthContainer';
 import FormGroup from '../../components/UI/FormGroup';
 import Button from '../../components/UI/Button/Button';
-import Modal from '../../components/UI/Modal/Modal';
+import Modal from '../../components/UI/Modal';
 import { useHistory } from 'react-router';
 import { useState } from 'react';
 import { EMAIL_REGEX } from '../../helpers/regex';
