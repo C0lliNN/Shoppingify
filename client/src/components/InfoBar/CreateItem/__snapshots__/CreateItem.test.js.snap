@@ -642,14 +642,14 @@ exports[`<CreateItem/> should add the item correctly if the payload is valid 1`]
 `;
 
 exports[`<CreateItem/> should render correctly 1`] = `
-.c7 {
+.c6 {
   padding: 20px 0px;
   display: block;
   background: transparent;
   text-align: center;
 }
 
-.c8 {
+.c7 {
   background-color: transparent;
   border-radius: 12px;
   color: #34333A;
@@ -664,11 +664,11 @@ exports[`<CreateItem/> should render correctly 1`] = `
   cursor: pointer;
 }
 
-.c8:disabled {
+.c7:disabled {
   color: #BDBDBD  cursor:default;
 }
 
-.c9 {
+.c8 {
   background-color: #F9A109;
   border-color: #F9A109;
   border-radius: 12px;
@@ -683,7 +683,7 @@ exports[`<CreateItem/> should render correctly 1`] = `
   cursor: pointer;
 }
 
-.c9:disabled {
+.c8:disabled {
   background-color: #BDBDBD;
   border-color: #BDBDBD;
   cursor: default;
@@ -801,37 +801,6 @@ exports[`<CreateItem/> should render correctly 1`] = `
   font-size: 14px;
 }
 
-.c6 {
-  border: 1px solid #E0E0E0;
-  box-sizing: border-box;
-  padding: 12px;
-  list-style: none;
-  box-shadow: 0px 2px 12px rgba(0,0,0,0.04);
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
-  height: 145px;
-  overflow-y: auto;
-}
-
-.c6::-webkit-scrollbar {
-  width: 5px;
-}
-
-.c6::-webkit-scrollbar-track {
-  background: #FFFFFF;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
-}
-
-.c6::-webkit-scrollbar-thumb {
-  background: #E0E0E0;
-  border-radius: 12px;
-}
-
-.c6::-webkit-scrollbar-thumb:hover {
-  background: #BDBDBD;
-}
-
 .c0 {
   padding: 20px 15px;
   box-sizing: border-box;
@@ -850,7 +819,7 @@ exports[`<CreateItem/> should render correctly 1`] = `
 }
 
 @media (min-width:768px) {
-  .c7 {
+  .c6 {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -860,14 +829,8 @@ exports[`<CreateItem/> should render correctly 1`] = `
 }
 
 @media (min-width:1200px) {
-  .c7 {
-    width: 370px;
-  }
-}
-
-@media (min-width:768px) {
   .c6 {
-    margin-bottom: 100px;
+    width: 370px;
   }
 }
 
@@ -957,21 +920,17 @@ exports[`<CreateItem/> should render correctly 1`] = `
           Category
         </label>
       </div>
-      <ul
-        class="c6"
-        style="visibility: hidden;"
-      />
       <div
-        class="c7"
+        class="c6"
       >
         <button
-          class="c8"
+          class="c7"
           type="button"
         >
           cancel
         </button>
         <button
-          class="c9"
+          class="c8"
           type="submit"
         >
           Save

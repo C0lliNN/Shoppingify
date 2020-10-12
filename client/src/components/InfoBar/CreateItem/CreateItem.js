@@ -5,7 +5,7 @@ import * as variables from '../../../helpers/style-constants';
 import ButtonBar from '../../ButtonBar';
 import Button from '../../UI/Button/Button';
 import FromGroup from '../../UI/FormGroup/FormGroup';
-import CategoryFormGroup from '../../CategoryFormGroup/CategoryFormGroup';
+import CategoryFormGroup from '../../CategoryFormGroup';
 import { useState } from 'react';
 import { showListBuilder } from '../../../store/actions';
 import { connect } from 'react-redux';
