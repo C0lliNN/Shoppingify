@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import ErrorMessage from './ErrorMessage';
+import ErrorMessage from '.';
 import 'jest-styled-components';
 
 describe('<ErrorMessage/>', () => {

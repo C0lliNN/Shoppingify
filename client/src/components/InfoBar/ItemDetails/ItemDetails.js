@@ -11,7 +11,7 @@ import { useState } from 'react';
 import getAxios from '../../../helpers/axios';
 import Modal from '../../UI/Modal/Modal';
 import Spinner from '../../UI/Spinner/Spinner';
-import ErrorMessage from '../../ErrorMessage/ErrorMessage';
+import ErrorMessage from '../../ErrorMessage';
 
 const Container = styled.div`
   padding: 20px 15px;

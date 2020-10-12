@@ -9,7 +9,7 @@ import * as variables from '../../helpers/style-constants';
 import { getItemsData } from '../../store/actions';
 import { connect } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const StyledItems = styled.div`
   padding: 20px;

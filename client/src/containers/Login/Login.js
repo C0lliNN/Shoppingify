@@ -11,7 +11,7 @@ import { EMAIL_REGEX } from '../../helpers/regex';
 import { loginHandler, logout } from '../../store/actions';
 import { connect } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const Form = styled.form`
   margin-top: 50px;
