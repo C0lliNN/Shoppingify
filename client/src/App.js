@@ -14,7 +14,7 @@ import Spinner from './components/UI/Spinner/Spinner';
 
 const Items = React.lazy(() => import('./containers/Items'));
 const Signup = React.lazy(() => import('./containers/Signup/Signup'));
-const Logout = React.lazy(() => import('./containers/Logout/Logout'));
+const Logout = React.lazy(() => import('./containers/Logout'));
 
 const MainContentWrapper = styled.div`
   margin-left: ${variables.NAVBAR_XS_SIZE}px;
