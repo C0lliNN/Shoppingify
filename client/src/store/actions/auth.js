@@ -1,10 +1,6 @@
 import * as actionTypes from '../actions/actionTypes';
 import getAxios from '../../helpers/axios';
 
-const TOKEN = 'TOKEN';
-const EXPIRATION_TIME = 'EXPIRATION_TIME';
-const USER_NAME = 'USER_NAME';
-
 function loginStart() {
   return {
     type: actionTypes.LOGIN_START,
@@ -12,11 +8,13 @@ function loginStart() {
 }
 
 function loginSuccess(payload) {
-  setLocalStorage(payload);
+  const currentDate = new Date();
+  const expirationTime = currentDate.getTime() + payload.expiresIn * 1000;
 
   return {
     type: actionTypes.LOGIN_SUCCESS,
     ...payload,
+    expirationTime,
   };
 }
 
@@ -54,8 +52,6 @@ function signupStart() {
 }
 
 function signupSuccess(payload) {
-  setLocalStorage(payload);
-
   return {
     type: actionTypes.SIGNUP_SUCCESS,
     ...payload,
@@ -87,45 +83,25 @@ export function signupHandler(payload) {
   };
 }
 
-export function checkAuth() {
-  return (dispatch) => {
-    const token = localStorage.getItem(TOKEN);
-    const expirationTime = localStorage.getItem(EXPIRATION_TIME);
-    const name = localStorage.getItem(USER_NAME);
+export function logout() {
+  return {
+    type: actionTypes.LOGOUT,
+  };
+}
 
-    if (token && expirationTime && name) {
+export function checkAuth() {
+  return (dispatch, getState) => {
+    const { auth } = getState();
+    const { token, expirationTime } = auth;
+
+    if (token && expirationTime) {
       const currentDate = new Date();
 
       const diff = expirationTime - currentDate.getTime();
-
-      if (diff > 0) {
-        dispatch(
-          loginSuccess({ token: token, name: name, expiresIn: diff / 1000 })
-        );
-      }
 
       setTimeout(() => {
         dispatch(logout());
       }, diff);
     }
   };
-}
-
-export function logout() {
-  localStorage.removeItem(TOKEN);
-  localStorage.removeItem(EXPIRATION_TIME);
-  localStorage.removeItem(USER_NAME);
-  return {
-    type: actionTypes.LOGOUT,
-  };
-}
-
-function setLocalStorage(payload) {
-  const { token, name, expiresIn } = payload;
-  const currentDate = new Date();
-  const expirationTime = currentDate.getTime() + expiresIn * 1000;
-
-  localStorage.setItem(TOKEN, token);
-  localStorage.setItem(EXPIRATION_TIME, expirationTime);
-  localStorage.setItem(USER_NAME, name);
 }

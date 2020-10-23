@@ -5,6 +5,8 @@ import thunk from 'redux-thunk';
 import activeListReducer from './reducers/active-list';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import itemsDataReducer from './reducers/items-data';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -30,9 +32,21 @@ const composeEnhancers = composeWithDevTools({
   },
 });
 
+const persistedReducer = persistReducer(
+  {
+    key: 'SHOPPINGIFY',
+    storage,
+    whitelist: ['auth'],
+  },
+  rootReducer
+);
+
 const store = createStore(
-  rootReducer,
+  persistedReducer,
   composeEnhancers(applyMiddleware(thunk))
 );
 
+const persistor = persistStore(store);
+
 export default store;
+export { persistor };

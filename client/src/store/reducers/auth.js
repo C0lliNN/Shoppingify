@@ -3,7 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   isLoading: false,
   token: null,
-  expiresIn: null,
+  expirationTime: null,
   error: null,
   userName: null,
 };
@@ -20,7 +20,7 @@ function authReducer(state = initialState, action) {
       return {
         ...state,
         token: action.token,
-        expiresIn: action.expiresIn,
+        expirationTime: action.expirationTime,
         userName: action.name,
         isLoading: false,
       };
@@ -42,7 +42,7 @@ function authReducer(state = initialState, action) {
       return {
         ...state,
         token: action.token,
-        expiresIn: action.expiresIn,
+        expirationTime: action.expirationTime,
         userName: action.name,
         isLoading: false,
       };

@@ -5,11 +5,11 @@ import InfoBar from './components/InfoBar';
 import styled from 'styled-components';
 import * as variables from './helpers/style-constants';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Login from './containers/Login';
-import { checkAuth } from './store/actions';
 import { useEffect } from 'react';
 import Spinner from './components/UI/Spinner/Spinner';
+import { checkAuth } from './store/actions';
 
 const Items = React.lazy(() => import('./containers/Items'));
 const Signup = React.lazy(() => import('./containers/Signup'));
@@ -29,12 +29,11 @@ const MainContentWrapper = styled.div`
 `;
 
 function App() {
-  const isAuth = useSelector((state) => state.auth.token != null);
-  const dispatch = useDispatch();
+  const isAuth = useSelector((state) => state.auth.token);
 
   useEffect(() => {
-    dispatch(checkAuth());
-  }, [dispatch]);
+    checkAuth();
+  }, []);
 
   return (
     <main className="App">
