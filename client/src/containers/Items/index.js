@@ -9,9 +9,16 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import ErrorMessage from '../../components/ErrorMessage';
 import { Text, StyledItems, Header } from './styles';
 
+function itemsReducer(items, group) {
+  return items.concat(group.items.map((item) => item._id));
+}
+
 function Items() {
   const dispatch = useDispatch();
   const { data, isLoading, error } = useSelector((state) => state.itemsData);
+  const itemsAdded = useSelector((state) =>
+    state.activeList.data.reduce(itemsReducer, [])
+  );
 
   useEffect(() => {
     dispatch(getItemsData());
@@ -26,7 +33,13 @@ function Items() {
   } else if (data.length) {
     content = data
       .filter((group) => group.category._id)
-      .map((group) => <ItemsGroup key={group.category._id} {...group} />);
+      .map((group) => (
+        <ItemsGroup
+          key={group.category._id}
+          category={group.category}
+          items={group.items.filter((item) => !itemsAdded.includes(item._id))}
+        />
+      ));
   } else {
     content = <Text>No items yet</Text>;
   }

@@ -7,6 +7,10 @@ import { Title, Items, Card, Item, Icon } from './styles';
 function ItemsGroup({ category, items }) {
   const dispatch = useDispatch();
 
+  if (!items.length) {
+    return null;
+  }
+
   return (
     <div style={{ marginTop: '50px' }}>
       <Title>{category.name}</Title>
