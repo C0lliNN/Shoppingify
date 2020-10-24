@@ -13,34 +13,7 @@ import { addItem } from '../../../store/actions';
 import { StyledCreateItem, Title, ValidationError } from './styles';
 import { useForm } from 'react-hook-form';
 
-function validateInput(data) {
-  const { name, note, image, category } = data;
-  if (!name) {
-    return 'The name is required';
-  }
-  if (name.length < 2 || name.length > 40) {
-    return 'The name must contain between 2 and 40 chars';
-  }
-  if (note && note.length > 255) {
-    return 'The note must contain at most 255 chars';
-  }
-  //prettier-ignore
-  //eslint-disable-next-line
-  if (image && !image.match(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i)){
-    return ""
-  }
-  if (!category.name) {
-    return 'The category is required';
-  }
-  if (category.name.length < 4 || category.name.length > 120) {
-    return 'The category must contain between 4 and 120 chars';
-  }
-
-  return null;
-}
-
 function CreateItem() {
-
   const [isLoading, setIsLoading] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
@@ -74,7 +47,7 @@ function CreateItem() {
   const imageRef = register({
     pattern: {
       value: /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
-      message: 'The image must be a valid url'
+      message: 'The image must be a valid url',
     },
   });
 
@@ -88,7 +61,7 @@ function CreateItem() {
       value: 120,
       message: 'The category must contain between 4 and 120 chars',
     },
-  })
+  });
 
   async function onSubmit(data, event) {
     event.preventDefault();
@@ -110,27 +83,20 @@ function CreateItem() {
       category: categoryPayload,
     };
 
-    const error = validateInput(payload);
+    try {
+      const response = await getAxios().post('/items', payload);
+      dispatch(addItem(response.data));
 
-    if (error) {
-      setModalTitle(error);
-      setShowModal(true);
-    } else {
-      try {
-        const response = await getAxios().post('/items', payload);
-        dispatch(addItem(response.data));
-
-        setIsLoading(false);
-        dispatch(showListBuilder());
-      } catch (error) {
-        setIsLoading(false);
-        if (error.response) {
-          setModalTitle(error.response.data.message);
-        } else {
-          setModalTitle(error.message);
-        }
-        setShowModal(true);
+      dispatch(showListBuilder());
+    } catch (error) {
+      if (error.response) {
+        setModalTitle(error.response.data.message);
+      } else {
+        setModalTitle(error.message);
       }
+      setShowModal(true);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -157,9 +123,7 @@ function CreateItem() {
                 name="name"
               />
               {errors?.name && (
-                <ValidationError>
-                  {errors?.name.message}
-                </ValidationError>
+                <ValidationError>{errors?.name.message}</ValidationError>
               )}
             </FormGroup>
 
@@ -173,9 +137,7 @@ function CreateItem() {
                 ref={noteRef}
               ></FormGroup.Textarea>
               {errors?.note && (
-                <ValidationError>
-                  {errors?.note.message}
-                </ValidationError>
+                <ValidationError>{errors?.note.message}</ValidationError>
               )}
             </FormGroup>
             <FormGroup>
@@ -187,9 +149,7 @@ function CreateItem() {
                 ref={imageRef}
               />
               {errors?.image && (
-                <ValidationError>
-                  {errors?.image.message}
-                </ValidationError>
+                <ValidationError>{errors?.image.message}</ValidationError>
               )}
             </FormGroup>
             <CategoryFormGroup

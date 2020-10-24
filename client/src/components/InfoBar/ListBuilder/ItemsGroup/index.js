@@ -1,13 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Button from '../../../UI/Button/Button';
-import Checkbox from '../../../UI/Checkbox';
+import Item from './Item';
 import {
   Wrapper,
   Category,
-  ItemContainer,
-  ItemNameContainer,
-  ItemName,
 } from './styles';
 
 function ItemsGroup({ group, completing }) {
@@ -15,15 +11,7 @@ function ItemsGroup({ group, completing }) {
     <Wrapper>
       <Category>{group.category.name}</Category>
       {group.items.map((item) => (
-        <ItemContainer key={item._id}>
-          <ItemNameContainer>
-            {!completing && <Checkbox />}
-            <ItemName>{item.name}</ItemName>
-          </ItemNameContainer>
-          <Button btnType="outlined" variant="primary" disabled={!completing}>
-            {item.quantity} pcs
-          </Button>
-        </ItemContainer>
+        <Item key={item._id} item={item} completing={completing}/>
       ))}
     </Wrapper>
   );

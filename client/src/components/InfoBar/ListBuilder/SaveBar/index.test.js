@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import SaveBar from './index.js.js';
+import SaveBar from './index.js';
 import 'jest-styled-components';
 import { render, fireEvent } from '@testing-library/react';
 

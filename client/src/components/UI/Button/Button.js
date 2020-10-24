@@ -6,6 +6,7 @@ import {
   FONT_FAMILY,
   FONT_SIZE_2,
   BUTTON_TYPES,
+  LG_BREAK_POINT,
 } from '../../../helpers/style-constants';
 import PropTypes from 'prop-types';
 
@@ -27,7 +28,7 @@ const Button = styled.button`
           border-radius: ${BORDER_RADIUS_2}; 
           border-color: ${COLORS[props.variant]};
           color: ${COLORS[props.variant]};
-          padding: 6px 15px;
+          padding: 4px 10px;
         `;
       }
       case 'flat': {
@@ -81,6 +82,14 @@ const Button = styled.button`
       }
     }}
     cursor: default;
+  }
+
+  @media(min-width: ${LG_BREAK_POINT}px) {
+    ${(props) => {
+      if (props.btnType === 'outlined') {
+        return 'padding: 6px 15px;'
+      }
+    }}
   }
 `;
 
