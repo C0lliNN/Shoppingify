@@ -8,7 +8,7 @@ import {
   addItemToList,
 } from '../../../store/actions';
 import { useDispatch } from 'react-redux';
-import Button from '../../UI/Button/Button';
+import Button from '../../UI/Button';
 import ButtonBar from '../../ButtonBar';
 import { useState } from 'react';
 import getAxios from '../../../helpers/axios';

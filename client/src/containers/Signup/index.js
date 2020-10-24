@@ -1,7 +1,7 @@
 import React from 'react';
 import UnAuthContainer from '../UnAuthContainer';
 import FormGroup from '../../components/UI/FormGroup';
-import Button from '../../components/UI/Button/Button';
+import Button from '../../components/UI/Button';
 import Modal from '../../components/UI/Modal';
 import { useHistory } from 'react-router';
 import { useState } from 'react';

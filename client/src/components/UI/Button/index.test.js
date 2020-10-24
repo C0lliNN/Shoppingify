@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
-import Button from './Button';
+import Button from '.';
 import { COLORS } from '../../../helpers/style-constants';
 import 'jest-styled-components';
 

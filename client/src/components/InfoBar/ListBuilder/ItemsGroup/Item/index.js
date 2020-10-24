@@ -6,7 +6,7 @@ import {
   ItemName,
   EditContainer,
 } from './styles';
-import Button from '../../../../UI/Button/Button';
+import Button from '../../../../UI/Button';
 import Checkbox from '../../../../UI/Checkbox';
 import { useDispatch } from 'react-redux';
 import { decrementItem, incrementItem, removeItemFromList } from '../../../../../store/actions';

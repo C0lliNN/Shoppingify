@@ -1,6 +1,6 @@
 import React from 'react';
 import ButtonBar from '../../ButtonBar';
-import Button from '../../UI/Button/Button';
+import Button from '../../UI/Button';
 import FormGroup from '../../UI/FormGroup';
 import CategoryFormGroup from '../../CategoryFormGroup';
 import { useState } from 'react';

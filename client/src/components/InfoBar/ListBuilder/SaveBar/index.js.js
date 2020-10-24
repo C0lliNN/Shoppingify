@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Button from '../../../UI/Button/Button';
+import Button from '../../../UI/Button';
 import { StyledSaveBar, ModifiedInput } from './styles';
 
 function SaveBar({ onSave, disabled, name, setName }) {

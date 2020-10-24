@@ -1,6 +1,6 @@
 import React from 'react';
 import ButtonBar from '../../ButtonBar';
-import Button from '../../UI/Button/Button';
+import Button from '../../UI/Button';
 import bottle from '../../../assets/images/bottle.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { showCreateItem } from '../../../store/actions';

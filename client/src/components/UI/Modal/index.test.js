@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Button/Button';
+import Button from '../Button';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Modal from '.';
 import 'jest-styled-components';
