@@ -62,6 +62,7 @@ function ListBuilder() {
       {hasItems
         ? list.data
             .filter((p) => p.category && p.category._id)
+            .sort((a, b) => a.category.name.localeCompare(b.category.name))
             .map((group) => (
               <ItemsGroup
                 key={group.category._id}
