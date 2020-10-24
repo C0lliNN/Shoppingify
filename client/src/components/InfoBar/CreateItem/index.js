@@ -1,7 +1,7 @@
 import React from 'react';
 import ButtonBar from '../../ButtonBar';
 import Button from '../../UI/Button/Button';
-import FromGroup from '../../UI/FormGroup';
+import FormGroup from '../../UI/FormGroup';
 import CategoryFormGroup from '../../CategoryFormGroup';
 import { useState } from 'react';
 import { showListBuilder } from '../../../store/actions';
@@ -10,7 +10,8 @@ import Modal from '../../UI/Modal';
 import getAxios from '../../../helpers/axios';
 import Spinner from '../../UI/Spinner/Spinner';
 import { addItem } from '../../../store/actions';
-import { StyledCreateItem, Title } from './styles';
+import { StyledCreateItem, Title, ValidationError } from './styles';
+import { useForm } from 'react-hook-form';
 
 function validateInput(data) {
   const { name, note, image, category } = data;
@@ -26,7 +27,7 @@ function validateInput(data) {
   //prettier-ignore
   //eslint-disable-next-line
   if (image && !image.match(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i)){
-    return "The image must be a valid url"
+    return ""
   }
   if (!category.name) {
     return 'The category is required';
@@ -39,10 +40,6 @@ function validateInput(data) {
 }
 
 function CreateItem() {
-  const [name, setName] = useState('');
-  const [note, setNote] = useState('');
-  const [image, setImage] = useState('');
-  const [category, setCategory] = useState('');
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -53,9 +50,50 @@ function CreateItem() {
   const categories = useSelector((state) =>
     state.itemsData.data.map((group) => group.category)
   );
+  const { register, handleSubmit, errors } = useForm();
 
-  async function handleSubmit(event) {
+  const nameRef = register({
+    required: { value: true, message: 'The name is required' },
+    minLength: {
+      value: 2,
+      message: 'The name must contain between 2 and 40 chars',
+    },
+    maxLength: {
+      value: 40,
+      message: 'The name must contain between 2 and 40 chars',
+    },
+  });
+
+  const noteRef = register({
+    maxLength: {
+      value: 255,
+      message: 'The note must contain at most 255 chars',
+    },
+  });
+
+  const imageRef = register({
+    pattern: {
+      value: /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
+      message: 'The image must be a valid url'
+    },
+  });
+
+  const categoryRef = register({
+    required: { value: true, message: 'The category is required' },
+    minLength: {
+      value: 4,
+      message: 'The category must contain between 4 and 120 chars',
+    },
+    maxLength: {
+      value: 120,
+      message: 'The category must contain between 4 and 120 chars',
+    },
+  })
+
+  async function onSubmit(data, event) {
     event.preventDefault();
+
+    const { name, note, category, image } = data;
 
     let categoryPayload = categories.find(
       (categoryItem) => categoryItem.name === category
@@ -100,49 +138,64 @@ function CreateItem() {
     setShowModal(false);
   }
 
+  console.log(errors);
+
   return (
     <StyledCreateItem>
-      <form onSubmit={handleSubmit} action="#" method="post">
+      <form onSubmit={handleSubmit(onSubmit)} action="#" method="post">
         <Title>Add a new item</Title>
         {isLoading ? (
           <Spinner />
         ) : (
           <React.Fragment>
-            <FromGroup>
-              <FromGroup.Label htmlFor="name">Name</FromGroup.Label>
-              <FromGroup.Input
+            <FormGroup>
+              <FormGroup.Label htmlFor="name">Name</FormGroup.Label>
+              <FormGroup.Input
                 placeholder="Enter a name"
+                ref={nameRef}
                 id="name"
                 name="name"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
               />
-            </FromGroup>
-            <FromGroup>
-              <FromGroup.Label htmlFor="note">Note(optional)</FromGroup.Label>
-              <FromGroup.Textarea
+              {errors?.name && (
+                <ValidationError>
+                  {errors?.name.message}
+                </ValidationError>
+              )}
+            </FormGroup>
+
+            <FormGroup>
+              <FormGroup.Label htmlFor="note">Note(optional)</FormGroup.Label>
+              <FormGroup.Textarea
                 placeholder="Enter a note"
                 id="note"
                 rows="3"
                 name="note"
-                value={note}
-                onChange={(event) => setNote(event.target.value)}
-              ></FromGroup.Textarea>
-            </FromGroup>
-            <FromGroup>
-              <FromGroup.Label htmlFor="image">Image(optional)</FromGroup.Label>
-              <FromGroup.Input
+                ref={noteRef}
+              ></FormGroup.Textarea>
+              {errors?.note && (
+                <ValidationError>
+                  {errors?.note.message}
+                </ValidationError>
+              )}
+            </FormGroup>
+            <FormGroup>
+              <FormGroup.Label htmlFor="image">Image(optional)</FormGroup.Label>
+              <FormGroup.Input
                 placeholder="Enter a url"
                 name="image"
                 id="image"
-                value={image}
-                onChange={(event) => setImage(event.target.value)}
+                ref={imageRef}
               />
-            </FromGroup>
+              {errors?.image && (
+                <ValidationError>
+                  {errors?.image.message}
+                </ValidationError>
+              )}
+            </FormGroup>
             <CategoryFormGroup
               categories={categories}
-              categoryValue={category}
-              setCategoryValue={setCategory}
+              ref={categoryRef}
+              errors={errors}
             />
           </React.Fragment>
         )}

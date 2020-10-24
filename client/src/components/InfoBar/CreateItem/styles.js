@@ -19,3 +19,10 @@ export const Title = styled.h3`
   font-weight: 600;
   margin-bottom: 30px;
 `;
+
+export const ValidationError = styled.span`
+  font-size: 12px;
+  font-weight: 600;
+  color: ${variables.COLORS.danger};
+  align-self: start
+`;
