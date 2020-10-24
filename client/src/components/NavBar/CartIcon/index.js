@@ -1,15 +1,22 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
 import { showListBuilder } from '../../../store/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CartIconWrapper, Badge, IconWrapper, Icon } from './styles';
 
 function CartIcon() {
   const dispatch = useDispatch();
 
+  const reducer = (total, group) => total + group.items.length;
+  const filter = (item) => item.category.name;
+
+  const count = useSelector((state) =>
+    state.activeList.data.filter(filter).reduce(reducer, 0)
+  );
+
   return (
     <CartIconWrapper>
-      <Badge>3</Badge>
+      <Badge>{count}</Badge>
       <IconWrapper
         data-tip="Shopping Cart"
         data-for="cartIcon"
