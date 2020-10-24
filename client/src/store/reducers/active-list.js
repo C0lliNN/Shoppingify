@@ -1,9 +1,9 @@
 import * as actionTypes from '../actions/actionTypes';
+import produce from 'immer';
 
 const initialState = {
   saved: false,
-  name: '',
-  itemsGroup: [
+  data: [
     {
       category: {
         _id: '',
@@ -14,38 +14,28 @@ const initialState = {
   ],
 };
 
-function activeListReducer(state = initialState, action) {
+const activeListReducer = produce((draft, action) => {
   switch (action.type) {
     case actionTypes.LIST_ADD_ITEM: {
       const item = { ...action.item, quantity: 1 };
-      const itemsGroup = [...state.itemsGroup];
-      const index = itemsGroup.findIndex(
+
+      const index = draft.data.findIndex(
         (p) => p.category._id === item.category._id
       );
 
-      let newItemsGroup = null;
-
       if (index >= 0) {
-        itemsGroup[index].items = itemsGroup[index].items.concat([item]);
-        newItemsGroup = itemsGroup;
+        draft.data[index].items.push(item);
       } else {
-        newItemsGroup = itemsGroup.concat([
-          {
-            category: item.category,
-            items: [item],
-          },
-        ]);
+        draft.data.push({
+          category: item.category,
+          items: [item],
+        });
       }
-
-      return {
-        ...state,
-        itemsGroup: newItemsGroup,
-      };
+      break;
     }
 
     default:
-      return state;
   }
-}
+}, initialState);
 
 export default activeListReducer;

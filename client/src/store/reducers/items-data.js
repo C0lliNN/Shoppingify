@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
+import produce from 'immer';
 
 const initialState = {
   isLoading: false,
@@ -21,76 +22,60 @@ const initialState = {
   ],
 };
 
-function itemsDataReducer(state = initialState, action) {
+const itemsDataReducer = produce((draft, action) => {
   switch (action.type) {
     case actionTypes.GET_ITEMS_START:
-      return {
-        ...state,
-        isLoading: true,
-      };
+      draft.isLoading = true;
+      break;
     case actionTypes.GET_ITEMS_SUCCESS:
-      return {
-        data: action.data,
-        error: null,
-        isLoading: false,
-      };
+      draft.data = action.data;
+      draft.error = null;
+      draft.isLoading = false;
+      break;
     case actionTypes.GET_ITEMS_FAILED:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.error,
-      };
+      draft.isLoading = false;
+      draft.error = action.error;
+      break;
     case actionTypes.ADD_ITEM: {
-      const data = [...state.data];
       const { item } = action;
 
-      const groupIndex = data.findIndex(
+      const groupIndex = draft.data.findIndex(
         (groupItem) => groupItem.category._id === item.category._id
       );
 
       if (groupIndex >= 0) {
-        data[groupIndex] = {
-          ...data[groupIndex],
-          items: data[groupIndex].items.concat([item]),
-        };
+        draft.data[groupIndex].items.push(item);
       } else {
-        data.push({
+        draft.data.push({
           category: item.category,
           items: [item],
         });
       }
 
-      return {
-        ...state,
-        data,
-      };
+      break;
     }
     case actionTypes.REMOVE_ITEM: {
-      let data = [...state.data];
-      const item = action.item;
+      const { item } = action;
 
-      const group = data.find(
+      const groupIndex = draft.data.findIndex(
         (groupItem) => groupItem.category._id === item.category._id
       );
 
-      if (group) {
-        const newItems = group.items.filter((p) => p._id !== item._id);
-        group.items = newItems;
+      if (groupIndex >= 0) {
+        if (draft.data[groupIndex].items.length <= 1) {
+          delete draft.data[groupIndex];
+        } else {
+          const itemIndex = draft.data[groupIndex].items.findIndex(
+            (p) => p._id === item._id
+          );
+          draft.data[groupIndex].items.splice(itemIndex, itemIndex);
+        }
       }
 
-      if (!group.items.length) {
-        data = data.filter((p) => p.category._id !== group.category._id);
-      }
-
-      return {
-        ...state,
-        data,
-      };
+      break;
     }
-
     default:
-      return state;
   }
-}
+}, initialState);
 
 export default itemsDataReducer;

@@ -1,34 +1,29 @@
 import * as actionTypes from '../actions/actionTypes';
+import produce from 'immer';
 
 const initialState = {
   contentType: null,
   item: null,
 };
 
-function infoBarReducer(state = initialState, action) {
+const infoBarReducer = produce((draft, action) => {
   switch (action.type) {
     case actionTypes.SHOW_LIST_BUILDER: {
-      return {
-        ...state,
-        contentType: actionTypes.SHOW_LIST_BUILDER,
-      };
+      draft.contentType = actionTypes.SHOW_LIST_BUILDER;
+      break;
     }
     case actionTypes.SHOW_CREATE_ITEM: {
-      return {
-        ...state,
-        contentType: actionTypes.SHOW_CREATE_ITEM,
-      };
+      draft.contentType = actionTypes.SHOW_CREATE_ITEM;
+      break;
     }
     case actionTypes.SHOW_ITEM_DETAILS: {
-      return {
-        ...state,
-        contentType: actionTypes.SHOW_ITEM_DETAILS,
-        item: action.item,
-      };
+      draft.contentType = actionTypes.SHOW_ITEM_DETAILS;
+      draft.item = action.item;
+      break;
     }
     default:
-      return state;
+
   }
-}
+}, initialState);
 
 export default infoBarReducer;

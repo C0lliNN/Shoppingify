@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
+import produce from 'immer';
 
 const initialState = {
   isLoading: false,
@@ -8,58 +9,45 @@ const initialState = {
   userName: null,
 };
 
-function authReducer(state = initialState, action) {
+const authReducer = produce((draft, action) => {
   switch (action.type) {
     case actionTypes.LOGIN_START: {
-      return {
-        ...state,
-        isLoading: true,
-      };
+      draft.isLoading = true;
+      break;
     }
     case actionTypes.LOGIN_SUCCESS: {
-      return {
-        ...state,
-        token: action.token,
-        expirationTime: action.expirationTime,
-        userName: action.name,
-        isLoading: false,
-      };
+      draft.token = action.token;
+      draft.expirationTime = action.expirationTime;
+      draft.userName = action.name;
+      draft.isLoading = false;
+      break;
     }
     case actionTypes.LOGIN_FAILED: {
-      return {
-        ...state,
-        error: action.error,
-        isLoading: false,
-      };
+      draft.error = action.error;
+      draft.isLoading = false;
+      break;
     }
     case actionTypes.SIGNUP_START: {
-      return {
-        ...state,
-        isLoading: true,
-      };
+      draft.isLoading = true;
+      break;
     }
     case actionTypes.SIGNUP_SUCCESS: {
-      return {
-        ...state,
-        token: action.token,
-        expirationTime: action.expirationTime,
-        userName: action.name,
-        isLoading: false,
-      };
+      draft.token = action.token;
+      draft.expirationTime = action.expirationTime;
+      draft.userName = action.name;
+      draft.isLoading = false;
+      break;
     }
     case actionTypes.SIGNUP_FAILED: {
-      return {
-        ...state,
-        error: action.error,
-        isLoading: false,
-      };
+      draft.error = action.error;
+      draft.isLoading = false;
+      break;
     }
     case actionTypes.LOGOUT: {
       return initialState;
     }
     default:
-      return state;
   }
-}
+}, initialState);
 
 export default authReducer;

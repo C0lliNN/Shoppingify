@@ -5,7 +5,7 @@ import InfoBar from './components/InfoBar';
 import styled from 'styled-components';
 import * as variables from './helpers/style-constants';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Login from './containers/Login';
 import { useEffect } from 'react';
 import Spinner from './components/UI/Spinner/Spinner';
@@ -30,10 +30,11 @@ const MainContentWrapper = styled.div`
 
 function App() {
   const isAuth = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    checkAuth();
-  }, []);
+    dispatch(checkAuth());
+  }, [dispatch]);
 
   return (
     <main className="App">

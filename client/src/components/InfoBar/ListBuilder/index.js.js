@@ -30,7 +30,7 @@ function ListBuilder() {
   const dispatch = useDispatch();
 
   const hasItems =
-    list && list.itemsGroup.filter((p) => p.category && p.category._id).length;
+    list && list.data.filter((p) => p.category && p.category._id).length;
 
   function handleOnSave() {
     console.log('Saving...');
@@ -60,7 +60,7 @@ function ListBuilder() {
         </CartIllustrationContainer>
       )}
       {hasItems
-        ? list.itemsGroup
+        ? list.data
             .filter((p) => p.category && p.category._id)
             .map((group) => (
               <ItemsGroup
