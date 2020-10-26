@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ButtonBar from '../../ButtonBar';
 import Button from '../../UI/Button';
 import bottle from '../../../assets/images/bottle.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { showCreateItem } from '../../../store/actions';
+import {
+  getActiveListHandler,
+  saveListHandler,
+  showCreateItem,
+} from '../../../store/actions';
 import { useState } from 'react';
 import cartIllustration from '../../../assets/images/shopping.svg';
 import SaveBar from './SaveBar/index.js';
@@ -22,6 +26,7 @@ import {
   CartIllustrationContainer,
   CartIllustration,
 } from './styles';
+import { completeListHandler } from '../../../store/actions';
 
 function ListBuilder() {
   const [name, setName] = useState('');
@@ -33,8 +38,16 @@ function ListBuilder() {
     list && list.data.filter((p) => p.category && p.category._id).length;
 
   function handleOnSave() {
-    console.log('Saving...');
+    dispatch(saveListHandler(name));
   }
+
+  function handleComplete() {
+    dispatch(completeListHandler());
+  }
+
+  useEffect(() => {
+    dispatch(getActiveListHandler());
+  }, [dispatch]);
 
   return (
     <StyledListBuilder style={{ display: hasItems ? 'block' : 'flex' }}>
@@ -75,7 +88,11 @@ function ListBuilder() {
         {list.saved ? (
           <>
             <Button btnType="flat">cancel</Button>
-            <Button btnType="raised" variant="secondary">
+            <Button
+              btnType="raised"
+              variant="secondary"
+              onClick={handleComplete}
+            >
               complete
             </Button>
           </>

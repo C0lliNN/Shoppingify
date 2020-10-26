@@ -7,6 +7,9 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import store, { persistor } from './store/index';
 import Spinner from './components/UI/Spinner/Spinner';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 ReactDOM.render(
   <Provider store={store}>
@@ -14,6 +17,17 @@ ReactDOM.render(
       <React.StrictMode>
         <App />
       </React.StrictMode>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </PersistGate>
   </Provider>,
   document.getElementById('root')

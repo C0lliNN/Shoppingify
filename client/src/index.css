@@ -15,3 +15,7 @@ code {
 #root {
   height: 100%;
 }
+
+.Toastify__toast-body {
+  color: #303030 !important;
+}

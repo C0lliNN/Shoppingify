@@ -3,6 +3,9 @@ import produce from 'immer';
 
 const initialState = {
   saved: false,
+  name: '',
+  isLoading: false,
+  error: null,
   data: [
     {
       category: {
@@ -83,6 +86,60 @@ const activeListReducer = produce((draft, action) => {
         }
       }
 
+      break;
+    }
+
+    case actionTypes.SAVE_LIST_START: {
+      draft.isLoading = true;
+      break;
+    }
+
+    case actionTypes.SAVE_LIST_SUCCESS: {
+      draft.isLoading = false;
+      draft.saved = true;
+      draft.name = action.name;
+      draft._id = action._id;
+      break;
+    }
+
+    case actionTypes.SAVE_LIST_FAILED: {
+      draft.isLoading = false;
+      draft.error = action.error;
+      break;
+    }
+
+    case actionTypes.GET_ACTIVE_LIST_START: {
+      draft.isLoading = true;
+      break;
+    }
+
+    case actionTypes.GET_ACTIVE_LIST_SUCCESS: {
+      draft.isLoading = false;
+      draft.name = action.data.name;
+      draft._id = action.data._id;
+      draft.data = action.data.data;
+      draft.saved = true;
+      break;
+    }
+
+    case actionTypes.GET_ACTIVE_LIST_FAILED: {
+      draft.isLoading = false;
+      draft.error = action.error;
+      break;
+    }
+
+    case actionTypes.COMPLETE_LIST_START: {
+      draft.isLoading = true;
+      break;
+    }
+
+    case actionTypes.COMPLETE_LIST_SUCCESS: {
+      return initialState;
+    }
+
+    case actionTypes.COMPLETE_LIST_FAILED: {
+      draft.isLoading = false;
+      draft.error = action.error;
       break;
     }
 
