@@ -6,6 +6,7 @@ import { StyledSaveBar, ModifiedInput } from './styles';
 function SaveBar({ onSave, disabled, name, setName }) {
   function handleOnSubmit(event) {
     event.preventDefault();
+    setName('');
     onSave();
   }
 

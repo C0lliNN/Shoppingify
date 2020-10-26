@@ -143,6 +143,21 @@ const activeListReducer = produce((draft, action) => {
       break;
     }
 
+    case actionTypes.CANCEL_LIST_START: {
+      draft.isLoading = true;
+      break;
+    }
+
+    case actionTypes.CANCEL_LIST_SUCCESS: {
+      return initialState;
+    }
+
+    case actionTypes.CANCEL_LIST_FAILED: {
+      draft.isLoading = false;
+      draft.error = action.error;
+      break;
+    }
+
     default:
   }
 }, initialState);

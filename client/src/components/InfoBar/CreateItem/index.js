@@ -12,6 +12,7 @@ import Spinner from '../../UI/Spinner/Spinner';
 import { addItem } from '../../../store/actions';
 import { StyledCreateItem, Title, ValidationError } from './styles';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 function CreateItem() {
   const [isLoading, setIsLoading] = useState(false);
@@ -86,9 +87,10 @@ function CreateItem() {
 
     try {
       const response = await getAxios().post('/items', payload);
+      
       dispatch(addItem(response.data));
-
       dispatch(showListBuilder());
+      toast('✅ Item Added Successfully!');
     } catch (error) {
       if (error.response) {
         setModalTitle(error.response.data.message);

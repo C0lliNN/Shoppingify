@@ -75,14 +75,15 @@ export function saveListHandler(name) {
         status: 'active',
       };
 
-      const { _id } = await getAxios().post('/lists', payload);
-      dispatch(saveListSuccess(name, _id));
+      const { data } = await getAxios().post('/lists', payload);
+      dispatch(saveListSuccess(name, data._id));
       toast('✅ List saved successfully!');
     } catch (error) {
       const errorMessage = error.response
         ? error.response.data.message
         : error.message;
       dispatch(saveListFailed(errorMessage));
+      toast(`❗️Error: ${errorMessage}`);
     }
   };
 }
@@ -181,6 +182,44 @@ export function completeListHandler() {
         ? error.response.data.message
         : error.message;
       dispatch(completeListFailed(errorMessage));
+      toast(`❗️Error: ${errorMessage}`);
+    }
+  };
+}
+
+function cancelListStart() {
+  return {
+    type: actionTypes.CANCEL_LIST_START
+  }
+}
+
+function cancelListSuccess() {
+  return {
+    type: actionTypes.CANCEL_LIST_SUCCESS
+  }
+}
+
+function cancelListFailed() {
+  return {
+    type: actionTypes.CANCEL_LIST_FAILED
+  }
+}
+
+export function cancelListHandler() {
+  return async (dispatch, getState) => {
+    dispatch(cancelListStart());
+
+    try {
+      const { _id: listId } = getState().activeList;
+      getAxios().patch(`/lists/${listId}/cancel`);
+      dispatch(cancelListSuccess());
+      toast('✅ List canceled successfully!');
+    } catch (error) {
+      const errorMessage = error.response
+        ? error.response.data.message
+        : error.message;
+      dispatch(cancelListFailed(errorMessage));
+      toast(`❗️Error: ${errorMessage}`);
     }
   };
 }

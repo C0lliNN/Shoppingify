@@ -27,6 +27,7 @@ import {
   CartIllustration,
 } from './styles';
 import { completeListHandler } from '../../../store/actions';
+import { cancelListHandler } from '../../../store/actions/active-list';
 
 function ListBuilder() {
   const [name, setName] = useState('');
@@ -43,6 +44,10 @@ function ListBuilder() {
 
   function handleComplete() {
     dispatch(completeListHandler());
+  }
+
+  function handleCancel() {
+    dispatch(cancelListHandler());
   }
 
   useEffect(() => {
@@ -87,7 +92,9 @@ function ListBuilder() {
       <ButtonBar>
         {list.saved ? (
           <>
-            <Button btnType="flat">cancel</Button>
+            <Button btnType="flat" onClick={handleCancel}>
+              cancel
+            </Button>
             <Button
               btnType="raised"
               variant="secondary"

@@ -22,6 +22,7 @@ import {
   Value,
   InfoGroupWrapper,
 } from './styles';
+import { toast } from 'react-toastify';
 
 function ItemDetails({ item }) {
   const [showModal, setShowModal] = useState(false);
@@ -40,6 +41,7 @@ function ItemDetails({ item }) {
       setIsLoading(false);
       dispatch(removeItem(item));
       dispatch(showListBuilder());
+      toast('✅ Item Deleted Successfully!');
     } catch (error) {
       if (error.response) {
         setError(error.response.data.message);
@@ -47,6 +49,7 @@ function ItemDetails({ item }) {
         setError(error.message);
       }
       setIsLoading(false);
+      toast('❗️ Error while trying to delete the item!');
     }
   }
 
