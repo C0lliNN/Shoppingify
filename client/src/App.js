@@ -12,6 +12,7 @@ import Spinner from './components/UI/Spinner/Spinner';
 import { checkAuth } from './store/actions';
 
 const Items = React.lazy(() => import('./containers/Items'));
+const History = React.lazy(() => import('./containers/History'));
 const Signup = React.lazy(() => import('./containers/Signup'));
 const Logout = React.lazy(() => import('./containers/Logout'));
 
@@ -55,6 +56,16 @@ function App() {
                     </Suspense>
                   )}
                 />
+
+                <Route
+                  path="/history"
+                  render={() => (
+                    <Suspense fallback={<Spinner />}>
+                      <History />
+                    </Suspense>
+                  )}
+                />
+
                 <Route
                   path="/"
                   render={() => (
