@@ -20,7 +20,8 @@ router.get('/', async (request, response) => {
       }
       return prev;
     }, [])
-    .sort((a, b) => b.quantity - a.quantity);
+    .sort((a, b) => b.quantity - a.quantity)
+    .slice(0, 3);
 
   const topCategories = items
     .reduce(
@@ -42,7 +43,9 @@ router.get('/', async (request, response) => {
         return prev.concat(curr);
       }
       return prev;
-    }, []);
+    }, [])
+    .sort((a, b) => b.quantity - a.quantity)
+    .slice(0, 3);
 
   const itemsPerMonth = items
     .map((i) => ({
@@ -63,7 +66,12 @@ router.get('/', async (request, response) => {
       return prev;
     }, []);
 
-  response.send({ topItems, topCategories, itemsPerMonth });
+  const totalItems = items.reduce(
+    (prev, curr) => prev + curr.items.reduce((p, c) => p + c.quantity, 0),
+    0
+  );
+
+  response.send({ topItems, topCategories, itemsPerMonth, totalItems });
 });
 
 module.exports = router;
