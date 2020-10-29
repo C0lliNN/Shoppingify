@@ -13,6 +13,11 @@ router.get('/', async (request, response) => {
   response.send(items);
 });
 
+router.get('/:id', async (request, response) => {
+  const item = await Item.findById(request.params.id);
+  response.send(item);
+})
+
 router.post('/', async (request, response) => {
   const { value, error } = validateItem(request.body);
 

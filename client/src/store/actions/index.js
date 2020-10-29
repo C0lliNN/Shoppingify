@@ -1,4 +1,8 @@
-export { showCreateItem, showItemDetails, showListBuilder } from './info-bar';
+export {
+  showCreateItem,
+  showItemDetailsHandler,
+  showListBuilder,
+} from './info-bar';
 export {
   addItem as addItemToList,
   incrementItem,

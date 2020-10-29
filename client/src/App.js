@@ -15,6 +15,7 @@ const Items = React.lazy(() => import('./containers/Items'));
 const History = React.lazy(() => import('./containers/History'));
 const Signup = React.lazy(() => import('./containers/Signup'));
 const Logout = React.lazy(() => import('./containers/Logout'));
+const List = React.lazy(() => import('./containers/List'));
 
 const MainContentWrapper = styled.div`
   margin-left: ${variables.NAVBAR_XS_SIZE}px;
@@ -53,6 +54,15 @@ function App() {
                   render={() => (
                     <Suspense fallback={<Spinner />}>
                       <Logout />
+                    </Suspense>
+                  )}
+                />
+
+                <Route
+                  path="/history/:id"
+                  render={() => (
+                    <Suspense fallback={<Spinner />}>
+                      <List />
                     </Suspense>
                   )}
                 />

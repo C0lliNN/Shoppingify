@@ -36,7 +36,7 @@ function NavBar() {
           </Icon>
           <ReactTooltip id="items" {...tooltipConfig} />
         </StyledNavLink>
-        <StyledNavLink to="/history" activeStyle={activeStyle} exact>
+        <StyledNavLink to="/history" activeStyle={activeStyle}>
           <Icon
             className="material-icons-round"
             data-tip="History"

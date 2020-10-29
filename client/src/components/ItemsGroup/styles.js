@@ -46,3 +46,8 @@ export const Icon = styled.i`
   color: #c1c1c4;
   cursor: pointer;
 `;
+
+export const Quantity = styled.span`
+  font-size: ${variables.FONT_SIZE_1};
+  color: #f9a10a;
+`;

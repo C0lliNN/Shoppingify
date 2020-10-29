@@ -38,7 +38,7 @@ export default function History() {
   }
 
   function handleShowListDetails(id) {
-    history.push(`/lists/${id}`);
+    history.push(`/history/${id}`);
   }
 
   useEffect(() => {

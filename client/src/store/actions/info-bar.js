@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+import getAxios from '../../helpers/axios';
 import * as actionTypes from './actionTypes';
 
 export function showListBuilder() {
@@ -12,9 +14,34 @@ export function showCreateItem() {
   };
 }
 
-export function showItemDetails(item) {
+function showItemDetailsStart() {
   return {
-    type: actionTypes.SHOW_ITEM_DETAILS,
+    type: actionTypes.SHOW_ITEM_DETAILS_START
+  }
+}
+
+function showItemDetailsSuccess(item) {
+  return {
+    type: actionTypes.SHOW_ITEM_DETAILS_SUCCESS,
     item: item,
   };
+}
+
+function showItemDetailsFailed()   {
+  return {
+    type: actionTypes.SHOW_ITEM_DETAILS_FAILED
+  }
+}
+
+export function showItemDetailsHandler(id) {
+  return async (dispatch) => {
+    dispatch(showItemDetailsStart())
+    try {
+      const { data } = await getAxios().get(`/items/${id}`);
+      dispatch(showItemDetailsSuccess(data));
+    } catch (err) {
+      toast('Error while fetching the item!');
+      dispatch(showItemDetailsFailed())
+    }
+  }
 }
