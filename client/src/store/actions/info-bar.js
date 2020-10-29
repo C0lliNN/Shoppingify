@@ -16,8 +16,8 @@ export function showCreateItem() {
 
 function showItemDetailsStart() {
   return {
-    type: actionTypes.SHOW_ITEM_DETAILS_START
-  }
+    type: actionTypes.SHOW_ITEM_DETAILS_START,
+  };
 }
 
 function showItemDetailsSuccess(item) {
@@ -27,21 +27,24 @@ function showItemDetailsSuccess(item) {
   };
 }
 
-function showItemDetailsFailed()   {
+function showItemDetailsFailed() {
   return {
-    type: actionTypes.SHOW_ITEM_DETAILS_FAILED
-  }
+    type: actionTypes.SHOW_ITEM_DETAILS_FAILED,
+  };
 }
 
 export function showItemDetailsHandler(id) {
   return async (dispatch) => {
-    dispatch(showItemDetailsStart())
+    dispatch(showItemDetailsStart());
     try {
       const { data } = await getAxios().get(`/items/${id}`);
       dispatch(showItemDetailsSuccess(data));
-    } catch (err) {
-      toast('Error while fetching the item!');
-      dispatch(showItemDetailsFailed())
+    } catch (error) {
+      const errorMessage = error.response
+        ? error.response.data.message
+        : error.message;
+      toast(`❗️Error: ${errorMessage}`);
+      dispatch(showItemDetailsFailed());
     }
-  }
+  };
 }

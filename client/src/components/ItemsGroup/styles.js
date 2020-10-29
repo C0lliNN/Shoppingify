@@ -50,4 +50,6 @@ export const Icon = styled.i`
 export const Quantity = styled.span`
   font-size: ${variables.FONT_SIZE_1};
   color: #f9a10a;
+  white-space: nowrap;
+  margin-left: 12px;
 `;

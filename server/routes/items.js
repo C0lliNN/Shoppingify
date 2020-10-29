@@ -15,6 +15,9 @@ router.get('/', async (request, response) => {
 
 router.get('/:id', async (request, response) => {
   const item = await Item.findById(request.params.id);
+  if (!item) {
+    return response.status(404).send({ message: 'Item not founded!'});
+  }
   response.send(item);
 })
 
