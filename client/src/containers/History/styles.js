@@ -19,6 +19,13 @@ export const ListsContainer = styled.ul`
   margin-top: 40px;
 `;
 
+export const NoItems = styled.p`
+  font-size: ${variables.FONT_SIZE_3};
+  font-family: ${variables.FONT_FAMILY};
+  font-weight: 600;
+  margin-top: 50px;
+`;
+
 export const List = styled.li`
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.05);
   border-radius: 12px;

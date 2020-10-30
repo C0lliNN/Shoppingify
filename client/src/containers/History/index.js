@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 import ErrorMessage from '../../components/ErrorMessage';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import getAxios from '../../helpers/axios';
-import { List, ListsContainer, Title, Container, Badge } from './styles';
+import { List, ListsContainer, Title, Container, Badge, NoItems } from './styles';
 
 export default function History() {
   const [lists, setLists] = useState([]);
@@ -78,6 +78,8 @@ export default function History() {
         ))}
       </ListsContainer>
     );
+  } else {
+    content = <NoItems>No Items Yet</NoItems>
   }
 
   return (

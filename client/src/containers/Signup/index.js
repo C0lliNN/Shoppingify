@@ -9,66 +9,88 @@ import { signupHandler, logout } from '../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ErrorMessage from '../../components/ErrorMessage';
-import { Form, ButtonBar } from './styles';
+import { Form, ButtonBar, Error } from './styles';
 import { TitleBar, Title } from '../../containers/_layouts/Default/styles';
 import logo from '../../assets/images/logo.svg';
-
-function validateInput(data) {
-  const { name, email, password, passwordConfirmation } = data;
-
-  if (!name) {
-    return 'The name is required';
-  }
-  if (name.length < 3 || name.length > 100) {
-    return 'The name must contain between 3 and 100 chars';
-  }
-  if (!email) {
-    return 'The email is required';
-  }
-  if (!email.match(EMAIL_REGEX)) {
-    return 'Invalid Email Format';
-  }
-  if (!password) {
-    return 'The password is required';
-  }
-  if (password.length < 6 || password.length > 255) {
-    return 'The password must contain between 6 and 255 chars';
-  }
-  if (!passwordConfirmation) {
-    return "The field 'Confirm Password' is required";
-  }
-  if (passwordConfirmation !== password) {
-    return "The passwords don't match";
-  }
-  return null;
-}
+import { useForm } from 'react-hook-form';
 
 function Signup() {
   const history = useHistory();
-
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
 
   const { isLoading, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const { register, handleSubmit, errors, getValues } = useForm();
 
-  async function handleSignupSubmit(event) {
+  const nameRef = register({
+    required: {
+      value: true,
+      message: 'The name is required',
+    },
+    minLength: {
+      value: 3,
+      message: 'The name must have more than 3 chars',
+    },
+    maxLength: {
+      value: 100,
+      message: 'The name must have less than 100 chars',
+    },
+  });
+
+  const emailRef = register({
+    required: {
+      value: true,
+      message: 'The email is required',
+    },
+    minLength: {
+      value: 8,
+      message: 'The email must have more than 8 chars',
+    },
+    maxLength: {
+      value: 255,
+      message: 'The email must have less than 255 chars',
+    },
+    pattern: {
+      value: EMAIL_REGEX,
+      message: 'The email is not valid',
+    },
+  });
+
+  const passwordRef = register({
+    required: {
+      value: true,
+      message: 'The password is required',
+    },
+    minLength: {
+      value: 6,
+      message: 'The password must have more than 6 chars',
+    },
+    maxLength: {
+      value: 255,
+      message: 'The password must have less than 255 chars',
+    },
+  });
+
+  const passwordConfirmationRef = register({
+    required: {
+      value: true,
+      message: 'The password Confirmation is required',
+    },
+    validate: (value) =>
+      value === getValues('password') || "The password don't match",
+  });
+
+  async function handleSignupSubmit(data, event) {
     event.preventDefault();
-
-    const payload = { name, email, password, passwordConfirmation };
-    const error = validateInput(payload);
 
     if (error) {
       setShowModal(true);
       setModalTitle(error);
     } else {
-      delete payload.passwordConfirmation;
-      dispatch(signupHandler(payload));
+      delete data.password_confirmation;
+      dispatch(signupHandler(data));
     }
   }
 
@@ -101,29 +123,31 @@ function Signup() {
   } else {
     content = (
       <>
-      <TitleBar>
+        <TitleBar>
           <img src={logo} alt="Shoppingify" />
           <Title>Login</Title>
           <img src={logo} alt="Shoppingify" />
         </TitleBar>
-        <Form onSubmit={handleSignupSubmit} method="post" action="#">
+        <Form onSubmit={handleSubmit(handleSignupSubmit)}>
           <FormGroup>
             <FormGroup.Label htmlFor="name">Name</FormGroup.Label>
             <FormGroup.Input
               id="name"
               placeholder="Enter your name"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
+              name="name"
+              ref={nameRef}
             />
+            {errors?.name && <Error>{errors?.name.message}</Error>}
           </FormGroup>
           <FormGroup>
             <FormGroup.Label htmlFor="email">Email</FormGroup.Label>
             <FormGroup.Input
               id="email"
               placeholder="Enter your email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              name="email"
+              ref={emailRef}
             />
+            {errors?.email && <Error>{errors?.email.message}</Error>}
           </FormGroup>
           <FormGroup>
             <FormGroup.Label htmlFor="password">Password</FormGroup.Label>
@@ -131,9 +155,10 @@ function Signup() {
               id="password"
               type="password"
               placeholder="Enter your password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
+              name="password"
+              ref={passwordRef}
             />
+            {errors?.password && <Error>{errors?.password.message}</Error>}
           </FormGroup>
           <FormGroup>
             <FormGroup.Label htmlFor="passwordConfirmation">
@@ -143,9 +168,12 @@ function Signup() {
               id="passwordConfirmation"
               type="password"
               placeholder="Repeat the password"
-              value={passwordConfirmation}
-              onChange={(event) => setPasswordConfirmation(event.target.value)}
+              name="password_confirmation"
+              ref={passwordConfirmationRef}
             />
+            {errors?.password_confirmation && (
+              <Error>{errors?.password_confirmation.message}</Error>
+            )}
           </FormGroup>
           <ButtonBar>
             <Button type="button" btnType="flat" onClick={handleLogin}>
