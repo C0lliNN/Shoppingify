@@ -1,5 +1,4 @@
 import React from 'react';
-import UnAuthContainer from '../UnAuthContainer';
 import FormGroup from '../../components/UI/FormGroup';
 import Button from '../../components/UI/Button';
 import Modal from '../../components/UI/Modal';
@@ -165,7 +164,7 @@ function Signup() {
     );
   }
 
-  return <UnAuthContainer title="Signup">{content}</UnAuthContainer>;
+  return content;
 }
 
 export default Signup;

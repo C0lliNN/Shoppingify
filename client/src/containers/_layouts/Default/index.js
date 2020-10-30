@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import logo from '../../assets/images/logo.svg';
+import logo from '../../../assets/images/logo.svg';
 import { Container, Card, TitleBar, Title } from './styles';
 
-function UnAuthContainer({ children, title }) {
+function DefaultLayout({ children, title }) {
   return (
     <Container>
       <Card>
@@ -18,9 +18,9 @@ function UnAuthContainer({ children, title }) {
   );
 }
 
-UnAuthContainer.propTypes = {
+DefaultLayout.propTypes = {
   children: PropTypes.any,
   title: PropTypes.string.isRequired,
 };
 
-export default UnAuthContainer;
+export default DefaultLayout;

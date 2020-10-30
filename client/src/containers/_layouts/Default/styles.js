@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as variables from '../../helpers/style-constants';
+import * as variables from '../../../helpers/style-constants';
 
 export const Container = styled.div`
   min-height: 100%;

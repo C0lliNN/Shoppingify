@@ -1,5 +1,4 @@
 import React from 'react';
-import UnAuthContainer from '../UnAuthContainer';
 import { useState } from 'react';
 import FormGroup from '../../components/UI/FormGroup';
 import Button from '../../components/UI/Button';
@@ -126,7 +125,7 @@ function Login() {
     );
   }
 
-  return <UnAuthContainer title="Login">{content}</UnAuthContainer>;
+  return content;
 }
 
 export default Login;

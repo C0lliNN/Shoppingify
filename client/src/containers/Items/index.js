@@ -1,10 +1,8 @@
 import React from 'react';
 import Title from '../../components/Title';
 import SearchBar from '../../components/UI/SearchBar';
-import { useEffect } from 'react';
 import ItemsGroup from '../../components/ItemsGroup';
-import { getItemsData } from '../../store/actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ErrorMessage from '../../components/ErrorMessage';
 import { Text, StyledItems, Header } from './styles';
@@ -14,15 +12,10 @@ function itemsReducer(items, group) {
 }
 
 function Items() {
-  const dispatch = useDispatch();
   const { data, isLoading, error } = useSelector((state) => state.itemsData);
   const itemsAdded = useSelector((state) =>
     state.activeList.data.reduce(itemsReducer, [])
   );
-
-  useEffect(() => {
-    dispatch(getItemsData());
-  }, [dispatch]);
 
   let content = null;
 
