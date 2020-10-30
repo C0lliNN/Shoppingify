@@ -1,61 +1,46 @@
 import React from 'react';
-import { useState } from 'react';
 import FormGroup from '../../components/UI/FormGroup';
 import Button from '../../components/UI/Button';
-import Modal from '../../components/UI/Modal';
 import { useHistory } from 'react-router';
 import { EMAIL_REGEX } from '../../helpers/regex';
 import { loginHandler, logout } from '../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ErrorMessage from '../../components/ErrorMessage';
-import { Form, ButtonBar } from './styles';
+import { Form, ButtonBar, Error } from './styles';
 import { TitleBar, Title } from '../../containers/_layouts/Default/styles';
 import logo from '../../assets/images/logo.svg';
-
-function validateInput(data) {
-  const { email, password } = data;
-
-  if (!email) {
-    return 'The email is required';
-  }
-  //prettier-ignore
-  //eslint-disable-next-line
-  if (!email.match(EMAIL_REGEX)) {
-    return 'Invalid Email Format';
-  }
-  if (!password) {
-    return 'The password is required';
-  }
-}
+import { useForm } from 'react-hook-form';
 
 function Login() {
   const history = useHistory();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const [showModal, setShowModal] = useState(false);
-  const [modalTitle, setModalTitle] = useState('');
 
   const { isLoading, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  async function handleLoginSubmit(event) {
+  const { register, errors, handleSubmit } = useForm();
+
+  const emailRef = register({
+    required: {
+      value: true,
+      message: 'The email is required',
+    },
+    pattern: {
+      value: EMAIL_REGEX,
+      message: 'The email is not valid',
+    },
+  });
+
+  const passwordRef = register({
+    required: {
+      value: true,
+      message: 'The password is required',
+    },
+  });
+
+  async function handleLoginSubmit(data, event) {
     event.preventDefault();
-
-    const payload = { email, password };
-    const error = validateInput(payload);
-
-    if (error) {
-      setShowModal(true);
-      setModalTitle(error);
-    } else {
-      dispatch(loginHandler(email, password));
-    }
-  }
-
-  function closeModal() {
-    setShowModal(false);
+    dispatch(loginHandler(data.email, data.password));
   }
 
   function handleSignup() {
@@ -88,15 +73,16 @@ function Login() {
           <Title>Login</Title>
           <img src={logo} alt="Shoppingify" />
         </TitleBar>
-        <Form action="#" method="post" onSubmit={handleLoginSubmit}>
+        <Form onSubmit={handleSubmit(handleLoginSubmit)}>
           <FormGroup>
             <FormGroup.Label htmlFor="email">Email</FormGroup.Label>
             <FormGroup.Input
               id="email"
               placeholder="Enter your email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            ></FormGroup.Input>
+              name="email"
+              ref={emailRef}
+            />
+            {errors?.email && <Error>{errors?.email.message}</Error>}
           </FormGroup>
           <FormGroup>
             <FormGroup.Label htmlFor="password">Password</FormGroup.Label>
@@ -104,9 +90,10 @@ function Login() {
               type="password"
               id="password"
               placeholder="Enter your password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            ></FormGroup.Input>
+              name="password"
+              ref={passwordRef}
+            />
+            {errors?.password && <Error>{errors?.password.message}</Error>}
           </FormGroup>
           <ButtonBar>
             <Button type="button" btnType="flat" onClick={handleSignup}>
@@ -117,17 +104,6 @@ function Login() {
             </Button>
           </ButtonBar>
         </Form>
-        {showModal && (
-          <Modal
-            title={modalTitle}
-            onClose={closeModal}
-            okButton={
-              <Button btnType="raised" variant="danger" onClick={closeModal}>
-                OK
-              </Button>
-            }
-          />
-        )}
       </>
     );
   }
