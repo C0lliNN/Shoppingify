@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ErrorMessage from '../../components/ErrorMessage';
 import { Form, ButtonBar } from './styles';
+import { TitleBar, Title } from '../../containers/_layouts/Default/styles';
+import logo from '../../assets/images/logo.svg';
 
 function validateInput(data) {
   const { name, email, password, passwordConfirmation } = data;
@@ -99,6 +101,11 @@ function Signup() {
   } else {
     content = (
       <>
+      <TitleBar>
+          <img src={logo} alt="Shoppingify" />
+          <Title>Login</Title>
+          <img src={logo} alt="Shoppingify" />
+        </TitleBar>
         <Form onSubmit={handleSignupSubmit} method="post" action="#">
           <FormGroup>
             <FormGroup.Label htmlFor="name">Name</FormGroup.Label>
