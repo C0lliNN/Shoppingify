@@ -94,13 +94,12 @@ export function checkAuth() {
   return (dispatch, getState) => {
     const { auth } = getState();
     const { token, expirationTime } = auth;
+    setAuthorization(token);
 
     if (token && expirationTime) {
       const currentDate = new Date();
 
       const diff = expirationTime - currentDate.getTime();
-
-      setAuthorization(token);
 
       setTimeout(() => {
         dispatch(logout());
