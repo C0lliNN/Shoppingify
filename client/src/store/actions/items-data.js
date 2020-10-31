@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import getAxios from '../../helpers/axios';
+import api from '../../services/api';
 
 function getItemsStart() {
   return {
@@ -22,13 +22,12 @@ function getItemsFailed(error) {
 }
 
 export function getItemsData() {
-  const axios = getAxios();
 
   return async (dispatch) => {
     dispatch(getItemsStart());
 
     try {
-      const response = await axios.get('/items');
+      const response = await api.get('/items');
 
       let lastItem = null;
 

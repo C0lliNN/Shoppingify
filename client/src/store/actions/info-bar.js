@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import getAxios from '../../helpers/axios';
+import api from '../../services/api';
 import * as actionTypes from './actionTypes';
 
 export function showListBuilder() {
@@ -37,7 +37,7 @@ export function showItemDetailsHandler(id) {
   return async (dispatch) => {
     dispatch(showItemDetailsStart());
     try {
-      const { data } = await getAxios().get(`/items/${id}`);
+      const { data } = await api.get(`/items/${id}`);
       dispatch(showItemDetailsSuccess(data));
     } catch (error) {
       const errorMessage = error.response

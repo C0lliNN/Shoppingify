@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ButtonBar from '../../ButtonBar';
 import Button from '../../UI/Button';
 import bottle from '../../../assets/images/bottle.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getActiveListHandler,
   saveListHandler,
   showCreateItem,
 } from '../../../store/actions';
@@ -49,10 +48,6 @@ function ListBuilder() {
   function handleCancel() {
     dispatch(cancelListHandler());
   }
-
-  useEffect(() => {
-    dispatch(getActiveListHandler());
-  }, [dispatch]);
 
   return (
     <StyledListBuilder style={{ display: hasItems ? 'block' : 'flex' }}>

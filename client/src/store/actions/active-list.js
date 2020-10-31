@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import getAxios from '../../helpers/axios';
+import api from '../../services/api';
 import * as actionTypes from './actionTypes';
 
 export function addItem(item) {
@@ -75,7 +75,7 @@ export function saveListHandler(name) {
         status: 'active',
       };
 
-      const { data } = await getAxios().post('/lists', payload);
+      const { data } = await api.post('/lists', payload);
       dispatch(saveListSuccess(name, data._id));
       toast('✅ List saved successfully!');
     } catch (error) {
@@ -112,7 +112,7 @@ export function getActiveListHandler() {
   return async (dispatch) => {
     dispatch(getActiveListStart());
     try {
-      const response = await getAxios().get('/lists/active');
+      const response = await api.get('/lists/active');
 
       let lastItem = null;
 
@@ -174,7 +174,7 @@ export function completeListHandler() {
 
     try {
       const { _id: listId } = getState().activeList;
-      getAxios().patch(`/lists/${listId}/complete`);
+      await api.patch(`/lists/${listId}/complete`);
       dispatch(completeListSuccess());
       toast('✅ List completed successfully!');
     } catch (error) {
@@ -211,7 +211,7 @@ export function cancelListHandler() {
 
     try {
       const { _id: listId } = getState().activeList;
-      getAxios().patch(`/lists/${listId}/cancel`);
+      await api.patch(`/lists/${listId}/cancel`);
       dispatch(cancelListSuccess());
       toast('✅ List canceled successfully!');
     } catch (error) {

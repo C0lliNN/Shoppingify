@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import ErrorMessage from '../../components/ErrorMessage';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import getAxios from '../../helpers/axios';
+import api from '../../services/api';
 import { List, ListsContainer, Title, Container, Badge, NoItems } from './styles';
 
 export default function History() {
@@ -14,7 +14,7 @@ export default function History() {
 
   async function fetchLists() {
     try {
-      const { data } = await getAxios().get('/lists');
+      const { data } = await api.get('/lists');
       const transformedData = data.map((list) => {
         const formattedDate = moment(list.updated).format('MMM DD.M.YYYY');
 

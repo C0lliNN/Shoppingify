@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import getAxios from '../../helpers/axios';
 import { Container, TopContainer, Title, ItemGroup } from './styles';
 import {
   ResponsiveContainer,
@@ -13,6 +12,7 @@ import {
   Tooltip,
   Legend,
 } from 'recharts';
+import api from '../../services/api';
 
 export default function Statistics() {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +21,7 @@ export default function Statistics() {
 
   async function getData() {
     try {
-      const response = await getAxios().get('/statistics');
+      const response = await api.get('/statistics');
       setData(response.data);
     } catch (err) {
       const errorMessage = err.response

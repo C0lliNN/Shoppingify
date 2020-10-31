@@ -1,18 +1,22 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { checkAuth, getItemsData } from './store/actions';
+import { checkAuth, getActiveListHandler, getItemsData } from './store/actions';
 import Routes from './routes';
 
 function App() {
   const dispatch = useDispatch();
+  const signed = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     dispatch(checkAuth());
-    dispatch(getItemsData());
-  }, [dispatch]);
+    if (signed) {
+      dispatch(getItemsData());
+      dispatch(getActiveListHandler());
+    }
+  }, [dispatch, signed]);
 
   return (
     <main className="App">

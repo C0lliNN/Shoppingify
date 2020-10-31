@@ -7,12 +7,12 @@ import { useState } from 'react';
 import { showListBuilder } from '../../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from '../../UI/Modal';
-import getAxios from '../../../helpers/axios';
 import Spinner from '../../UI/Spinner/Spinner';
 import { addItem } from '../../../store/actions';
 import { StyledCreateItem, Title, ValidationError } from './styles';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import api from '../../../services/api';
 
 function CreateItem() {
   const [isLoading, setIsLoading] = useState(false);
@@ -86,7 +86,7 @@ function CreateItem() {
     };
 
     try {
-      const response = await getAxios().post('/items', payload);
+      const response = await api.post('/items', payload);
       
       dispatch(addItem(response.data));
       dispatch(showListBuilder());

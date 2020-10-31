@@ -38,6 +38,6 @@ export default function RouteWrapper({
 }
 
 RouteWrapper.propTypes = {
-  component: PropTypes.node.isRequired,
+  component: PropTypes.any.isRequired,
   isPrivate: PropTypes.bool,
 };

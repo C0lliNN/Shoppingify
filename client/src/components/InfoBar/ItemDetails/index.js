@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../UI/Button';
 import ButtonBar from '../../ButtonBar';
 import { useState } from 'react';
-import getAxios from '../../../helpers/axios';
 import Modal from '../../UI/Modal';
 import Spinner from '../../UI/Spinner/Spinner';
 import ErrorMessage from '../../ErrorMessage';
@@ -23,6 +22,7 @@ import {
   InfoGroupWrapper,
 } from './styles';
 import { toast } from 'react-toastify';
+import api from '../../../services/api';
 
 function ItemDetails() {
   const [showModal, setShowModal] = useState(false);
@@ -34,10 +34,9 @@ function ItemDetails() {
   const dispatch = useDispatch();
 
   async function handleDeleteItem() {
-    const axios = getAxios();
     setIsLoading(true);
     try {
-      await axios.delete(`/items/${item._id}`);
+      await api.delete(`/items/${item._id}`);
 
       setShowModal(false);
       setIsLoading(false);

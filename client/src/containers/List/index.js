@@ -3,9 +3,9 @@ import { useHistory, useRouteMatch } from 'react-router';
 import BackButton from '../../components/BackButton';
 import { ListName, Container } from './styles';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import getAxios from '../../helpers/axios';
 import ErrorMessage from '../../components/ErrorMessage';
 import ItemsGroup from '../../components/ItemsGroup';
+import api from '../../services/api';
 
 export default function List() {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +21,7 @@ export default function List() {
 
   async function getList(id) {
     try {
-      const { data } = await getAxios().get(`/lists/${id}`);
+      const { data } = await api.get(`/lists/${id}`);
       setList(data);
     } catch (err) {
       const errorMessage = err.response

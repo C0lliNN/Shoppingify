@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import getAxios from '../../helpers/axios';
+import api from '../../services/api';
 
 function loginStart() {
   return {
@@ -10,6 +10,8 @@ function loginStart() {
 function loginSuccess(payload) {
   const currentDate = new Date();
   const expirationTime = currentDate.getTime() + payload.expiresIn * 1000;
+
+  setAuthorization(payload.token);
 
   return {
     type: actionTypes.LOGIN_SUCCESS,
@@ -30,12 +32,11 @@ export function loginHandler(email, password) {
     dispatch(loginStart());
 
     try {
-      const axios = getAxios();
-      const response = await axios.post('/auth', {
+      const { data } = await api.post('/auth', {
         email: email,
         password: password,
       });
-      dispatch(loginSuccess(response.data));
+      dispatch(loginSuccess(data));
     } catch (error) {
       const errorMessage = error.response
         ? error.response.data.message
@@ -52,6 +53,7 @@ function signupStart() {
 }
 
 function signupSuccess(payload) {
+  setAuthorization(payload.token);
   return {
     type: actionTypes.SIGNUP_SUCCESS,
     ...payload,
@@ -70,10 +72,9 @@ export function signupHandler(payload) {
     dispatch(signupStart());
 
     try {
-      const axios = getAxios();
-      const response = await axios.post('/users', payload);
+      const { data } = await api.post('/users', payload);
 
-      dispatch(signupSuccess(response.data));
+      dispatch(signupSuccess(data));
     } catch (error) {
       const errorMessage = error.response
         ? error.response.data.message
@@ -99,9 +100,15 @@ export function checkAuth() {
 
       const diff = expirationTime - currentDate.getTime();
 
+      setAuthorization(token);
+
       setTimeout(() => {
         dispatch(logout());
       }, diff);
     }
   };
+}
+
+function setAuthorization(token) {
+  api.defaults.headers.Authorization = `Bearer ${token}`;
 }
