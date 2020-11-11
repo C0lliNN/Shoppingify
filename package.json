@@ -13,8 +13,8 @@
     "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
     "lint": "eslint server",
-    "test-server": "jest server --detectOpenHandles --coverage",
-    "test": "concurrently \"npm run testServer\"  \"npm run test a --prefix client\""
+    "test:server": "jest server --detectOpenHandles --coverage",
+    "test": "concurrently \"npm run test:server\"  \"npm run test a --prefix client\""
   },
   "author": "Raphael Collin",
   "license": "ISC",

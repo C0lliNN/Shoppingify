@@ -15,6 +15,13 @@ function execGetAllRequest() {
     .expect(200);
 }
 
+function execGetOneRequest(code, id) {
+  return request(app)
+    .get(`/api/v1/items/${id}`)
+    .set('Authorization', `Bearer ${token}`)
+    .expect(code);
+}
+
 function execDeleteRequest(code, id) {
   return request(app)
     .delete(`/api/v1/items/${id}`)
@@ -102,6 +109,24 @@ describe('POST /items', () => {
 
     const item = Item.findOne({ name: payload.name });
     expect(item).not.toBeNull();
+  });
+});
+
+describe('GET /items/:id', () => {
+  it('should return 403 if the item does not belong to the user', async () => {
+    const item = await Item.findOne({ name: 'Orange' });
+
+    const { body } = await execGetOneRequest(403, item.id);
+
+    expect(body).toHaveProperty('message');
+  });
+  it('should return 200 and the item', async () => {
+    const item = await Item.findOne({ name: 'Banana' });
+
+    const { body } = await execGetOneRequest(200, item.id);
+
+    expect(body).toHaveProperty('_id');
+    expect(body).toHaveProperty('name');
   });
 });
 

@@ -13,13 +13,13 @@ router.get('/', async (request, response) => {
   response.send(items);
 });
 
-router.get('/:id', async (request, response) => {
-  const item = await Item.findById(request.params.id);
+router.get('/:item', authorization('item'), async (request, response) => {
+  const item = await Item.findById(request.params.item);
   if (!item) {
-    return response.status(404).send({ message: 'Item not founded!'});
+    return response.status(404).send({ message: 'Item not founded!' });
   }
   response.send(item);
-})
+});
 
 router.post('/', async (request, response) => {
   const { value, error } = validateItem(request.body);
