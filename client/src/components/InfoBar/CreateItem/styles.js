@@ -24,5 +24,7 @@ export const ValidationError = styled.span`
   font-size: 12px;
   font-weight: 600;
   color: ${variables.COLORS.danger};
-  align-self: start
+  align-self: start;
+  display: block;
+  margin-top: 8px;
 `;

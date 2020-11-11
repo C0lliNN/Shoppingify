@@ -7,6 +7,10 @@ export const StyledFromGroup = styled.div`
   justify-content: start;
   flex-direction: column;
   margin-bottom: 25px;
+
+  & span {
+    order: 3;
+  }
 `;
 
 export const formControlStyles = `

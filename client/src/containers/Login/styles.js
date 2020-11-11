@@ -15,4 +15,6 @@ export const Error = styled.span`
   font-weight: 600;
   color: ${variables.COLORS.danger};
   align-self: start;
+  display: block;
+  margin-top: 8px;
 `;

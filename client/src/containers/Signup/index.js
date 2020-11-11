@@ -125,7 +125,7 @@ function Signup() {
       <>
         <TitleBar>
           <img src={logo} alt="Shoppingify" />
-          <Title>Login</Title>
+          <Title>Signup</Title>
           <img src={logo} alt="Shoppingify" />
         </TitleBar>
         <Form onSubmit={handleSubmit(handleSignupSubmit)}>
@@ -136,8 +136,8 @@ function Signup() {
               placeholder="Enter your name"
               name="name"
               ref={nameRef}
-            />
-            {errors?.name && <Error>{errors?.name.message}</Error>}
+              />
+              {errors?.name && <Error>{errors?.name.message}</Error>}
           </FormGroup>
           <FormGroup>
             <FormGroup.Label htmlFor="email">Email</FormGroup.Label>
