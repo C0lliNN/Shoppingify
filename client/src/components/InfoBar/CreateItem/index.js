@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { showListBuilder } from '../../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from '../../UI/Modal';
-import Spinner from '../../UI/Spinner/Spinner';
+import Spinner from '../../UI/Spinner';
 import { addItem } from '../../../store/actions';
 import { StyledCreateItem, Title, ValidationError } from './styles';
 import { useForm } from 'react-hook-form';

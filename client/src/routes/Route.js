@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router';
-import Spinner from '../components/UI/Spinner/Spinner';
+import Spinner from '../components/UI/Spinner';
 import DefaultLayout from '../containers/_layouts/Default';
 import AuthLayout from '../containers/_layouts/Auth';
 

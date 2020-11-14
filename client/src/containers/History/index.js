@@ -2,7 +2,7 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import ErrorMessage from '../../components/ErrorMessage';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import Spinner from '../../components/UI/Spinner';
 import api from '../../services/api';
 import { List, ListsContainer, Title, Container, Badge, NoItems } from './styles';
 

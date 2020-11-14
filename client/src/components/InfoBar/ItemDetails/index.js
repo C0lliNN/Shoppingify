@@ -12,7 +12,7 @@ import Button from '../../UI/Button';
 import ButtonBar from '../../ButtonBar';
 import { useState } from 'react';
 import Modal from '../../UI/Modal';
-import Spinner from '../../UI/Spinner/Spinner';
+import Spinner from '../../UI/Spinner';
 import ErrorMessage from '../../ErrorMessage';
 import {
   Container,

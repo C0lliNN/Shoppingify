@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { EMAIL_REGEX } from '../../helpers/regex';
 import { signupHandler, logout } from '../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import Spinner from '../../components/UI/Spinner';
 import ErrorMessage from '../../components/ErrorMessage';
 import { Form, ButtonBar, Error } from './styles';
 import { TitleBar, Title } from '../../containers/_layouts/Default/styles';

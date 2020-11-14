@@ -3,7 +3,7 @@ import Title from '../../components/Title';
 import SearchBar from '../../components/UI/SearchBar';
 import ItemsGroup from '../../components/ItemsGroup';
 import { useSelector } from 'react-redux';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import Spinner from '../../components/UI/Spinner';
 import ErrorMessage from '../../components/ErrorMessage';
 import { Text, StyledItems, Header } from './styles';
 

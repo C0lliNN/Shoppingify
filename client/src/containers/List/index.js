@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useRouteMatch } from 'react-router';
 import BackButton from '../../components/BackButton';
 import { ListName, Container } from './styles';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import Spinner from '../../components/UI/Spinner';
 import ErrorMessage from '../../components/ErrorMessage';
 import ItemsGroup from '../../components/ItemsGroup';
 import api from '../../services/api';

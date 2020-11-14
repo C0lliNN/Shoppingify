@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import Spinner from '../../components/UI/Spinner';
 import { Container, TopContainer, Title, ItemGroup } from './styles';
 import {
   ResponsiveContainer,
