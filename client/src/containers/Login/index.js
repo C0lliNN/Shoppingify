@@ -3,10 +3,9 @@ import FormGroup from '../../components/UI/FormGroup';
 import Button from '../../components/UI/Button';
 import { useHistory } from 'react-router';
 import { EMAIL_REGEX } from '../../helpers/regex';
-import { loginHandler, logout } from '../../store/actions';
+import { loginHandler } from '../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../../components/UI/Spinner';
-import ErrorMessage from '../../components/ErrorMessage';
 import { Form, ButtonBar, Error } from './styles';
 import { TitleBar, Title } from '../../containers/_layouts/Default/styles';
 import logo from '../../assets/images/logo.svg';
@@ -15,7 +14,7 @@ import { useForm } from 'react-hook-form';
 function Login() {
   const history = useHistory();
 
-  const { isLoading, error } = useSelector((state) => state.auth);
+  const { isLoading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const { register, errors, handleSubmit } = useForm();
@@ -51,20 +50,6 @@ function Login() {
 
   if (isLoading) {
     content = <Spinner />;
-  } else if (error) {
-    content = (
-      <>
-        <ErrorMessage message={error} />
-        <Button
-          type="button"
-          btnType="raised"
-          variant="secondary"
-          onClick={() => dispatch(logout())}
-        >
-          Try Again
-        </Button>
-      </>
-    );
   } else {
     content = (
       <>

@@ -1,14 +1,11 @@
 import React from 'react';
 import FormGroup from '../../components/UI/FormGroup';
 import Button from '../../components/UI/Button';
-import Modal from '../../components/UI/Modal';
 import { useHistory } from 'react-router';
-import { useState } from 'react';
 import { EMAIL_REGEX } from '../../helpers/regex';
-import { signupHandler, logout } from '../../store/actions';
+import { signupHandler } from '../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../../components/UI/Spinner';
-import ErrorMessage from '../../components/ErrorMessage';
 import { Form, ButtonBar, Error } from './styles';
 import { TitleBar, Title } from '../../containers/_layouts/Default/styles';
 import logo from '../../assets/images/logo.svg';
@@ -17,10 +14,7 @@ import { useForm } from 'react-hook-form';
 function Signup() {
   const history = useHistory();
 
-  const [showModal, setShowModal] = useState(false);
-  const [modalTitle, setModalTitle] = useState('');
-
-  const { isLoading, error } = useSelector((state) => state.auth);
+  const { isLoading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { register, handleSubmit, errors, getValues } = useForm();
 
@@ -85,41 +79,18 @@ function Signup() {
   async function handleSignupSubmit(data, event) {
     event.preventDefault();
 
-    if (error) {
-      setShowModal(true);
-      setModalTitle(error);
-    } else {
-      delete data.password_confirmation;
-      dispatch(signupHandler(data));
-    }
+    delete data.password_confirmation;
+    dispatch(signupHandler(data));
   }
 
   function handleLogin() {
     history.push('/login');
   }
 
-  function closeModal() {
-    setShowModal(false);
-  }
-
   let content = null;
 
   if (isLoading) {
     content = <Spinner />;
-  } else if (error) {
-    content = (
-      <>
-        <ErrorMessage message={error} />
-        <Button
-          type="button"
-          btnType="raised"
-          variant="secondary"
-          onClick={() => dispatch(logout())}
-        >
-          Try Again
-        </Button>
-      </>
-    );
   } else {
     content = (
       <>
@@ -136,8 +107,8 @@ function Signup() {
               placeholder="Enter your name"
               name="name"
               ref={nameRef}
-              />
-              {errors?.name && <Error>{errors?.name.message}</Error>}
+            />
+            {errors?.name && <Error>{errors?.name.message}</Error>}
           </FormGroup>
           <FormGroup>
             <FormGroup.Label htmlFor="email">Email</FormGroup.Label>
@@ -184,17 +155,6 @@ function Signup() {
             </Button>
           </ButtonBar>
         </Form>
-        {showModal && (
-          <Modal
-            title={modalTitle}
-            onClose={closeModal}
-            okButton={
-              <Button btnType="raised" variant="danger" onClick={closeModal}>
-                OK
-              </Button>
-            }
-          />
-        )}
       </>
     );
   }

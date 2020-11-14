@@ -1,5 +1,6 @@
 import * as actionTypes from '../actions/actionTypes';
 import api from '../../services/api';
+import { toast } from 'react-toastify';
 
 function loginStart() {
   return {
@@ -21,6 +22,8 @@ function loginSuccess(payload) {
 }
 
 function loginFailed(error) {
+  toast(`❗️Error: ${error}`, { position: 'top-right' });
+
   return {
     type: actionTypes.LOGIN_FAILED,
     error: error,
@@ -61,6 +64,8 @@ function signupSuccess(payload) {
 }
 
 function signupFailed(error) {
+  toast(`❗️Error: ${error}`, { position: 'top-right' });
+
   return {
     type: actionTypes.SIGNUP_FAILED,
     error: error,
